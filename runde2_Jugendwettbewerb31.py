@@ -1,18 +1,11 @@
-#Das hier sind alle Deutsche Endungen die nicht wiederholt nicht wiederholt sihd.
-#  test est st te tet et t ten en end
-#das Ganze muss von den kürzesten bis längsten sein Endungen sein.
-#Wenn zwei Endungen gleich lang sind ist es egal in welcher Rheinfolge die beiden stehen
-#Schritt2:Eingabe:
-#Endungen von kürzesten bis längsten.
-#Diese Funktion checkt zuerst die kürzeste Endung.
-#Wenn die nicht passt dann sucht es den nächst längeren.
-#Die Endung wird in eine Variable gespeichert und die Variable wird returned.
-#Ausnahmnefall:
-#Wenn eine kürzere Endung und eine längere Endung passen dann wird der längere ausgewählt.
-
-#Die Endung im Wort wird dann durch en ersetzt.
-#Ausnahmefall:
-#Wenn die letzte Buchstaben ein e ist dann wird nur ein en hinzugefügt.
+#Schritt 1:Funktion infinitiv(eingabe Wort),Ausgabe infinitiv vom Wort
+#Schritt 2:eine liste erstellen die endungen heißt und alle unterschiedliche Deutsche Verbenendungen reintun.Längste kommen zuerst.
+#Schritt 3:Die Liste endungen mit einer forschleife durchgehen.
+#Schritt 4:Checken welche Endungen am Ende des Wortes ist.
+#Schritt 5:Falls die letzten 4 Buchstaben tete sind dann zwischen e und t trennen.Dann hinten en hinzufügen.
+#Schritt 6:Sonst einfach die Endung im Wort finden die Endung entfernen dann mit en erstzen.Falls die letzte Buchstabe e ist dann nur ein n hinter dem e hinzufügen.
+#Schritt 7:Vorne falls es ein ge gibt dann ge entfernen.
+#Schritt 8:Wort returnen.
 
 
 
@@ -40,7 +33,7 @@ def infinitiv(konjugierter_Verb):
     return konjugierter_Verb
 
 
-infinitivForm = infinitiv("geforscht")
+infinitivForm = infinitiv("beendet")
 print(infinitivForm)
 
 
@@ -50,3 +43,8 @@ def test_infinitiv():
     assert infinitiv("geforscht") == "forschen"
     assert infinitiv("schweigend") == "schweigen"
     assert infinitiv("trag") == "tragen"
+    assert infinitiv("beendet") == "beenden"
+    assert infinitiv("forschte") == "forschen"
+    assert infinitiv("lüftete") == "lüften"
+    assert infinitiv("gemacht") == "machen"
+    assert infinitiv("machte") == "machen"
