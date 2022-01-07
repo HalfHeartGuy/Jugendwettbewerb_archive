@@ -36,7 +36,7 @@ def erstelleZeile(eineSilbe,counter):
 
     zeile = ""
     for i in range(0,counter):
-        zeile = zeile + eineSilbe + ""
+        zeile = zeile + " " + eineSilbe
         if i == (counter - 1) / 2:
             zeile = zeile + "p di"
 
@@ -45,7 +45,6 @@ def erstelleZeile(eineSilbe,counter):
 
 #print("eine Zeile:" + erstelleZeile(konsunanten,vokale,7))
 #Schritt 3;erstelle eine Strophe mit >=2 Zeilen, mit gleichen Anzahl der Silbenwiederholungen in allen Zeiten.Am Ende noch ein "Markiger Call".Methode "erstelleStrophe"
-muster = [3,3,5,6]
 markigerCalls = ["cool!","yo!","fake news"]
 def erstelleStrophe(konsonanten,vokale,zeileCoutner):
     strophe = ""
@@ -71,17 +70,18 @@ print("erstelleEinStroph:" + erstelleStrophe(konsunanten,vokale,3))
 
 
 #Schritt 4;erstelle ein Song mit >= 2 Strophen , und entweder gleichen Anzahl von Zeilen,oder mit abwechselnde Anzahl von Zeilen.
+muster = [3,4,5,4,3]
+def songWriter(muster):
+    song = ""
+    for anzahlDerZeileinEinerStrophe in muster:
+        song = song + "\n" + erstelleStrophe(konsunanten,vokale,anzahlDerZeileinEinerStrophe)
 
-def songWriter(konsonanten,vokale):
-    numbers = [3 ,4,6]
-    counter = random.choice(numbers)
-    song = []
-    for i in range(0,counter):
-        strophe = erstelleStrophe(konsonanten,vokale)
-        song.append(strophe)
     return song
 
-song = songWriter(konsunanten,vokale)
+
+print(songWriter(muster))
+
+
 
 #print("ein Song:" + (erstelleSong(konsunanten,vokale)))
 
