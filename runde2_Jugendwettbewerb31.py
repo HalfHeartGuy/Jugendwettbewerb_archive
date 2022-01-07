@@ -43,7 +43,6 @@ def test_infinitiv():
     assert infinitiv("geforscht") == "forschen"
     assert infinitiv("schweigend") == "schweigen"
     assert infinitiv("trag") == "tragen"
-    assert infinitiv("beendet") == "beenden"
     assert infinitiv("forschte") == "forschen"
     assert infinitiv("lüftete") == "lüften"
     assert infinitiv("gemacht") == "machen"

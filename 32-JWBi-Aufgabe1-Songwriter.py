@@ -31,35 +31,37 @@ def erstelleSilbe (konsunanten,vokale):
 #Schritt 2:erstelle eine Zeile mit ungeraden Anzahl von Silben,die gleich sind. Methode "erstelleZeile"
 
 
-def erstelleZeile(kosonanten,vokale,counter):
+def erstelleZeile(eineSilbe,counter):
 
 
     zeile = ""
-    einsilbe = erstelleSilbe(kosonanten, vokale)
     for i in range(0,counter):
-        zeile = zeile + einsilbe + ""
+        zeile = zeile + eineSilbe + ""
         if i == (counter - 1) / 2:
             zeile = zeile + "p di"
+
     return zeile
+
+
+#print("eine Zeile:" + erstelleZeile(konsunanten,vokale,7))
 #Schritt 3;erstelle eine Strophe mit >=2 Zeilen, mit gleichen Anzahl der Silbenwiederholungen in allen Zeiten.Am Ende noch ein "Markiger Call".Methode "erstelleStrophe"
+muster = [3,3,5,6]
+markigerCalls = ["cool!","yo!","fake news"]
+def erstelleStrophe(konsonanten,vokale,zeileCoutner):
+    strophe = ""
+    anzahlDerSilbe = 5
 
-def erstelleStrophe(konsonanten,vokale):
 
-    calls = ["yo man","LOL","Your world is"]
-    ungeradeZahl = [3, 4, 6]
-    counterforStrophe = random.choice(ungeradeZahl)
 
-    strophe = []
-    call = random.choice(calls)
-    if counterforStrophe != 1:
-        counterforStrophe = counterforStrophe - 1
+    for repeat in range(0, zeileCoutner):
+        silberinEinerZeile = erstelleSilbe(konsonanten, vokale)
 
-    for i in range(0,counterforStrophe):
-
-        zeile = erstelleZeile(konsonanten,vokale,counterforStrophe)
-        strophe.append(zeile)
-    strophe.append(call)
+        strophe = strophe + "\n" + erstelleZeile(silberinEinerZeile, anzahlDerSilbe)
+    strophe = strophe + "\n" + random.choice(markigerCalls)
     return strophe
+
+print("erstelleEinStroph:" + erstelleStrophe(konsunanten,vokale,3))
+
 
 
 
@@ -69,8 +71,9 @@ def erstelleStrophe(konsonanten,vokale):
 
 
 #Schritt 4;erstelle ein Song mit >= 2 Strophen , und entweder gleichen Anzahl von Zeilen,oder mit abwechselnde Anzahl von Zeilen.
-def erstelleSong(konsonanten,vokale):
-    numbers = [3,4,6]
+
+def songWriter(konsonanten,vokale):
+    numbers = [3 ,4,6]
     counter = random.choice(numbers)
     song = []
     for i in range(0,counter):
@@ -78,13 +81,10 @@ def erstelleSong(konsonanten,vokale):
         song.append(strophe)
     return song
 
-song = erstelleSong(konsunanten,vokale)
-def printing(song):
-    for line in song:
-        for oneline in line:
-            print(oneline)
+song = songWriter(konsunanten,vokale)
 
-printing(song)
+#print("ein Song:" + (erstelleSong(konsunanten,vokale)))
+
 
 
 
