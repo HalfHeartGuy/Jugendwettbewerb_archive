@@ -1,5 +1,3 @@
-
-
 import random
 from random import randint
 #Design "Songwriter"
@@ -84,7 +82,3 @@ print(songWriter(muster))
 
 
 #print("ein Song:" + (erstelleSong(konsunanten,vokale)))
-
-
-
-
