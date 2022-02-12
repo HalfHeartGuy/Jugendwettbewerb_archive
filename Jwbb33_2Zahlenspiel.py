@@ -36,14 +36,13 @@ def bruechegenerieren(schwierigskeitgrad):
         b = random.randint(10, 99)
         bruch.add(a)
         bruch.add(b)
-        print(bruch)
+
         return  bruch
     elif schwierigskeitgrad == "schwer":
         a = random.randint(100, 999)
         b = random.randint(10, 99)
         bruch.add(a)
         bruch.add(b)
-        print(bruch)
         return  bruch
 
 
@@ -56,20 +55,23 @@ def bruechegenerieren(schwierigskeitgrad):
 #Falls der Zähler und der Nenner durch diesen counter teilen können (ohne Rest) dann werden Zähler und Nenner durch den counter dividiert.
 #Falls der counter größer ist als den Zähler und den Nenner das heißt dann dass der Bruch vollständig gekürzt ist.
 def bruechekuerzen(bruch):
+    list_original = bruch
     list_bruch = list(bruch)
-    print(list_bruch)
     counter = 1
+    result = []
     while counter < counter + 1:
         counter += 1
-        print(counter)
 
         if list_bruch[0] % counter == 0 and list_bruch[1] % counter == 0:
             list_bruch[0] = list_bruch[0] / counter
             list_bruch[1] = list_bruch[1] / counter
-            print(list_bruch)
             counter = 1
 
         if counter > list_bruch[0] and counter > list_bruch[1]:
+            result.append(list_original)
+
+            result.append(list_bruch)
+            return result
             break
         else:
 
@@ -77,5 +79,15 @@ def bruechekuerzen(bruch):
 
 
 
-bruch = bruechegenerieren("leicht")
-bruechekuerzen(bruch)
+def wiederholungsanzahl():
+    anzahl = input("wie viele Aufgaben sollen generiert werden?")
+    schwierigskeitgrad = input("welcher schwierigskeitgrad soll es sein?")
+    results = []
+    for i in range(0,int(anzahl)):
+        bruch = bruechegenerieren(schwierigskeitgrad)
+        result = bruechekuerzen(bruch)
+        results.append(result)
+    return results
+
+results = wiederholungsanzahl()
+print(results)
