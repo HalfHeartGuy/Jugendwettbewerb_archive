@@ -19,6 +19,20 @@ from random import randint
     mittel 5 10 < p+q ≤ 20
     schwer 5 20 < p+q ≤ 30
 """
+def caculatecounterofdigit(zahl):
+    return  len(str(zahl))
+
+def createrandomnumberwithcounterofdigit(count):
+    result = 0
+    for i in range(0,count):
+        randomnumber = random.randint(1,9)
+        result += 10 ** i * randomnumber
+
+    return result
+
+
+
+print(createrandomnumberwithcounterofdigit(4))
 
 
 def bruechegenerieren(schwierigskeitgrad):
@@ -57,14 +71,15 @@ def bruechegenerieren(schwierigskeitgrad):
 def bruechekuerzen(bruch):
     list_original = bruch
     list_bruch = list(bruch)
+    print(list_bruch)
     counter = 1
     result = []
     while counter < counter + 1:
         counter += 1
 
         if list_bruch[0] % counter == 0 and list_bruch[1] % counter == 0:
-            list_bruch[0] = list_bruch[0] / counter
-            list_bruch[1] = list_bruch[1] / counter
+            list_bruch[0] = int(list_bruch[0] / counter)
+            list_bruch[1] = int(list_bruch[1] / counter)
             counter = 1
 
         if counter > list_bruch[0] and counter > list_bruch[1]:
@@ -77,8 +92,10 @@ def bruechekuerzen(bruch):
 
             continue
 
+print(bruechekuerzen([20,60]))
+#Hier in dieser Funktion wird eingegeben wie viele Aufgaben generiert werden sollten und welcher Schwierigskeitgrad es ist.
 
-
+"""
 def wiederholungsanzahl():
     anzahl = input("wie viele Aufgaben sollen generiert werden?")
     schwierigskeitgrad = input("welcher schwierigskeitgrad soll es sein?")
@@ -91,3 +108,4 @@ def wiederholungsanzahl():
 
 results = wiederholungsanzahl()
 print(results)
+"""
