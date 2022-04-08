@@ -32,17 +32,34 @@ def createrandomnumberwithcounterofdigit(count):
 
 
 
-print(createrandomnumberwithcounterofdigit(4))
-
+#print(createrandomnumberwithcounterofdigit(4))
+#sumrange:[2 , 10]
+#bsp:p zufallszahl zwischen 2 und 10 bsp:3
+#bsp:q zufallszahl maximal sumrange[1] - q minimal:
+def generatePQ(sumrange):
+    p = random.randint(sumrange[0],sumrange[1])
+    q = random.randint(2,sumrange - p)
 
 def bruechegenerieren(schwierigskeitgrad):
     bruch = set()
     if schwierigskeitgrad == "leicht":
         a = random.randint(10,99)
         b = random.randint(10,99)
-        bruch.add(a)
-        bruch.add(b)
-        return bruch
+        p_q = bruechekuerzen([a,b])
+        p = p_q[1][0]
+        q = p_q[1][1]
+        if p + q <= 10:
+            bruch.add("a:" + str(a))
+            bruch.add("b:" + str(b))
+            bruch.add("p:" + str(p))
+            bruch.add("q:" + str(q))
+
+            print(str(bruch) + "nicht gekürzter Bruch+" + "gekürzter Bruch")
+            return bruch
+
+
+        else:
+            return bruechegenerieren(schwierigskeitgrad)
 
 
     elif schwierigskeitgrad == "mittel":
@@ -50,20 +67,19 @@ def bruechegenerieren(schwierigskeitgrad):
         b = random.randint(10, 99)
         bruch.add(a)
         bruch.add(b)
-
         return  bruch
     elif schwierigskeitgrad == "schwer":
         a = random.randint(100, 999)
         b = random.randint(10, 99)
         bruch.add(a)
         bruch.add(b)
+
         return  bruch
 
 
     else:
-        print("what did you expect?")
-        print(bruch)
-        return  bruch
+        print("error")
+        return bruch
 
 #Es gibt einen counter dass von 2 anfängt zu zählen.
 #Falls der Zähler und der Nenner durch diesen counter teilen können (ohne Rest) dann werden Zähler und Nenner durch den counter dividiert.
@@ -71,7 +87,6 @@ def bruechegenerieren(schwierigskeitgrad):
 def bruechekuerzen(bruch):
     list_original = bruch
     list_bruch = list(bruch)
-    print(list_bruch)
     counter = 1
     result = []
     while counter < counter + 1:
@@ -92,7 +107,8 @@ def bruechekuerzen(bruch):
 
             continue
 
-print(bruechekuerzen([20,60]))
+print(bruechegenerieren("leicht"))
+
 #Hier in dieser Funktion wird eingegeben wie viele Aufgaben generiert werden sollten und welcher Schwierigskeitgrad es ist.
 
 """
