@@ -1,14 +1,22 @@
-list = [(1,2,3,5), (2,2,3,5), (3,2,3,5)]
-result_dictionary = {}
-
-
 import turtle
-turtle.bgcolor("white")
-turtle.pencolor("black")
-turtle.penup()
-#def task():
-turtle.speed(2)
 
+
+
+#Aufgabe 1
+
+#Methodename:berechnenLandnahme
+#Eingabe:eine Liste von Koordinaten (Set mit 4 interger)
+#[(2.3.5.5), (1,2,4,4) , (3,1,6,3)]
+#[(2,3.5.5), (1,2,4,4) , (3,1,6,3)]
+#Ausgabe:eine Liste von Koordinaten (Set mit 4 interger)
+#print (2,3,5,5) genehmigt/abgelehnt
+
+
+#Schritt 1 mit einer Methode zu überprüfen ob 2 Rechtecken sich überschneiden.
+##Methodename:hatUeberschneidung
+#Eingabe:2 Set/Liste mit jeweils 4 int
+##Ausgabe: true/false
+list = [(1,2,3,5), (2,2,3,5), (3,2,3,5)]
 def hatUeberschneidung(rechteck1,rechteck2):
     rechteck1_groesster_x = rechteck1[2]
     rechteck1_groesster_y = rechteck1[3]
@@ -26,40 +34,85 @@ def hatUeberschneidung(rechteck1,rechteck2):
             or (rechteck2Y2 > rechteck1_groesster_y and rechteck2Y1 < rechteck1_kleinster_y) and rechteck2X2 < rechteck2X2 and rechteck2X2 > rechteck1_kleinster_x\
             or (rechteck2Y2 > rechteck1_groesster_x and rechteck2Y1 < rechteck1_kleinster_y and Rechteck2X1 < rechteck1_groesster_x and Rechteck2X1 > rechteck1_kleinster_x)\
             or (rechteck2X2 > rechteck1_groesster_x and Rechteck2X1 < rechteck1_kleinster_y and rechteck2Y2 < rechteck1_groesster_y and rechteck2Y2 > rechteck1_kleinster_y)\
-
-
-def countrycolour(koordinatenliste):
+#Fall1:Oben rechts Ecke vom rechteck1 ist innerhalb rechteck2
+#Fall2:Unten linke ecke vom rechteck1 ist innerhalb rechteck2
+#Fall3:Oben links Ecke von Rechteck2 ist innerhalb Rechteck1
+#Fall4:Unten Rechts Ecke von Rechteck2 ist innerhalb Rechteck1
+#Fall 5:Beide Ecken von Rechteck 2 sind außerhalb vom rechteck1.
+#Fall6:Beide Ecken von Rechteck 2 sind außerhalb rechteck1.
+def berecheneLandnahme(kordinatenliste):
+    resultdic = {}
     dictionary = {}
-    for onerechteck in koordinatenliste:
-        dictionary[onerechteck] = True
-        for vierecke in dictionary.keys():
-            status = hatUeberschneidung(vierecke,onerechteck)
-            if status:
-                dictionary[onerechteck] = False
-                drawsquare(onerechteck,dictionary[onerechteck])
+    for onerechteck in kordinatenliste:
 
-                dictionary.pop(onerechteck)
+        dictionary[onerechteck]=True
+
+        for vierecke in dictionary.keys():
+
+            Status = hatUeberschneidung(vierecke,onerechteck)
+            if Status:
+                dictionary[onerechteck]=False
+                resultdic[onerechteck] = False
+                dictionary.popitem()
                 break
             else:
-                drawsquare(onerechteck,dictionary[onerechteck])
+                resultdic[onerechteck] = True
                 break
-#Eingabe coordinates und statement
-#Coordinates Bsp:(2,3,5,5)
-#Statement Bsp:True
+
+    return resultdic
+
+
+
+
+
+resultdic = berecheneLandnahme([(2,3,5,5),(1,2,4,4),(3,1,6,3),(2,5,7,8),(9,10,13,14)])
+"""
+    if rechteck2Y2 < rechteck1_groesster_y and rechteck2Y2 > rechteck1_kleinster_y:
+        rechteck2X2 = rechteck2[2]
+        if rechteck2X2 < rechteck1_groesster_x and rechteck2X2 > rechteck1_kleinster_x:
+
+            return False
+    elif Rechteck2X1 < rechteck1_groesster_x and Rechteck2X1 > rechteck1_kleinster_x:
+        rechteck2Y1 = rechteck2[1]
+        if rechteck2Y1 < rechteck1_groesster_y and rechteck2Y1 > rechteck1_kleinster_y:
+            return False
+    else:
+        return True
+"""
+#Schritt 2:vergleich ein Rechtecken mit vorherigen(mit Statusspeicherung)
+#[(1,2,3,5):True, (3,2,1,5):False, ....,]
+
+
+#for eachRechteck in list
+
+"""
+dict = {}
+
+for eachRechteck in list:
+
+    for oneRechteck in dict.keys():
+        if dict.get(oneRechteck):
+            hatUeberschneidung = hatUeberschneidung(eachRechteck,oneRechteck)
+
+
+dict2 = {"key1":True , "key2":False}
+"""
+
+
 
 def drawsquare(coordinates,statement):
-    print(type(coordinates))
+
 
 
     turtle.penup()
-    turtle.goto(coordinates[0] * 100, coordinates[1] * 100)
+    turtle.goto(coordinates[0] * 10, coordinates[1] * 10)
     turtle.begin_fill()
     turtle.pendown()
     for i in range(0,2):
-        turtle.forward(coordinates[2] * 100 - coordinates[0] * 100)
+        turtle.forward(coordinates[2] * 10 - coordinates[0] * 10)
 
         turtle.left(90)
-        turtle.forward(coordinates[3] * 100 - coordinates[1] * 100)
+        turtle.forward(coordinates[3] * 10 - coordinates[1] * 10)
         turtle.left(90)
 
     if statement == False:
@@ -69,28 +122,12 @@ def drawsquare(coordinates,statement):
         turtle.color("green")
         turtle.end_fill()
 
-
-countrycolour([(1,2,3,5), (2,2,3,5), (3,2,3,5)])
-"""
-for onerechteck in list:
-
-    if len(result_dictionary) == 0:
-        turtle.goto(onerechteck[0] * 100, onerechteck[1] * 100)
-
-        for i in range(0,2):
-            turtle.pendown()
-            turtle.forward(onerechteck[2] * 100 - onerechteck[0] * 100)
-            turtle.left(90)
-            turtle.forward(onerechteck[3] * 100 - onerechteck[1] * 100)
-
-            turtle.left(90)
-"""
+def countrycolor(resultdic):
+    for oneitem in resultdic:
+        drawsquare(oneitem,resultdic[oneitem])
+    turtle.done()
 
 
+countrycolor(resultdic)
 
-
-
-#for i in range(0,4):
-#    turtle.forward(50)
-#    turtle.right(90)
 
