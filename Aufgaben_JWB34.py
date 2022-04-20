@@ -75,7 +75,7 @@ berecheneLandnahme([(2,3,5,5),(1,2,4,4),(3,1,6,3)])
 
 #for eachRechteck in list
 
-
+"""
 dict = {}
 
 for eachRechteck in list:
@@ -86,7 +86,7 @@ for eachRechteck in list:
 
 
 dict2 = {"key1":True , "key2":False}
-
+"""
 
 
 print(hatUeberschneidung((2,1,5,2),(0,0,4,3)))

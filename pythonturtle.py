@@ -30,10 +30,47 @@ def hatUeberschneidung(rechteck1,rechteck2):
 
 def countrycolour(koordinatenliste):
     dictionary = {}
-    for onerechteck in dictionary:
-        dictionary
+    for onerechteck in koordinatenliste:
+        dictionary[onerechteck] = True
+        for vierecke in dictionary.keys():
+            status = hatUeberschneidung(vierecke,onerechteck)
+            if status:
+                dictionary[onerechteck] = False
+                drawsquare(onerechteck,dictionary[onerechteck])
+
+                dictionary.pop(onerechteck)
+                break
+            else:
+                drawsquare(onerechteck,dictionary[onerechteck])
+                break
+#Eingabe coordinates und statement
+#Coordinates Bsp:(2,3,5,5)
+#Statement Bsp:True
+
+def drawsquare(coordinates,statement):
+    print(type(coordinates))
 
 
+    turtle.penup()
+    turtle.goto(coordinates[0] * 100, coordinates[1] * 100)
+    turtle.begin_fill()
+    turtle.pendown()
+    for i in range(0,2):
+        turtle.forward(coordinates[2] * 100 - coordinates[0] * 100)
+
+        turtle.left(90)
+        turtle.forward(coordinates[3] * 100 - coordinates[1] * 100)
+        turtle.left(90)
+
+    if statement == False:
+        turtle.color("red")
+        turtle.end_fill()
+    else:
+        turtle.color("green")
+        turtle.end_fill()
+
+
+countrycolour([(1,2,3,5), (2,2,3,5), (3,2,3,5)])
 """
 for onerechteck in list:
 
