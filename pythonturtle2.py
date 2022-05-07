@@ -18,23 +18,27 @@ import turtle
 #Eingabe:2 Set/Liste mit jeweils 4 int
 ##Ausgabe: true/false
 list = [(1,2,3,5), (2,2,3,5), (3,2,3,5)]
-def hatUeberschneidung(rechteck1,rechteck2):
-    rechteck1_groesster_x = rechteck1[2]
-    rechteck1_groesster_y = rechteck1[3]
-    rechteck1_kleinster_x = rechteck1[0]
-    rechteck1_kleinster_y = rechteck1[1]
+def hatkeineUeberschneidung(rechteck1,rechteck2):
+    rechteck1X2 = rechteck1[2]
+    rechteck1Y2 = rechteck1[3]
+    rechteck1X1 = rechteck1[0]
+    rechteck1Y1 = rechteck1[1]
     rechteck2Y2 = rechteck2[3]
-    Rechteck2X1 = rechteck2[0]
+    rechteck2X1 = rechteck2[0]
     rechteck2Y1 = rechteck2[1]
     rechteck2X2 = rechteck2[2]
 
-    return (rechteck2Y2 < rechteck1_groesster_y and rechteck2Y2 > rechteck1_kleinster_y and rechteck2X2 < rechteck1_groesster_x and rechteck2X2 > rechteck1_kleinster_x) \
-            or(Rechteck2X1 < rechteck1_groesster_x and Rechteck2X1 > rechteck1_kleinster_x and rechteck2Y1 < rechteck1_groesster_y and rechteck2Y1 > rechteck1_kleinster_y) \
-            or (Rechteck2X1 < rechteck1_groesster_x and Rechteck2X1 > rechteck1_kleinster_x and rechteck2Y2 < rechteck1_groesster_y and rechteck2Y2 > rechteck1_kleinster_y) \
-            or (rechteck2Y2 < rechteck1_groesster_x and rechteck2X2 > rechteck1_kleinster_x and Rechteck2X1 < rechteck1_groesster_y and rechteck2Y1 > rechteck1_kleinster_y)\
-            or (rechteck2Y2 > rechteck1_groesster_y and rechteck2Y1 < rechteck1_kleinster_y) and rechteck2X2 < rechteck2X2 and rechteck2X2 > rechteck1_kleinster_x\
-            or (rechteck2Y2 > rechteck1_groesster_x and rechteck2Y1 < rechteck1_kleinster_y and Rechteck2X1 < rechteck1_groesster_x and Rechteck2X1 > rechteck1_kleinster_x)\
-            or (rechteck2X2 > rechteck1_groesster_x and Rechteck2X1 < rechteck1_kleinster_y and rechteck2Y2 < rechteck1_groesster_y and rechteck2Y2 > rechteck1_kleinster_y)\
+    return (rechteck2Y2 < rechteck1Y2 and rechteck2Y2 > rechteck1Y1 and rechteck2X2 < rechteck1X2 and rechteck2X2 > rechteck1X1) \
+                    or (rechteck2X1 < rechteck1X2 and rechteck2X1 > rechteck1X1 and rechteck2Y1 < rechteck1Y2 and rechteck2Y1 > rechteck1Y1) \
+                    or (rechteck2X1 < rechteck1X2 and rechteck2X1 > rechteck1X1 and rechteck2Y2 < rechteck1Y2 and rechteck2Y2 > rechteck1Y1)  \
+                    or (rechteck2Y2 < rechteck1X2 and rechteck2X2 > rechteck1X1 and rechteck2X1 < rechteck1Y2 and rechteck2Y1 > rechteck1Y1)  \
+                    or  (rechteck2Y2 > rechteck1Y2 and rechteck2Y1 < rechteck1Y1 and rechteck2X2 < rechteck2X2 and rechteck2X2 > rechteck1X1)  \
+                    or  (rechteck2Y2 > rechteck1X2 and rechteck2Y1 < rechteck1Y1 and rechteck2X1 < rechteck1X2 and rechteck2X1 > rechteck1X1)  \
+                    or (rechteck2X2 > rechteck1X2 and rechteck2X1 < rechteck1Y1 and rechteck2Y2 < rechteck1Y2 and rechteck2Y2 > rechteck1Y1)\
+                    or  (rechteck1Y2 < rechteck2Y2 and rechteck1Y1 < rechteck2Y2 and rechteck1X2 < rechteck2X2 and rechteck1X1 < rechteck2X1)\
+                    or  (rechteck2X1 < rechteck1X1 and rechteck2Y1 < rechteck1Y1 and rechteck2X2 < rechteck1X2 and rechteck2Y2 > rechteck1Y2)\
+                    or (rechteck2X1 < rechteck1X2 and rechteck2Y1 < rechteck1Y1 and rechteck2X2 > rechteck1X2 and rechteck2Y2 < rechteck2Y1)\
+                    or  (rechteck2X1 < rechteck1X1 and rechteck2Y1 < rechteck1Y1 and rechteck2X2 < rechteck1X2 and rechteck2Y2 > rechteck2Y1)\
 #Fall1:Oben rechts Ecke vom rechteck1 ist innerhalb rechteck2
 #Fall2:Unten linke ecke vom rechteck1 ist innerhalb rechteck2
 #Fall3:Oben links Ecke von Rechteck2 ist innerhalb Rechteck1
@@ -50,7 +54,7 @@ def berecheneLandnahme(kordinatenliste):
 
         for vierecke in dictionary.keys():
 
-            Status = hatUeberschneidung(vierecke,onerechteck)
+            Status = hatkeineUeberschneidung(vierecke,onerechteck)
             if Status:
                 dictionary[onerechteck]=False
                 resultdic[onerechteck] = False
@@ -123,10 +127,11 @@ def countrycolor(resultdic):
 def randomsquare():
     return (random.randint(-500,0)),(random.randint(-500,0)),(random.randint(1,500)),(random.randint(1,500))
 koordinaten = []
-for i in range(1,3):
+for i in range(1,8):
     koordinaten.append(randomsquare())
 print(koordinaten)
 resultdic = berecheneLandnahme(koordinaten)
+#resultdic = berecheneLandnahme([(316, -217, 469, -114), (2, 330, 125, 484), (-426, 198, -238, 323), (-351, 408, -168, 547), (-143, 162, -35, 298)])
 countrycolor(resultdic)
 
 
