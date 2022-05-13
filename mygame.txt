@@ -1,0 +1,82 @@
+import sys
+import pygame
+from pygame.locals import *
+
+import random
+from random import randint
+
+SCREEN_WIDTH = 400
+SCREEN_HEIGHT = 600
+
+surface = pygame.display.set_mode((1024, 1000))
+
+
+green = (64,235,52)#
+black = (0,0,0)
+white = (255,255,255)
+orange = (235,177,52)
+red = (235,73,52)
+blue = (52,95,235)
+points = [(100,100),(200,100),(200,0)]
+rect = (100,100,200,200)
+grey = (216,218,227)
+
+
+fps = 1
+framePerSecond = pygame.time.Clock()
+
+
+
+
+pygame.init()
+
+surface.fill(grey)
+
+
+pygame.display.set_caption("Hallo my guy")
+
+
+
+
+pygame.draw.circle(surface, green, (300, 200), 30)
+pygame.draw.rect(surface,blue,(100,0,100,50),0)
+pygame.draw.line(surface,red,(100,100),(300,300), 10)
+pygame.draw.lines(surface,white,True,points,10)
+pygame.draw.ellipse(surface,red,rect,3)
+pygame.draw.aaline(surface,green,(100,500),(200,700),100)
+
+
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load("Enemy.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+
+    def move(self):
+        self.rect.move_ip(0, 10)
+        if (self.rect.bottom > 600):
+            self.rect.top = 0
+            self.rect.center = (random.randint(30, 370), 0)
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+
+enemy1 = Enemy()
+
+
+
+pygame.draw.polygon(surface,orange,points,10)
+
+while True:
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+
+    enemy1.move()
+    enemy1.draw(surface)
+    pygame.display.update()
+    framePerSecond.tick(fps)
