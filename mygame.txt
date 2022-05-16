@@ -5,10 +5,10 @@ from pygame.locals import *
 import random
 from random import randint
 
-SCREEN_WIDTH = 400
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 1000
 
-surface = pygame.display.set_mode((1024, 1000))
+surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 
 green = (64,235,52)#
@@ -22,7 +22,7 @@ rect = (100,100,200,200)
 grey = (216,218,227)
 
 
-fps = 1
+fps = 60
 framePerSecond = pygame.time.Clock()
 
 
@@ -61,10 +61,32 @@ class Enemy(pygame.sprite.Sprite):
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
+class player1(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load("player1.gif")
+        self.rect = self.image.get_rect()
+        self.rect.center = (500,825)
 
+    def update(self):
+        pressed_keys = pygame.key.get_pressed()
+
+        if self.rect.left > 0:
+            if pressed_keys[K_LEFT]:
+                self.rect.move_ip(-5,0)
+
+
+        if self.rect.right < SCREEN_WIDTH:
+            if pressed_keys[K_RIGHT]:
+                self.rect.move_ip(5, 0)
+
+
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
 
 enemy1 = Enemy()
-
+player1 = player1()
 
 
 pygame.draw.polygon(surface,orange,points,10)
@@ -75,8 +97,12 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+    surface.fill(grey)
 
     enemy1.move()
     enemy1.draw(surface)
+    player1.update()
+    player1.draw(surface)
     pygame.display.update()
     framePerSecond.tick(fps)
+
