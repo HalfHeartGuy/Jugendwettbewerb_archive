@@ -2,11 +2,11 @@ import sys
 import pygame
 from pygame.locals import *
 
-import random
+import random,time
 from random import randint
 
-SCREEN_WIDTH = 1024
-SCREEN_HEIGHT = 1000
+SCREEN_WIDTH = 1420
+SCREEN_HEIGHT = 1024
 
 surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -20,8 +20,8 @@ blue = (52,95,235)
 points = [(100,100),(200,100),(200,0)]
 rect = (100,100,200,200)
 grey = (216,218,227)
-
-
+enemyMaxY = 1000
+speed = 5
 fps = 60
 framePerSecond = pygame.time.Clock()
 
@@ -44,7 +44,7 @@ pygame.draw.line(surface,red,(100,100),(300,300), 10)
 pygame.draw.lines(surface,white,True,points,10)
 pygame.draw.ellipse(surface,red,rect,3)
 pygame.draw.aaline(surface,green,(100,500),(200,700),100)
-
+speed = 5
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
@@ -54,8 +54,8 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
 
     def move(self):
-        self.rect.move_ip(0, 10)
-        if (self.rect.bottom > 600):
+        self.rect.move_ip(0, 5)
+        if (self.rect.bottom > enemyMaxY):
             self.rect.top = 0
             self.rect.center = (random.randint(30, 370), 0)
 
@@ -64,11 +64,12 @@ class Enemy(pygame.sprite.Sprite):
 class player1(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("player1.gif")
+        self.image = pygame.image.load("36969.png")
         self.rect = self.image.get_rect()
         self.rect.center = (500,825)
+        self.rect.size = 1,1
 
-    def update(self):
+    def move(self):
         pressed_keys = pygame.key.get_pressed()
 
         if self.rect.left > 0:
@@ -87,7 +88,24 @@ class player1(pygame.sprite.Sprite):
 
 enemy1 = Enemy()
 player1 = player1()
+# Creating Sprites Groups
+enemies = pygame.sprite.Group()
+enemies.add(enemy1)
+all_sprites = pygame.sprite.Group()
+all_sprites.add(enemy1)
+all_sprites.add(player1)
 
+
+
+
+
+
+
+
+
+
+
+INC_SPEED = pygame.USEREVENT + 1
 
 pygame.draw.polygon(surface,orange,points,10)
 
@@ -97,7 +115,20 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == INC_SPEED:
+            speed += 2
     surface.fill(grey)
+    for entity in all_sprites:
+        surface.blit(entity.image, entity.rect)
+        entity.move()
+    if pygame.sprite.spritecollideany(player1, enemies):
+        surface.fill(red)
+        pygame.display.update()
+        for entity in all_sprites:
+            entity.kill()
+        time.sleep(2)
+        sys.exit()
+
 
     enemy1.move()
     enemy1.draw(surface)
