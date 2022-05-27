@@ -2,7 +2,7 @@ import sys
 import pygame
 import pygame.time
 from pygame.locals import *
-
+from datetime import datetime
 import random,time
 from random import randint
 
@@ -26,9 +26,12 @@ speed = 5
 fps = 60
 framePerSecond = pygame.time.Clock()
 life = 3
-counter, text = 10 ,'10'.rjust(3)
+counter = 10
+
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 font = pygame.font.SysFont('Consolas', 30)
+font_small = pygame.font.SysFont("Consolas", 20)
+
 
 run = True
 
@@ -38,7 +41,6 @@ surface.fill(grey)
 
 
 pygame.display.set_caption("Hallo my guy")
-
 
 
 
@@ -53,7 +55,7 @@ speed = 5
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("unknown.png")
+        self.image = pygame.image.load("Spiele_Materialien/unknown.png")
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
 
@@ -64,15 +66,16 @@ class Enemy(pygame.sprite.Sprite):
             self.rect.center = (random.randint(30, 370), 0)
     def back_move(self):
         self.rect.move_ip(0,-900)
+        self.rect.center = (random.randint(30, 370), 0)
+
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 class player1(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("36969.png")
+        self.image = pygame.image.load("Spiele_Materialien/36969.png")
         self.rect = self.image.get_rect()
         self.rect.center = (500,825)
-        self.rect.size = 1,1
 
     def move(self):
         pressed_keys = pygame.key.get_pressed()
@@ -99,22 +102,15 @@ enemies.add(enemy1)
 all_sprites = pygame.sprite.Group()
 all_sprites.add(enemy1)
 all_sprites.add(player1)
-
-
-
-
-
-
-
-
-
-
+pygame.mixer.Sound('D:\pygame\Spiele_Materialien\PygameTutorial_3_0/background.wav').play()
 
 INC_SPEED = pygame.USEREVENT + 1
 
 pygame.draw.polygon(surface,orange,points,10)
 
 while True:
+    print(datetime.now())
+
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -124,7 +120,8 @@ while True:
             speed += 2
         if event.type == pygame.USEREVENT:
             counter -= 1
-            text = str(counter).rjust(3) if counter > 0 else pygame.quit()
+            if counter == 0:
+                pygame.quit()
         if event.type == pygame.QUIT:
             run = False
 
@@ -138,6 +135,10 @@ while True:
     if pygame.sprite.spritecollideany(player1, enemies):
         if life > 1:
             life -= 1
+            pygame.mixer.Sound('D:\pygame\Spiele_Materialien\PygameTutorial_3_0\crash.wav').play()
+
+            text = str(life).rjust(3) if life > 0 else pygame.quit()
+
             enemy1.back_move()
 
 
@@ -157,7 +158,8 @@ while True:
     enemy1.draw(surface)
     player1.update()
     player1.draw(surface)
-    surface.blit(font.render(text, True, (0, 0, 0)), (32, 48))
+    surface.blit(font.render(str(counter), True, (0, 0, 0)), (32, 48))
+    surface.blit(font_small.render(str(life), True,red),(500,48))
 
     pygame.display.update()
     framePerSecond.tick(fps)
