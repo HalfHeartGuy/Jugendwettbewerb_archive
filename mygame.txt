@@ -1,5 +1,6 @@
 import sys
 import pygame
+import pygame.time
 from pygame.locals import *
 
 import random,time
@@ -24,7 +25,7 @@ enemyMaxY = 1000
 speed = 5
 fps = 60
 framePerSecond = pygame.time.Clock()
-
+life = 3
 counter, text = 10 ,'10'.rjust(3)
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 font = pygame.font.SysFont('Consolas', 30)
@@ -61,7 +62,8 @@ class Enemy(pygame.sprite.Sprite):
         if (self.rect.bottom > enemyMaxY):
             self.rect.top = 0
             self.rect.center = (random.randint(30, 370), 0)
-
+    def back_move(self):
+        self.rect.move_ip(0,-900)
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 class player1(pygame.sprite.Sprite):
@@ -134,12 +136,21 @@ while True:
         surface.blit(entity.image, entity.rect)
         entity.move()
     if pygame.sprite.spritecollideany(player1, enemies):
-        surface.fill(red)
-        pygame.display.update()
-        for entity in all_sprites:
-            entity.kill()
-        time.sleep(2)
-        sys.exit()
+        if life > 1:
+            life -= 1
+            enemy1.back_move()
+
+
+        else:
+            surface.fill(red)
+            pygame.display.update()
+            life -= 1
+            for entity in all_sprites:
+                entity.kill()
+
+            time.sleep(2)
+            sys.exit()
+
 
 
     enemy1.move()
