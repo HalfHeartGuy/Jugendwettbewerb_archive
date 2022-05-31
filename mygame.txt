@@ -30,11 +30,12 @@ counter = 10
 
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 font = pygame.font.SysFont('Consolas', 30)
-font_small = pygame.font.SysFont("Consolas", 20)
+font2 = pygame.font.SysFont("Consolas", 30)
+font3 = pygame.font.SysFont("Consolas",215)
 
 
 run = True
-
+gameover_text = "game over"
 pygame.init()
 
 surface.fill(grey)
@@ -143,9 +144,11 @@ while True:
 
 
         else:
-            surface.fill(red)
+            surface.blit(font3.render(str(gameover_text), True, red), (160, 380))
+
             pygame.display.update()
             life -= 1
+
             for entity in all_sprites:
                 entity.kill()
 
@@ -158,9 +161,8 @@ while True:
     enemy1.draw(surface)
     player1.update()
     player1.draw(surface)
-    surface.blit(font.render(str(counter), True, (0, 0, 0)), (32, 48))
-    surface.blit(font_small.render(str(life), True,red),(500,48))
-
+    surface.blit(font.render("timer:" + str(counter), True, (0, 0, 0)), (32, 48))
+    surface.blit(font2.render("life:" + str(life), True, red), (200, 48))
     pygame.display.update()
     framePerSecond.tick(fps)
 
