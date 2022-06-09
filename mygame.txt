@@ -631,4 +631,256 @@ while player1.alive():
 
 
 
+-------------------------------------------------------------------------------------------
+Stand:9.6.2022 22:06
+import sys
+import pygame
+import pygame.time
+from pygame.locals import *
+from datetime import datetime
+import random,time
+import os
+from random import randint
+
+SCREEN_WIDTH = 1420
+SCREEN_HEIGHT = 1024
+
+surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+pygame.init()
+
+
+green = (64,235,52)#
+black = (0,0,0)
+white = (255,255,255)
+orange = (235,177,52)
+red = (235,73,52)
+blue = (52,95,235)
+points = [(100,100),(200,100),(200,0)]
+rect = (100,100,200,200)
+grey = (216,218,227)
+enemyMaxY = 1000
+speed = 5
+fps = 60
+framePerSecond = pygame.time.Clock()
+life = 3
+counter = 60
+MAX_SHOTS = 5
+score = 0
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+font = pygame.font.SysFont('Consolas', 30)
+font2 = pygame.font.SysFont("Consolas", 30)
+font3 = pygame.font.SysFont("Consolas",215)
+font4 = pygame.font.SysFont('Consolas', 30)
+
+
+run = True
+gameover_text = "game over"
+pygame.init()
+
+surface.fill(grey)
+
+
+pygame.display.set_caption("Hallo my guy")
+
+
+
+
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load("Spiele_Materialien/48366.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+
+    def move(self):
+        self.rect.move_ip(0, 5)
+        if (self.rect.bottom > enemyMaxY):
+            self.rect.top = 0
+            self.rect.center = (random.randint(30, 370), 0)
+    def back_move(self):
+        self.rect.move_ip(0,-900)
+        self.rect.center = (random.randint(30, 370), 0)
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+class player1(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load("Spiele_Materialien/36969.png")
+        self.reloading = 0
+        self.rect = self.image.get_rect()
+        self.rect.center = (500,825)
+        self.facing = -1
+
+
+    def move(self):
+        keystate = pygame.key.get_pressed()
+
+        if self.rect.left > 0:
+            if keystate[K_LEFT]:
+                self.image = pygame.image.load("Spiele_Materialien/JetLeft.png")
+
+                self.rect.move_ip(-5,0)
+
+        if self.rect.right < SCREEN_WIDTH:
+            if keystate[K_RIGHT]:
+                self.rect.move_ip(5, 0)
+                self.image = pygame.image.load("Spiele_Materialien/JetRight.png")
+        if keystate[K_UP]:
+            self.image = pygame.image.load("Spiele_Materialien/36969.png")
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+    gun_offset = -11
+    def gunpos(self):
+        pos = self.facing * self.gun_offset + self.rect.centerx
+        return pos, self.rect.top
+class Shot(pygame.sprite.Sprite):
+    """a bullet the Player sprite fires."""
+
+    speed = -11
+
+    def __init__(self, pos):
+        pygame.sprite.Sprite.__init__(self, self.containers)
+        self.image = pygame.image.load("Spiele_Materialien/shot.gif")
+        self.rect = self.image.get_rect(midbottom=pos)
+
+    def update(self):
+        print("Hello World")
+        self.rect.move_ip(0, self.speed)
+        if self.rect.top <= 0:
+            self.kill()
+class Bomb(pygame.sprite.Sprite):
+    """a bullet the Player sprite fires."""
+
+    speed = 9
+
+    def __init__(self, pos):
+        pygame.sprite.Sprite.__init__(self, self.containers)
+        self.image = pygame.image.load("Spiele_Materialien/bomb.gif")
+        self.rect = self.image.get_rect(midbottom=pos)
+
+    def update(self):
+        print("Hello World")
+        self.rect.move_ip(0, self.speed)
+        if self.rect.top <= 0:
+            self.kill()
+# Initialize Game Groups
+
+shots = pygame.sprite.Group()
+all = pygame.sprite.RenderUpdates()
+Shot.containers = shots, all
+
+#shots.containers = shots,all
+#shots = pygame.sprite.Group()
+
+
+enemy1 = Enemy()
+enemy2 = Enemy()
+player1 = player1()
+# Creating Sprites Groups
+enemies = pygame.sprite.Group()
+enemies.add(enemy1)
+enemies.add(enemy2)
+all_sprites = pygame.sprite.Group()
+all_sprites.add(enemy1)
+all_sprites.add(enemy2)
+all_sprites.add(player1)
+pygame.mixer.Sound('D:\pygame\Spiele_Materialien\PygameTutorial_3_0/background.wav').play()
+
+INC_SPEED = pygame.USEREVENT + 1
+
+
+while player1.alive():
+   # print(datetime.now())
+
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == INC_SPEED:
+            speed += 2
+        if event.type == pygame.USEREVENT:
+            counter -= 1
+            if counter == 0:
+                pygame.quit()
+        if event.type == pygame.QUIT:
+            run = False
+
+
+
+
+
+
+    surface.fill(grey)
+    for entity in all_sprites:
+        surface.blit(entity .image, entity.rect)
+        entity.move()
+    if pygame.sprite.spritecollideany(player1, enemies):
+        if life > 1:
+            life -= 1
+
+            pygame.mixer.Sound('D:\pygame\Spiele_Materialien\PygameTutorial_3_0\crash.wav').play()
+
+            text = str(life).rjust(3) if life > 0 else pygame.quit()
+            enemy1.back_move()
+            enemy2.back_move()
+
+
+
+
+        else:
+            surface.blit(font3.render(str(gameover_text), True, red), (160, 380))
+
+            pygame.display.update()
+            life -= 1
+
+            for entity in all_sprites:
+                entity.kill()
+
+            time.sleep(2)
+            sys.exit()
+
+
+    enemy1.move()
+    enemy1.draw(surface)
+    enemy2.move()
+    enemy2.draw(surface)
+    player1.update()
+    player1.draw(surface)
+
+    surface.blit(font.render("timer:" + str(counter), True, (0, 0, 0)), (32, 48))
+    surface.blit(font2.render("life:" + str(life), True, red), (200, 48))
+    surface.blit(font4.render("score:" + str(score), True, blue), (900, 40))
+
+    framePerSecond.tick(fps)
+    keystate = pygame.key.get_pressed()
+
+    firing = keystate[pygame.K_SPACE]
+    #print("Hello World")
+
+    if not player1.reloading and firing and len(shots) < MAX_SHOTS:
+        pygame.mixer.Sound('D:\pygame\Spiele_Materialien\PygameTutorial_3_0\car_door.wav').play()
+
+        Shot(player1.gunpos())
+
+    player1.reloading = firing
+
+    dirty = all.draw(surface)
+    all.update()
+    pygame.display.update(dirty)
+
+    for enemy in enemies:
+        if pygame.sprite.spritecollideany(enemy, shots):
+            score += 1
+            for shot in shots:
+                shot.kill()
+
+            pygame.mixer.Sound('D:\pygame\Spiele_Materialien\PygameTutorial_3_0\crash.wav').play()
+            text = str(life).rjust(3) if life > 0 else pygame.quit()
+
+
 
