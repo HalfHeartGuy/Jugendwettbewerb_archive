@@ -883,4 +883,24 @@ while player1.alive():
             text = str(life).rjust(3) if life > 0 else pygame.quit()
 
 
+---------------------------------------------------------------------------------------------------------------------
+Pygame Dokumentation:
+First you have to install pygame.
+Go to settings -> python interpreter -> then search pygame and install it
+The second step is to import pygame.
+Example:import pygame
+There are also other imports examples are os,time.
+
+
+
+How to code:
+First you have to init pygame that means you have to do the following code:
+pygame.init()
+So python ecognizes that the code is pygame now.
+
+The next step is to say pygame what to do while it is running.(Not the kind of running what people do).
+For this a while loop is needed.
+while "(mostly used is true for the first steps)"
+Then it is very IMPORTANT to write an : after the line.
+example:while True
 
