@@ -27,7 +27,6 @@ clock = pygame.time.Clock()
 
 
 
-
 while True:
     relpositionlists = [[2, 3], [2, 4], [2, 5], [2, 6]]
     pygame.display.update()
@@ -38,5 +37,6 @@ while True:
 
     clock.tick(fps)
     screen.fill(grey)
-    onepiece = tetrisclasses.Piece(screen,0,0,green,10,relpositionlists)
+    onepiece = tetrisclasses.Piece(screen, 0, 0, "onecell.png", 20, relpositionlists)
     onepiece.draw(screen)
+  #  onepiece.calcRotationList(relpositionlists)
