@@ -1,3 +1,5 @@
+import time
+
 import pygame
 import sys
 from pygame.locals import *
@@ -11,7 +13,8 @@ class Piece(pygame.sprite.Sprite):
         self.width = width
         self.absolutPositionList = []
         self.imageName = imagename
-        self.rotatelist = [relPositionList]
+        self.rotateList = [relPositionList]
+        self.currentRotate = 0
 
 
         #realtive pos sample: relpositionlists = [[2,3],[2,4],[2,5],[2,6]]
@@ -21,7 +24,11 @@ class Piece(pygame.sprite.Sprite):
 
 
 
+
     def draw(self,surface):
+
+
+
         for onePos in self.absolutPositionList:
             IMAGE = pygame.image.load(self.imageName).convert()
             rect = IMAGE.get_rect()
@@ -29,23 +36,55 @@ class Piece(pygame.sprite.Sprite):
             rect.width = self.width
             rect.height = self.width
             green = (0,255,0)
-
             self.screen.blit(IMAGE, rect)
-    def calcRotationList(self,relPositionList):
-        self.rotationlist = relPositionList
-        self.rotationlistcalcrotation = []
+
+    def calcRotationListI(self,relPositionList):
         counter = 1
-        while counter < len(self.rotationlist):
+        self.rotationlist = []
+        while counter < 5:
             if counter == 1:
-                onecoordinateList = []
-                for onecoordinate in self.rotationlist:
-                    onecoordinateList.append(onecoordinate[0] - 1)
-                    onecoordinateList.append(onecoordinate[1] + 1)
+                twocoordinates = []
 
-
-
+                twocoordinates.append(relPositionList[0][counter - 1][0] - 1)
+                twocoordinates.append(relPositionList[0][counter - 1][1] + 1)
+                self.rotationlist.append(twocoordinates)
+                counter += 1
             if counter == 2:
-                self.rotationlistcalcrotation.append(self.rotationlist[counter - 1])
+                twocoordinates = []
+
+                twocoordinates.append(relPositionList[0][counter - 1][0])
+                twocoordinates.append(relPositionList[0][counter - 1][1])
+                self.rotationlist.append(twocoordinates)
+                counter += 1
+
+            if counter == 3:
+                twocoordinates = []
+
+                twocoordinates.append(relPositionList[0][counter - 1][0] + 1)
+                twocoordinates.append(relPositionList[0][counter - 1][1] - 1)
+                self.rotationlist.append(twocoordinates)
+                counter += 1
+
+            if counter == 4:
+                twocoordinates = []
+
+                twocoordinates.append(relPositionList[0][counter - 1][0] + 2)
+                twocoordinates.append(relPositionList[0][counter - 1][1] - 2)
+                self.rotationlist.append(twocoordinates)
+                counter += 1
+        return self.rotationlist
+
+
+class CurRotate(pygame.sprite.Sprite):
+    def __init__(self):
+        self.currentRotate = 0
+    def calcCurrentRotate(self):
+        keys = pygame.key.get_pressed()
+        if keys[K_LEFT]:
+            self.currentRotate = 1
+        if keys[K_RIGHT]:
+            self.currentRotate = 0
+        return self.currentRotate
 
 
 
@@ -55,8 +94,18 @@ class Piece(pygame.sprite.Sprite):
 
 
 
+
+
+"""
     def rotate(self):
-        pass
+        currentRotate = 
+
+
+
+
+
+
+
 
         #Berechnung vom restlichen möglichen Rotationen
    # def rotate(self):
@@ -64,6 +113,6 @@ class Piece(pygame.sprite.Sprite):
 
     # Create a rect with the size of the image.
 
-
+"""
 
 
