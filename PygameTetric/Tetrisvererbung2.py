@@ -2,7 +2,7 @@ import pygame as pygame
 
 
 class TetricPiece(pygame.sprite.Sprite):
-    def __init__(self, absoluteStartPosX, absoluteStartPosY, cellImage, cellWidth, startRelPosition):
+    def __init__(self, screen,absoluteStartPosX, absoluteStartPosY, cellImage, cellWidth, startRelPosition):
         super().__init__()
         self.absoluteStartPosX = absoluteStartPosX
         self.absoluteStartPosY = absoluteStartPosY
@@ -12,14 +12,28 @@ class TetricPiece(pygame.sprite.Sprite):
         self.startRelPosition = startRelPosition
         self.absolutPositionList = []
         self.cellWidth = cellWidth
+        self.screen = screen
+
 
         self.rect = self.image.get_rect()
         self.rect.center = (200,500)
         #self.rect.size = (1,1)
 
-    def draw(self):
+        for onepos in self.curRotation:
+
+            self.absolutPositionList.append([self.absoluteStartPosX + onepos[0] * self.cellWidth, self.absoluteStartPosY + onepos[1] * self.cellWidth])
+    def draw(self,surface):
+
+
+
         for onePos in self.curRotation:
-            self.absolutPositionList.append([self.absoluteStartPosX + onePos[0] * self.cellWidth, self.absoluteStartPosY + onePos[1] * self.cellWidth])
+            IMAGE = self.image.convert()
+            rect = self.image.get_rect()
+            rect.center = (onePos[0], onePos[1])
+            rect.width = self.cellWidth
+            rect.height = self.cellWidth
+            green = (0,255,0)
+            self.screen.blit(IMAGE, rect)
 
     def calcRotationList(self):
         print("nothing done, need specical coding in Subclass")
