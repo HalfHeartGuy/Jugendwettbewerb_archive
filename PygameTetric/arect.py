@@ -24,6 +24,11 @@ class Square(pygame.sprite.Sprite):
         self.rect.center = (self.cellPositionX,self.cellPositionY)
 
 
+
+
+
+
+"""
     def move(self):
         keys = pygame.key.get_pressed()
 
@@ -35,7 +40,7 @@ class Square(pygame.sprite.Sprite):
             self.rect.move_ip(self.cellwidth,0)
 
    #     self.rect.center = (self.cellPositionX,self.cellPositionY)
-
+"""
 #Figure I
 
 figureI = pygame.sprite.Group()

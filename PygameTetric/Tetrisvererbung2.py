@@ -1,4 +1,8 @@
 import pygame as pygame
+from pygame.locals import *
+import sys
+
+from PygameTetric.arect import Square
 
 
 class TetricPiece(pygame.sprite.Sprite):
@@ -57,9 +61,54 @@ class PieceL(TetricPiece):
         self.calcRotationList()
         self.curRotationIndex = 0
         self.curRotation = self.rotationList[self.curRotationIndex]
+        self.squares = pygame.sprite.Group()
+        self.cellWidth = cellWidth
 
-    def draw(self):
+        for oneRelPos in self.curRotation:
+            square = Square(self.cellWidth, oneRelPos[0], oneRelPos[1])
+            self.squares.add(square)
+
+
+    def move(self):
         print("to left")
+        keystate = pygame.key.get_pressed()
+
+
+
+
+
+        if keystate[K_LEFT]:
+
+
+            self.moveLeft() # Berechnung von curRotation[[3,3],[3,4],[3,5],[4,5]] is fertig
+            index = 0
+            for onesquare in self.squares:
+                onesquare.rect.move(curRotation[index][0],curRotation[index][1])
+                self.screen.blit(onesquare.image,)
+
+
+
+
+
+
+
+            for i in range(0,len(self.squares))
+
+
+
+
+
+
+
+
+
+
+        if keystate[K_RIGHT]:
+            self.moveRight()
+
+
+
+
     def calcRotationList(self):
         rotationCenterX = self.rotationCenter[0]
         rotationCenterY = self.rotationCenter[1]
@@ -107,6 +156,11 @@ class PieceL(TetricPiece):
 
 
 onePieceL = PieceL(0,0,"onecell.png",10,[[3,0],[3,1],[3,2],[4,2]])
+
+
+
+
+
 onePieceL.print()
 onePieceL.moveRight()
 onePieceL.print()
