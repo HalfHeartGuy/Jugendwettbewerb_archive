@@ -1,6 +1,9 @@
 import pygame
 from pygame.locals import *
 import sys
+from PygameTetric.Tetrisvererbung2 import *
+
+
 
 display = pygame.display.set_mode((400,500))
 grey = (128,128,128)
@@ -12,6 +15,7 @@ FPS = 10
 
 
 background = pygame.image.load("AnimatedStreet.png")
+image = pygame.image.load("onecell.png")
 
 class Square(pygame.sprite.Sprite):
     def __init__(self,cellwidth,cellPositionX,cellPositionY):
@@ -22,8 +26,6 @@ class Square(pygame.sprite.Sprite):
         self.cellPositionY = cellPositionY * cellwidth
         self.rect = self.image.get_rect()
         self.rect.center = (self.cellPositionX,self.cellPositionY)
-
-
 
 
 
@@ -40,7 +42,13 @@ class Square(pygame.sprite.Sprite):
             self.rect.move_ip(self.cellwidth,0)
 
    #     self.rect.center = (self.cellPositionX,self.cellPositionY)
+   
+   
+   
+   
+   
 """
+
 #Figure I
 
 figureI = pygame.sprite.Group()
@@ -49,6 +57,7 @@ square = Square(20,5,5)
 square2 = Square(20,6,5)
 square3 = Square(20,7,5)
 square4 = Square(20,8,5)
+
 
 
 
@@ -62,8 +71,7 @@ figureI.add(square3)
 figureI.add(square4)
 
 
-
-
+onePiece = PieceL(display,0,0,image,10,[[3,3],[4,3],[5,3],[6,3]])
 
 
 
@@ -79,10 +87,11 @@ figureI.add(square4)
 
 
 while True:
-    square.move()
-    square2.move()
-    square3.move()
-    square4.move()
+#    square.move()
+#    square2.move()
+#    square3.move()
+#    square4.move()
+
     display.blit(background, (0,0))
     display.blit(square.image, square.rect)
     display.blit(square2.image, square2.rect)
@@ -90,10 +99,7 @@ while True:
     display.blit(square4.image, square4.rect)
 
 
-
-
     pygame.display.update()
-
 
 
 

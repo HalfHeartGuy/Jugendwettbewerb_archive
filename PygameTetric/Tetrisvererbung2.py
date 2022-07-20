@@ -2,7 +2,9 @@ import pygame as pygame
 from pygame.locals import *
 import sys
 
-from PygameTetric.arect import Square
+
+display = pygame.display.set_mode((400,600))
+pygame.display.set_caption("Game")
 
 
 class TetricPiece(pygame.sprite.Sprite):
@@ -10,7 +12,7 @@ class TetricPiece(pygame.sprite.Sprite):
         super().__init__()
         self.absoluteStartPosX = absoluteStartPosX
         self.absoluteStartPosY = absoluteStartPosY
-        self.image = pygame.image.load(cellImage) ##"gameMaterial/player1.gif"
+        self.image = cellImage ##"gameMaterial/player1.gif"
         self.curRotation = startRelPosition ## Beispiel [[2,0],[2,1],[2,2],[2,3]] steht für Tetric_I
         self.rotationList = [startRelPosition] ## Beispiel [[[2,0],[2,1],[2,2],[2,3]], zweite Rotation, dritte Rotation] steht für Tetric_I
         self.startRelPosition = startRelPosition
@@ -54,8 +56,8 @@ class PieceI(TetricPiece):
 
 
 class PieceL(TetricPiece):
-    def __init__(self,absoluteStartPosX,absoluteStartPosY,cellImage,cellWidth,startRelPosition):
-        TetricPiece.__init__(self,absoluteStartPosX,absoluteStartPosY,cellImage,cellWidth,startRelPosition)
+    def __init__(self,screen,absoluteStartPosX,absoluteStartPosY,cellImage,cellWidth,startRelPosition):
+        TetricPiece.__init__(self,screen,absoluteStartPosX,absoluteStartPosY,cellImage,cellWidth,startRelPosition)
         self.rotationCenter = self.startRelPosition[2]
         self.rotationList = [self.startRelPosition]
         self.calcRotationList()
@@ -63,28 +65,35 @@ class PieceL(TetricPiece):
         self.curRotation = self.rotationList[self.curRotationIndex]
         self.squares = pygame.sprite.Group()
         self.cellWidth = cellWidth
+        self.cellImage = cellImage
 
         for oneRelPos in self.curRotation:
-            square = Square(self.cellWidth, oneRelPos[0], oneRelPos[1])
+            square = TetricPiece(self.cellWidth, oneRelPos[0], oneRelPos[1])
             self.squares.add(square)
 
 
+
+
+
     def move(self):
-        print("to left")
         keystate = pygame.key.get_pressed()
-
-
-
-
 
         if keystate[K_LEFT]:
 
-
-            self.moveLeft() # Berechnung von curRotation[[3,3],[3,4],[3,5],[4,5]] is fertig
+            self.moveLeft()  # Berechnung von curRotation[[3,3],[3,4],[3,5],[4,5]] is fertig
+            """
             index = 0
             for onesquare in self.squares:
                 onesquare.rect.move(curRotation[index][0],curRotation[index][1])
                 self.screen.blit(onesquare.image,)
+                """
+            print("hi")
+
+            koordinatenListe = []
+            for oneitem in self.squares:
+                for oneitemInCurRotation in self.curRotation:
+                    oneitem.rect.x = oneitemInCurRotation[0] * self.cellWidth
+                    oneitem.rect.y = oneitemInCurRotation[1] * self.cellWidth
 
 
 
@@ -92,7 +101,6 @@ class PieceL(TetricPiece):
 
 
 
-            for i in range(0,len(self.squares))
 
 
 
@@ -103,8 +111,8 @@ class PieceL(TetricPiece):
 
 
 
-        if keystate[K_RIGHT]:
-            self.moveRight()
+
+
 
 
 
@@ -152,11 +160,11 @@ class PieceL(TetricPiece):
         print("current Rotation List")
         print("" + str(self.curRotation))
         print("current rotationlist " + str(self.rotationList))
-
+        """
 
 
 onePieceL = PieceL(0,0,"onecell.png",10,[[3,0],[3,1],[3,2],[4,2]])
-
+onePieceL.move()
 
 
 
@@ -167,5 +175,7 @@ onePieceL.print()
 onePieceL.moveLeft()
 onePieceL.print()
 curRotation = 4
+
+"""
 
 
