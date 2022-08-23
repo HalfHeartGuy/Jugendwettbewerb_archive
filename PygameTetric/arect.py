@@ -71,7 +71,7 @@ figureI.add(square3)
 figureI.add(square4)
 
 
-onePiece = PieceL(display,0,0,image,10,[[3,3],[4,3],[5,3],[6,3]])
+onePiece = PieceL(display,0,0,image,10,[[4,3],[5,3],[6,3],[6,2]])
 
 
 

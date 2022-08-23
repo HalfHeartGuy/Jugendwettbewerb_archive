@@ -64,11 +64,10 @@ class PieceL(TetricPiece):
         self.curRotationIndex = 0
         self.curRotation = self.rotationList[self.curRotationIndex]
         self.squares = pygame.sprite.Group()
-        self.cellWidth = cellWidth
-        self.cellImage = cellImage
+
 
         for oneRelPos in self.curRotation:
-            square = TetricPiece(self.cellWidth, oneRelPos[0], oneRelPos[1])
+            square = TetricPiece()
             self.squares.add(square)
 
 
