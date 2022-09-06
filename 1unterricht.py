@@ -41,11 +41,11 @@ def abstand(einHaus):
 
 def maxHeight(distance):
     distance = distance / 100 + 100
-    return distance
+    return int(distance)
 
 
 print(skylineBerechner(haeuser))
 
 
-
+print(maxHeight(100))
 #------------------------------------------------------------------------------------------

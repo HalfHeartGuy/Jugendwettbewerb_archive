@@ -1,4 +1,4 @@
-import turtle
+import projectTurtle
 import random
 from random import randint
 
