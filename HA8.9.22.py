@@ -249,6 +249,189 @@ sechsteSchlange = [
     , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
 
 
+siebteSchlange = [
+
+     {'start': [-13, 7], 'stop': [-13, 6], 'color': 'orange'}
+    ,{'start': [-13, 6], 'stop': [-13, 5], 'color': 'orange'}
+    ,{'start': [-13, 5], 'stop': [-12, 5], 'color': 'orange'}
+    , {'start': [-12, 5], 'stop': [-11, 5], 'color': 'orange'}
+    , {'start': [-11, 5], 'stop': [-11, 6], 'color': 'orange'}
+    , {'start': [-11, 6], 'stop': [-12, 6], 'color': 'orange'}
+
+
+
+
+
+
+
+
+
+    ,{'start': [-13, 7], 'stop': [-12, 7], 'color': 'orange'}
+    , {'start': [-12, 7], 'stop': [-11, 7], 'color': 'orange'}
+    , {'start': [-11, 7], 'stop': [-10, 7], 'color': 'orange'}
+    ,{'start': [-10, 7], 'stop': [-9, 7], 'color': 'orange'}
+    ,{'start': [-9, 7], 'stop': [-8, 7], 'color': 'orange'}
+    , {'start': [-8, 7], 'stop': [-7, 7], 'color': 'orange'}
+    ,{'start': [-7, 7], 'stop': [-6, 7], 'color': 'orange'}
+    , {'start': [-6, 7], 'stop': [-5, 7], 'color': 'orange'}
+    ,{'start': [-5, 7], 'stop': [-4, 7], 'color': 'orange'}
+    ,{'start': [-4, 7], 'stop': [-3, 7], 'color': 'orange'}
+    ,{'start': [-3, 7], 'stop': [-2, 7], 'color': 'red'}
+    , {'start': [-2, 7], 'stop': [-1, 7], 'color': 'red'}
+    , {'start': [-1, 7], 'stop': [0, 7], 'color': 'red'}
+
+    , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
+    , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
+    , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+
+
+
+
+achteSchlange = [
+    {'start': [-15, 7], 'stop': [-15, 6], 'color': 'orange'}
+    ,{'start': [-15, 6], 'stop': [-15, 5], 'color': 'orange'}
+    , {'start': [-15, 5], 'stop': [-14, 5], 'color': 'orange'}
+    , {'start': [-14, 5], 'stop': [-14, 6], 'color': 'orange'}
+
+
+
+
+
+
+
+
+
+    , {'start': [-15, 7], 'stop': [-14, 7], 'color': 'orange'}
+
+    , {'start': [-14, 7], 'stop': [-13, 7], 'color': 'orange'}
+
+    ,{'start': [-13, 7], 'stop': [-12, 7], 'color': 'orange'}
+    , {'start': [-12, 7], 'stop': [-11, 7], 'color': 'orange'}
+    , {'start': [-11, 7], 'stop': [-10, 7], 'color': 'orange'}
+    ,{'start': [-10, 7], 'stop': [-9, 7], 'color': 'orange'}
+    ,{'start': [-9, 7], 'stop': [-8, 7], 'color': 'orange'}
+    , {'start': [-8, 7], 'stop': [-7, 7], 'color': 'orange'}
+    ,{'start': [-7, 7], 'stop': [-6, 7], 'color': 'orange'}
+    , {'start': [-6, 7], 'stop': [-5, 7], 'color': 'orange'}
+    ,{'start': [-5, 7], 'stop': [-4, 7], 'color': 'orange'}
+    ,{'start': [-4, 7], 'stop': [-3, 7], 'color': 'orange'}
+    ,{'start': [-3, 7], 'stop': [-2, 7], 'color': 'red'}
+    , {'start': [-2, 7], 'stop': [-1, 7], 'color': 'red'}
+    , {'start': [-1, 7], 'stop': [0, 7], 'color': 'red'}
+
+    , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
+    , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
+    , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+
+
+
+neunteSchlange = [
+
+    {'start': [-17, 7], 'stop': [-17, 6], 'color': 'orange'}
+    ,{'start': [-17, 6], 'stop': [-16, 6], 'color': 'orange'}
+
+
+
+
+
+
+    , {'start': [-17, 7], 'stop': [-16, 7], 'color': 'orange'}
+
+    , {'start': [-16, 7], 'stop': [-15, 7], 'color': 'orange'}
+
+    , {'start': [-15, 7], 'stop': [-14, 7], 'color': 'orange'}
+
+    , {'start': [-14, 7], 'stop': [-13, 7], 'color': 'orange'}
+
+    ,{'start': [-13, 7], 'stop': [-12, 7], 'color': 'orange'}
+    , {'start': [-12, 7], 'stop': [-11, 7], 'color': 'orange'}
+    , {'start': [-11, 7], 'stop': [-10, 7], 'color': 'orange'}
+    ,{'start': [-10, 7], 'stop': [-9, 7], 'color': 'orange'}
+    ,{'start': [-9, 7], 'stop': [-8, 7], 'color': 'orange'}
+    , {'start': [-8, 7], 'stop': [-7, 7], 'color': 'orange'}
+    ,{'start': [-7, 7], 'stop': [-6, 7], 'color': 'orange'}
+    , {'start': [-6, 7], 'stop': [-5, 7], 'color': 'orange'}
+    ,{'start': [-5, 7], 'stop': [-4, 7], 'color': 'orange'}
+    ,{'start': [-4, 7], 'stop': [-3, 7], 'color': 'orange'}
+    ,{'start': [-3, 7], 'stop': [-2, 7], 'color': 'red'}
+    , {'start': [-2, 7], 'stop': [-1, 7], 'color': 'red'}
+    , {'start': [-1, 7], 'stop': [0, 7], 'color': 'red'}
+
+    , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
+    , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
+    , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+
+
+
+
+zehnteSchlange = [
+     {'start': [-18, 7], 'stop': [-18, 6], 'color': 'orange'}
+
+    , {'start': [-18, 7], 'stop': [-17, 7], 'color': 'orange'}
+
+    ,{'start': [-17, 7], 'stop': [-16, 7], 'color': 'orange'}
+
+    , {'start': [-16, 7], 'stop': [-15, 7], 'color': 'orange'}
+
+    , {'start': [-15, 7], 'stop': [-14, 7], 'color': 'orange'}
+
+    , {'start': [-14, 7], 'stop': [-13, 7], 'color': 'orange'}
+
+    ,{'start': [-13, 7], 'stop': [-12, 7], 'color': 'orange'}
+    , {'start': [-12, 7], 'stop': [-11, 7], 'color': 'orange'}
+    , {'start': [-11, 7], 'stop': [-10, 7], 'color': 'orange'}
+    ,{'start': [-10, 7], 'stop': [-9, 7], 'color': 'orange'}
+    ,{'start': [-9, 7], 'stop': [-8, 7], 'color': 'orange'}
+    , {'start': [-8, 7], 'stop': [-7, 7], 'color': 'orange'}
+    ,{'start': [-7, 7], 'stop': [-6, 7], 'color': 'orange'}
+    , {'start': [-6, 7], 'stop': [-5, 7], 'color': 'orange'}
+    ,{'start': [-5, 7], 'stop': [-4, 7], 'color': 'orange'}
+    ,{'start': [-4, 7], 'stop': [-3, 7], 'color': 'orange'}
+    ,{'start': [-3, 7], 'stop': [-2, 7], 'color': 'red'}
+    , {'start': [-2, 7], 'stop': [-1, 7], 'color': 'red'}
+    , {'start': [-1, 7], 'stop': [0, 7], 'color': 'red'}
+
+    , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
+    , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
+    , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+
+
+elfteSchlange =[{'start': [-19, 7], 'stop': [-18, 7], 'color': 'orange'}
+
+    ,{'start': [-18, 7], 'stop': [-17, 7], 'color': 'orange'}
+
+    ,{'start': [-17, 7], 'stop': [-16, 7], 'color': 'orange'}
+
+    , {'start': [-16, 7], 'stop': [-15, 7], 'color': 'orange'}
+
+    , {'start': [-15, 7], 'stop': [-14, 7], 'color': 'orange'}
+
+    , {'start': [-14, 7], 'stop': [-13, 7], 'color': 'orange'}
+
+    ,{'start': [-13, 7], 'stop': [-12, 7], 'color': 'orange'}
+    , {'start': [-12, 7], 'stop': [-11, 7], 'color': 'orange'}
+    , {'start': [-11, 7], 'stop': [-10, 7], 'color': 'orange'}
+    ,{'start': [-10, 7], 'stop': [-9, 7], 'color': 'orange'}
+    ,{'start': [-9, 7], 'stop': [-8, 7], 'color': 'orange'}
+    , {'start': [-8, 7], 'stop': [-7, 7], 'color': 'orange'}
+    ,{'start': [-7, 7], 'stop': [-6, 7], 'color': 'orange'}
+    , {'start': [-6, 7], 'stop': [-5, 7], 'color': 'orange'}
+    ,{'start': [-5, 7], 'stop': [-4, 7], 'color': 'orange'}
+    ,{'start': [-4, 7], 'stop': [-3, 7], 'color': 'orange'}
+    ,{'start': [-3, 7], 'stop': [-2, 7], 'color': 'red'}
+    , {'start': [-2, 7], 'stop': [-1, 7], 'color': 'red'}
+    , {'start': [-1, 7], 'stop': [0, 7], 'color': 'red'}
+
+    , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
+    , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
+    , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+
+
 
 
 
@@ -280,7 +463,7 @@ def turtledraw(ringelListe:list):
 
 
 
-turtledraw(sechsteSchlange)
+turtledraw(vierteSchlange)
 turtle.done()
 
 
