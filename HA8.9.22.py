@@ -213,7 +213,32 @@ fuenfteSchlange = [{'start': [-7, 7], 'stop': [-7, 6], 'color': 'orange'}
     , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
     , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
     , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
-    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}
+    , {'start': [4, 7], 'stop': [5, 7], 'color': 'red'}
+    , {'start': [5, 7], 'stop': [6, 7], 'color': 'red'}
+    , {'start': [6, 7], 'stop': [7, 7], 'color': 'red'}
+    , {'start': [7, 7], 'stop': [8, 7], 'color': 'red'}
+    , {'start': [8, 7], 'stop': [9, 7], 'color': 'red'}
+    , {'start': [9, 7], 'stop': [10, 7], 'color': 'red'}
+    , {'start': [10, 7], 'stop': [11, 7], 'color': 'red'}
+    , {'start': [11, 7], 'stop': [12, 7], 'color': 'red'}
+    , {'start': [12, 7], 'stop': [13, 7], 'color': 'red'}
+    , {'start': [13, 7], 'stop': [14, 7], 'color': 'orange'}
+    , {'start': [14, 7], 'stop': [15, 7], 'color': 'orange'}
+    , {'start': [15, 7], 'stop': [16, 7], 'color': 'orange'}
+    , {'start': [16, 7], 'stop': [17, 7], 'color': 'orange'}
+    , {'start': [17, 7], 'stop': [17, 6], 'color': 'orange'}
+    , {'start': [17, 6], 'stop': [17, 5], 'color': 'orange'}
+    , {'start': [17, 5], 'stop': [17, 4], 'color': 'orange'}
+    , {'start': [17, 4], 'stop': [16, 4], 'color': 'orange'}
+    , {'start': [16, 4], 'stop': [15, 4], 'color': 'orange'}
+    , {'start': [15, 4], 'stop': [14, 4], 'color': 'orange'}
+    , {'start': [14, 4], 'stop': [14, 5], 'color': 'orange'}
+    , {'start': [14, 5], 'stop': [14, 6], 'color': 'orange'}
+    , {'start': [14, 6], 'stop': [15, 6], 'color': 'orange'}
+    , {'start': [15, 6], 'stop': [16, 6], 'color': 'orange'}
+    , {'start': [16, 6], 'stop': [16, 5], 'color': 'orange'}
+    , {'start': [16, 5], 'stop': [15, 5], 'color': 'orange'}]
 
 
 
@@ -246,7 +271,34 @@ sechsteSchlange = [
     , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
     , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
     , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
-    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}
+    , {'start': [4, 7], 'stop': [5, 7], 'color': 'red'}
+    , {'start': [5, 7], 'stop': [6, 7], 'color': 'red'}
+    , {'start': [6, 7], 'stop': [7, 7], 'color': 'red'}
+    , {'start': [7, 7], 'stop': [8, 7], 'color': 'red'}
+    , {'start': [8, 7], 'stop': [9, 7], 'color': 'red'}
+    , {'start': [9, 7], 'stop': [10, 7], 'color': 'red'}
+    , {'start': [10, 7], 'stop': [11, 7], 'color': 'red'}
+    , {'start': [11, 7], 'stop': [12, 7], 'color': 'red'}
+    , {'start': [12, 7], 'stop': [13, 7], 'color': 'red'}
+    , {'start': [13, 7], 'stop': [14, 7], 'color': 'orange'}
+    , {'start': [14, 7], 'stop': [15, 7], 'color': 'orange'}
+    , {'start': [15, 7], 'stop': [16, 7], 'color': 'orange'}
+    , {'start': [16, 7], 'stop': [17, 7], 'color': 'orange'}
+    , {'start': [17, 7], 'stop': [18, 7], 'color': 'orange'}
+    , {'start': [18, 7], 'stop': [19, 7], 'color': 'orange'}
+    , {'start': [19, 7], 'stop': [20, 7], 'color': 'orange'}
+    , {'start': [20, 7], 'stop': [20, 6], 'color': 'orange'}
+    , {'start': [20, 6], 'stop': [20, 5], 'color': 'orange'}
+    , {'start': [20, 5], 'stop': [20, 4], 'color': 'orange'}
+    , {'start': [20, 4], 'stop': [19, 4], 'color': 'orange'}
+    , {'start': [19, 4], 'stop': [18, 4], 'color': 'orange'}
+    , {'start': [18, 4], 'stop': [18, 5], 'color': 'orange'}
+    , {'start': [18, 5], 'stop': [18, 6], 'color': 'orange'}
+    , {'start': [18, 6], 'stop': [19, 6], 'color': 'orange'}
+    , {'start': [19, 6], 'stop': [19, 5], 'color': 'orange'}]
+
+
 
 
 siebteSchlange = [
@@ -283,7 +335,34 @@ siebteSchlange = [
     , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
     , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
     , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
-    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}
+    , {'start': [4, 7], 'stop': [5, 7], 'color': 'red'}
+    , {'start': [5, 7], 'stop': [6, 7], 'color': 'red'}
+    , {'start': [6, 7], 'stop': [7, 7], 'color': 'red'}
+    , {'start': [7, 7], 'stop': [8, 7], 'color': 'red'}
+    , {'start': [8, 7], 'stop': [9, 7], 'color': 'red'}
+    , {'start': [9, 7], 'stop': [10, 7], 'color': 'red'}
+    , {'start': [10, 7], 'stop': [11, 7], 'color': 'red'}
+    , {'start': [11, 7], 'stop': [12, 7], 'color': 'red'}
+    , {'start': [12, 7], 'stop': [13, 7], 'color': 'red'}
+    , {'start': [13, 7], 'stop': [14, 7], 'color': 'orange'}
+    , {'start': [14, 7], 'stop': [15, 7], 'color': 'orange'}
+    , {'start': [15, 7], 'stop': [16, 7], 'color': 'orange'}
+    , {'start': [16, 7], 'stop': [17, 7], 'color': 'orange'}
+    , {'start': [17, 7], 'stop': [18, 7], 'color': 'orange'}
+    , {'start': [18, 7], 'stop': [19, 7], 'color': 'orange'}
+    , {'start': [19, 7], 'stop': [20, 7], 'color': 'orange'}
+    , {'start': [20, 7], 'stop': [21, 7], 'color': 'orange'}
+    , {'start': [21, 7], 'stop': [22, 7], 'color': 'orange'}
+    , {'start': [22, 7], 'stop': [23, 7], 'color': 'orange'}
+    , {'start': [23, 7], 'stop': [23, 6], 'color': 'orange'}
+    , {'start': [23, 6], 'stop': [23, 5], 'color': 'orange'}
+    , {'start': [23, 5], 'stop': [22, 5], 'color': 'orange'}
+    , {'start': [22, 5], 'stop': [21, 5], 'color': 'orange'}
+    , {'start': [21, 5], 'stop': [21, 6], 'color': 'orange'}
+    , {'start': [21, 6], 'stop': [22, 6], 'color': 'orange'}
+
+]
 
 
 
@@ -323,7 +402,32 @@ achteSchlange = [
     , {'start': [0, 7], 'stop': [1, 7], 'color': 'red'}
     , {'start': [1, 7], 'stop': [2, 7], 'color': 'red'}
     , {'start': [2, 7], 'stop': [3, 7], 'color': 'red'}
-    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}]
+    , {'start': [3, 7], 'stop': [4, 7], 'color': 'red'}
+    , {'start': [4, 7], 'stop': [5, 7], 'color': 'red'}
+    , {'start': [5, 7], 'stop': [6, 7], 'color': 'red'}
+    , {'start': [6, 7], 'stop': [7, 7], 'color': 'red'}
+    , {'start': [7, 7], 'stop': [8, 7], 'color': 'red'}
+    , {'start': [8, 7], 'stop': [9, 7], 'color': 'red'}
+    , {'start': [9, 7], 'stop': [10, 7], 'color': 'red'}
+    , {'start': [10, 7], 'stop': [11, 7], 'color': 'red'}
+    , {'start': [11, 7], 'stop': [12, 7], 'color': 'red'}
+    , {'start': [12, 7], 'stop': [13, 7], 'color': 'red'}
+    , {'start': [13, 7], 'stop': [14, 7], 'color': 'orange'}
+    , {'start': [14, 7], 'stop': [15, 7], 'color': 'orange'}
+    , {'start': [15, 7], 'stop': [16, 7], 'color': 'orange'}
+    , {'start': [16, 7], 'stop': [17, 7], 'color': 'orange'}
+    , {'start': [17, 7], 'stop': [18, 7], 'color': 'orange'}
+    , {'start': [18, 7], 'stop': [19, 7], 'color': 'orange'}
+    , {'start': [19, 7], 'stop': [20, 7], 'color': 'orange'}
+    , {'start': [20, 7], 'stop': [21, 7], 'color': 'orange'}
+    , {'start': [21, 7], 'stop': [22, 7], 'color': 'orange'}
+    , {'start': [22, 7], 'stop': [23, 7], 'color': 'orange'}
+    , {'start': [23, 7], 'stop': [24, 7], 'color': 'orange'}
+    , {'start': [24, 7], 'stop': [25, 7], 'color': 'orange'}
+    , {'start': [25, 7], 'stop': [25, 6], 'color': 'orange'}
+    , {'start': [25, 6], 'stop': [25, 5], 'color': 'orange'}
+    , {'start': [25, 5], 'stop': [24, 5], 'color': 'orange'}
+    , {'start': [24, 5], 'stop': [24, 6], 'color': 'orange'}]
 
 
 
@@ -463,7 +567,7 @@ def turtledraw(ringelListe:list):
 
 
 
-turtledraw(vierteSchlange)
+turtledraw(achteSchlange)
 turtle.done()
 
 
