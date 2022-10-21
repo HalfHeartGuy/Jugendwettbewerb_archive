@@ -41,3 +41,7 @@ class Dog(Animel):
 
 a_new_dog = Dog(5.5,"schwarz","Max",10.5,1.2,2.5,0)
 print(a_new_dog)
+
+
+
+

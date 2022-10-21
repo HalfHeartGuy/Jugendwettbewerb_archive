@@ -43,6 +43,21 @@ class Chess_Piece(Sprite):
         self.status = status
         self.selected_by_player = selected_by_player
 
+    def moveTo(self,x,y):
+
+        if [x,y] in self.get_allowed_positions():
+            self.x = x
+            self.y = y
+            print("Chess is moved to [{},{}]".format(x,y))
+        else:
+            print("Chess can not be moved to [{},{}]".format(x,y))
+
+
+
+
+
+
+
 
 
 
@@ -64,22 +79,23 @@ class Chess_Piece_Knight(Chess_Piece):
         print("{} has a current pos ({},{})".format(self.name,self.x,self.y))
 
         result = []
-        result.append((self.x - 1,self.y - 2))
-        result.append((self.x + 1,self.y - 2))
-        result.append((self.x + 1,self.y + 2))
-        result.append((self.x - 1,self.y + 2))
+        result.append([self.x - 1,self.y - 2])
+        result.append([self.x + 1,self.y - 2])
+        result.append([self.x + 1,self.y + 2])
+        result.append([self.x - 1,self.y + 2])
 
-        result.append((self.x + 2,self.y + 1))
-        result.append((self.x + 2,self.y - 1))
-        result.append((self.x - 2,self.y - 1))
-        result.append((self.x - 2,self.y + 1))
+        result.append([self.x + 2,self.y + 1])
+        result.append([self.x + 2,self.y - 1])
+        result.append([self.x - 2,self.y - 1])
+        result.append([self.x - 2,self.y + 1])
         result = filter(myFuncForChessPiece,result)
 
-        print("allowed  tower position for next move:")
-
+        print("allowed  knight position for next move:")
+        resultforreturn = []
         for oneitem in result:
             print(oneitem)
-        return result
+            resultforreturn.append(oneitem)
+        return resultforreturn
 
 
 
@@ -102,30 +118,44 @@ class Chess_Piece_Tower(Chess_Piece):
         print("{} has a current pos ({},{})".format(self.name,self.x,self.y))
         result = []
         for i in range(1,9):
-            result.append((self.x - i,self.y))
-            result.append((self.x + i,self.y))
-            result.append((self.x,self.y + i))
-            result.append((self.x,self.y - i))
+            result.append([self.x - i,self.y])
+            result.append([self.x + i,self.y])
+            result.append([self.x,self.y + i])
+            result.append([self.x,self.y - i])
 
         result = filter(myFuncForChessPiece,result)
         print("allowed  tower position for next move:")
 
+        resultforreturn = []
+
+
         for oneitem in result:
             print(oneitem)
-
-        return result
-
+            resultforreturn.append(oneitem)
 
 
 
 
+        return resultforreturn
 
-knight = Chess_Piece_Knight(name="Knight",x=8,y=8,size=2,costume="1",color="black",direction=90,player="black",status=True,selected_by_player=False)
+
+
+
+
+
+knight = Chess_Piece_Knight(name="Knight",x=1,y=1,size=2,costume="1",color="black",direction=90,player="black",status=True,selected_by_player=False)
 positionsForKnight = knight.get_allowed_positions()
-tower = Chess_Piece_Tower(name="Tower",x=5,y=5,size=2,costume="1",color="black",direction=90,player="black",status=True,selected_by_player=False)
+knight.moveTo(2,3)
+
+
+
+
+
+tower = Chess_Piece_Tower(name="Tower",x=6,y=6,size=2,costume="1",color="black",direction=90,player="black",status=True,selected_by_player=False)
 positionsForTower = tower.get_allowed_positions()
 
 
+tower.moveTo(8,8)
 
 
 
