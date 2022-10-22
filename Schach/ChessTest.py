@@ -3,7 +3,7 @@ from Tower import *
 from Bishop import *
 from Queen import *
 from King import *
-
+from Pawn import *
 
 
 knight = Chess_Piece_Knight(name="Knight",x=1,y=1,size=2,costume="1",color="black",direction=90,player="black",status=True,selected_by_player=False)
@@ -25,3 +25,8 @@ king.moveTo(5,2)
 king.moveTo(6,2)
 king.moveTo(5,3)
 king.moveTo(5,4)
+
+pawn = Chess_Piece_Pawn(name="pawn",x=1,y=3,size=2,costume="1",color="white",direction=90,player="white",status=True,selected_by_player=False)
+pawn.moveTo(2,5)
+
+

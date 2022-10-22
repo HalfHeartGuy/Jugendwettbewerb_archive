@@ -1,13 +1,7 @@
-
-
-
-
-
-def checkifReim(wort1,wort2):
+def checkifReim(wort1):
     vokale = ["a","e","i","o","u","A","E","I","O","U","ä","ü","ö","Ä","Ü","Ö"]
     vokaleListeFuerWort1 = []
     vokaleListeFuerWort2 = []
-
 
     #--------Wort1-------------
     #vokale aus Wort 1
@@ -23,7 +17,6 @@ def checkifReim(wort1,wort2):
                 elif wort1[i - 1] == "a" or wort1[i - 1] == "A" and wort1[i] == "i":
                     vokaleListeFuerWort1.append(wort1[i - 1] + wort1[i])
                     ifskip = True
-
 
                 elif wort1[i - 1] == "e" or wort1[i - 1] == "E" and wort1[i] == "i":
                     vokaleListeFuerWort1.append(wort1[i - 1] + wort1[i])
@@ -42,13 +35,17 @@ def checkifReim(wort1,wort2):
 
 
                 else:
-                    if wort1[i + 1] != "u" and wort1[i + 1] != "i":
-                        print(wort1[i + 1])
+
+                    if i + 1 < len(wort1):
+                        if wort1[i + 1] != "u" and wort1[i + 1] != "i" and wort1[i + 1] != "e":
+                            vokaleListeFuerWort1.append(wort1[i])
+                    if wort1.endswith(oneVokal):
                         vokaleListeFuerWort1.append(wort1[i])
+
     print(vokaleListeFuerWort1)
 
 
 
 
 
-checkifReim("Taifun","Schule")
+checkifReim("Hose")
