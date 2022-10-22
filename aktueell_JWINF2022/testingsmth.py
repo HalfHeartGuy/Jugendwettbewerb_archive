@@ -34,3 +34,7 @@ def isWortPaar(wort1:str,wort2:str) -> bool:
 
     isWortPaar = isEndeMitAnderenWort and endenGleich(wort1,wort2)
     return isWortPaar
+
+
+if 3==1 and 2==2 or 2==2:
+    print("hi")
