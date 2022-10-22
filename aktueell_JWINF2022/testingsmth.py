@@ -36,5 +36,8 @@ def isWortPaar(wort1:str,wort2:str) -> bool:
     return isWortPaar
 
 
-if 3==1 and 2==2 or 2==2:
-    print("hi")
+liste = []
+liste.append(1)
+print(liste)
+liste.append(2)
+print(liste)

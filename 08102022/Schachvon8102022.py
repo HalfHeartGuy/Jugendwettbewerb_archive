@@ -134,22 +134,12 @@ class Chess_Piece_Tower(Chess_Piece):
             resultforreturn.append(oneitem)
 
 
-
-
         return resultforreturn
-
-
-
 
 
 
 knight = Chess_Piece_Knight(name="Knight",x=1,y=1,size=2,costume="1",color="black",direction=90,player="black",status=True,selected_by_player=False)
 knight.moveTo(4,3)
-
-
-
-
-
 tower = Chess_Piece_Tower(name="Tower",x=6,y=6,size=2,costume="1",color="black",direction=90,player="black",status=True,selected_by_player=False)
 
 tower.moveTo(3,6)
