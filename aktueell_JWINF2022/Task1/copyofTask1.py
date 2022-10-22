@@ -51,10 +51,4 @@ def checkifReim(wort1,wort2):
 
 
 
-
-
-
-
-
-
 checkifReim("Taifun","Schule")
