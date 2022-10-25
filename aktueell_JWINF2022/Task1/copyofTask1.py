@@ -41,6 +41,27 @@ def checkifReim(wort1,wort2):
                     return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
 
 
+#------------Regel 2---------------------
+
+
+    if len(wort1) > len(wort2):
+        shortestWord = wort2
+    else:
+        shortestWord = wort1
+
+    counter = 0
+    for oneletter in wort1:
+        for oneletterinWord2 in wort2:
+            if oneletter == oneletterinWord2:
+                counter += 1
+    print(counter)
+    if counter < len(shortestWord) / 2:
+        print("hi")
+        ifReim = False
+        return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
+
+
+
 
     if ifReim == True:
         return str(wort1) + " und " + str(wort2) + " reimen sich."
@@ -110,6 +131,6 @@ def vokaelauseinenWort(wort):
 
 
 
-wort1 = "Tanne"
-wort2 = "Rinne"
+wort1 = "kaufen"
+wort2 = "verkaufen"
 print(checkifReim(wort1,wort2))
