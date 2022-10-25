@@ -7,10 +7,44 @@ def checkifReim(wort1,wort2):
     for oneitem in vokaleausWort1:
         splitetdVokaleAusWort1.append(oneitem.split(" "))
     splitetdVokaleAusWort2 = []
+    for oneitem in vokaleausWort2:
+        splitetdVokaleAusWort2.append(oneitem.split(" "))
+
+    print(len(vokaleausWort1))
 
 
 
-    return vokaleausWort1,vokaleausWort2
+
+    #Es würde sich ja nicht reimen wenn eines der beiden Wörter nur ein Vokal und das andere Wort mehrere Vokale.
+    if len(vokaleausWort1) == 1 and len(vokaleausWort2) == 1:
+
+
+        if splitetdVokaleAusWort1[0][1] == splitetdVokaleAusWort2[0][1]:
+            for i in range(int(splitetdVokaleAusWort1[0][1]),len(wort1) - 1):
+                if wort1[i] != wort2[i]:
+                    ifReim = False
+
+                    return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
+
+
+
+
+
+
+
+    elif len(vokaleausWort1) > 1 and len(vokaleausWort2) > 1:
+
+        if splitetdVokaleAusWort1[1][1] == splitetdVokaleAusWort2[1][1]:
+            for i in range(int(splitetdVokaleAusWort1[1][1]),len(wort1) - 1):
+                if wort1[i] != wort2[i]:
+                    ifReim = False
+                    return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
+
+
+
+    if ifReim == True:
+        return str(wort1) + " und " + str(wort2) + " reimen sich."
+
 
 
 
@@ -76,6 +110,6 @@ def vokaelauseinenWort(wort):
 
 
 
-wort1 = "Bankterrase"
-wort2 = "Schwank"
+wort1 = "Tanne"
+wort2 = "Rinne"
 print(checkifReim(wort1,wort2))
