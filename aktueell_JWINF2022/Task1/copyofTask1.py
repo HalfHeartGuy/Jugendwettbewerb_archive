@@ -10,7 +10,6 @@ def checkifReim(wort1,wort2):
     for oneitem in vokaleausWort2:
         splitetdVokaleAusWort2.append(oneitem.split(" "))
 
-    print(len(vokaleausWort1))
 
 
 
@@ -46,19 +45,35 @@ def checkifReim(wort1,wort2):
 
     if len(wort1) > len(wort2):
         shortestWord = wort2
+        longestWord = wort1
     else:
         shortestWord = wort1
+        longestWord = wort2
+
+    shortestWordExtra = shortestWord
+    longestWordExtra = longestWord
 
     counter = 0
-    for oneletter in wort1:
-        for oneletterinWord2 in wort2:
-            if oneletter == oneletterinWord2:
-                counter += 1
-    print(counter)
+    for i in range(-1,-1 * len(shortestWord),-1):
+        if shortestWordExtra[i] == longestWordExtra[i]:
+            counter += 1
     if counter < len(shortestWord) / 2:
-        print("hi")
         ifReim = False
         return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
+
+
+
+
+
+    #------------Regel3-------------------------
+
+    ifwortinwort = longestWord.find(shortestWord)
+    if len(longestWord) - len(shortestWord) == ifwortinwort:
+        ifReim = False
+        return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
+
+
+
 
 
 
@@ -131,6 +146,6 @@ def vokaelauseinenWort(wort):
 
 
 
-wort1 = "kaufen"
-wort2 = "verkaufen"
+wort1 = "singen"
+wort2 = "klingen"
 print(checkifReim(wort1,wort2))
