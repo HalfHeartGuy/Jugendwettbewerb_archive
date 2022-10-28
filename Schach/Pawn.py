@@ -13,15 +13,13 @@ class Chess_Piece_Pawn(Chess_Piece):
         if self.color == "white":
             if self.y == 2:
                 result.append([self.x,self.y + 2])
-            for i in range(1,9):
-                result.append([self.x,self.y + i])
+            result.append([self.x,self.y + 1])
             result.append([self.x + 1,self.y + 1])
             result.append([self.x - 1,self.y + 1])
         if self.color == "black":
             if self.y == 7:
                 result.append([self.x, self.y - 2])
-            for i in range(9, 0,-1):
-                result.append([self.x, self.y - i])
+            result.append([self.x, self.y - 1])
             result.append([self.x + 1, self.y - 1])
             result.append([self.x - 1, self.y - 1])
 
