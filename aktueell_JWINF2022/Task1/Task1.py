@@ -148,4 +148,4 @@ def vokaelauseinenWort(wort):
 
 wort1 = "singen"
 wort2 = "klingen"
-print(checkifReim(wort1,wort2))
+
