@@ -48,7 +48,7 @@ def checkifReim(wort1,wort2):
     for i in range(-1,-1 * len(shortestWord),-1):
         if shortestWordExtra[i] == longestWordExtra[i]:
             counter += 1
-    if counter < len(shortestWord) / 2:
+    if counter < len(shortestWord) / 2 and counter < len(longestWord) / 2:
         ifReim = False
         return ifReim
 
