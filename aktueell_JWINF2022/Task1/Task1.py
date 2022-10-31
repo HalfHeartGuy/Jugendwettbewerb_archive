@@ -10,10 +10,6 @@ def checkifReim(wort1,wort2):
     for oneitem in vokaleausWort2:
         splitetdVokaleAusWort2.append(oneitem.split(" "))
 
-
-
-
-
     #Es würde sich ja nicht reimen wenn eines der beiden Wörter nur ein Vokal und das andere Wort mehrere Vokale.
     if len(vokaleausWort1) == 1 and len(vokaleausWort2) == 1:
 
@@ -23,12 +19,7 @@ def checkifReim(wort1,wort2):
                 if wort1[i] != wort2[i]:
                     ifReim = False
 
-                    return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
-
-
-
-
-
+                    return ifReim
 
 
     elif len(vokaleausWort1) > 1 and len(vokaleausWort2) > 1:
@@ -37,7 +28,7 @@ def checkifReim(wort1,wort2):
             for i in range(int(splitetdVokaleAusWort1[1][1]),len(wort1) - 1):
                 if wort1[i] != wort2[i]:
                     ifReim = False
-                    return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
+                    return ifReim
 
 
 #------------Regel 2---------------------
@@ -59,40 +50,23 @@ def checkifReim(wort1,wort2):
             counter += 1
     if counter < len(shortestWord) / 2:
         ifReim = False
-        return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
-
-
-
-
+        return ifReim
 
     #------------Regel3-------------------------
 
     ifwortinwort = longestWord.find(shortestWord)
     if len(longestWord) - len(shortestWord) == ifwortinwort:
         ifReim = False
-        return str(wort1) + " und " + str(wort2) + " reimen sich nicht"
-
-
-
-
-
-
+        return ifReim
 
     if ifReim == True:
-        return str(wort1) + " und " + str(wort2) + " reimen sich."
-
-
-
-
-
+        return ifReim
 
 
 #vokale aus einen Wort holen
 def vokaelauseinenWort(wort):
     vokale = ["a","e","i","o","u","A","E","I","O","U","ä","ü","ö","Ä","Ü","Ö"]
     vokaleListeFuerWort = []
-
-
 
 
     for i in range(len(wort) - 1,-1,-1):
@@ -126,12 +100,6 @@ def vokaelauseinenWort(wort):
                 elif wort[i - 1] == "o" or wort[i - 1] == "O" and wort[i] == "o":
                     vokaleListeFuerWort.append(wort[i - 1] + wort[i] + " " + str(i))
 
-
-
-
-
-
-
                 else:
 
                     if i + 1 < len(wort):
@@ -145,7 +113,17 @@ def vokaelauseinenWort(wort):
 
 
 
+woerterListe = []
+with open("woerterListe1.txt",encoding="utf8") as file:
+    for line in file:
+        woerterListe.append(line.strip())
+print(woerterListe)
+for oneword in woerterListe:
+    for anotherWord in woerterListe:
+        if oneword == anotherWord:
+            continue
+        ifReim = checkifReim(oneword,anotherWord)
+        if ifReim == True:
+            print(oneword + " und " + anotherWord + " reimen sich.")
 
-wort1 = "singen"
-wort2 = "klingen"
 
