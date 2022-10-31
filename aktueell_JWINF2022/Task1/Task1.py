@@ -10,10 +10,7 @@ def checkifReim(wort1,wort2):
     for oneitem in vokaleausWort2:
         splitetdVokaleAusWort2.append(oneitem.split(" "))
 
-    #Es würde sich ja nicht reimen wenn eines der beiden Wörter nur ein Vokal und das andere Wort mehrere Vokale.
     if len(vokaleausWort1) == 1 and len(vokaleausWort2) == 1:
-
-
         if splitetdVokaleAusWort1[0][1] == splitetdVokaleAusWort2[0][1]:
             for i in range(int(splitetdVokaleAusWort1[0][1]),len(wort1) - 1):
                 if wort1[i] != wort2[i]:
@@ -23,13 +20,11 @@ def checkifReim(wort1,wort2):
 
 
     elif len(vokaleausWort1) > 1 and len(vokaleausWort2) > 1:
-
         if splitetdVokaleAusWort1[1][1] == splitetdVokaleAusWort2[1][1]:
             for i in range(int(splitetdVokaleAusWort1[1][1]),len(wort1) - 1):
                 if wort1[i] != wort2[i]:
                     ifReim = False
                     return ifReim
-
 
 #------------Regel 2---------------------
 
@@ -123,7 +118,7 @@ for oneword in woerterListe:
         if oneword == anotherWord:
             continue
         ifReim = checkifReim(oneword,anotherWord)
-        if ifReim == True:
-            print(oneword + " und " + anotherWord + " reimen sich.")
+    #    if ifReim == True:
+    #        print(oneword + " und " + anotherWord + " reimen sich.")
 
 
