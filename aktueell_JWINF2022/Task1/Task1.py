@@ -9,7 +9,6 @@ def checkifReim(wort1,wort2):
     splitetdVokaleAusWort2 = []
     for oneitem in vokaleausWort2:
         splitetdVokaleAusWort2.append(oneitem.split(" "))
-
     if len(vokaleausWort1) == 1 and len(vokaleausWort2) == 1:
         if splitetdVokaleAusWort1[0][1] != splitetdVokaleAusWort2[0][1]:
             ifReim = False
