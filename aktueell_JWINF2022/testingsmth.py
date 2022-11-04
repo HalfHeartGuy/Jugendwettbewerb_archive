@@ -36,10 +36,6 @@ def isWortPaar(wort1:str,wort2:str) -> bool:
     return isWortPaar
 
 
-liste = []
-liste.append(1)
-print(liste)
-liste.append(2)
-print(liste)
-liste.append(3)
-print(liste)
+dictionary = {"car":"red","car2":"blue"}
+for i in range(0,len(dictionary)):
+    print(dictionary[i])
