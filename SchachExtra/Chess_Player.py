@@ -1,10 +1,10 @@
 from Chess import *
-
+from Chess_Game import *
 class Chess_Player():
     def __init__(self, name:str, color: str):
         self.name = name
         self.color = color
-
+        self.chess_game = []
     def get_name(self):
         return self.name
 
@@ -18,3 +18,9 @@ class Chess_Player():
     def move_one_chess_piece(self, one_chess_piece : Chess_Piece, target_x: int, target_y: int):
         one_chess_piece.moveTo(target_x,target_y)
         one_chess_piece.unselect()
+
+    def __str__(self):
+        return "{} Player {}".format(self.color,self.name)
+
+    def asign_to_game(self,chess_board:list):
+        self.chess_game =
