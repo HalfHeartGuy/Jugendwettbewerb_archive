@@ -14,21 +14,20 @@ class Chess_Game():
         self.board = []
 
         self.chess_pieces = self.init_all_chess_pieces()
+        player1.asign_to_game(self.board)
+        player2.asign_to_game(self.board)
 
-
+    # Erzeugt eine Liste mit 8 None
     def init_empty_row(self):
         result = []
         for i in range(0,9):
             result.append(None)
         return result
 
-
-
-
     def init_all_chess_pieces(self) -> dict:
         result = {}
         row1 = []
-        row2 = self.init_empty_row()
+        row2 = []
         row3 = self.init_empty_row()
         row4 = self.init_empty_row()
         row5 = self.init_empty_row()
@@ -37,13 +36,13 @@ class Chess_Game():
         row7 = []
 
         player1_tower_left_name = self.player1.get_color() + "_tower_left"
-        player1_tower_left = Chess_Piece_Tower(name=player1_tower_left_name, x=1, y=1, size=2, costume="1", color=self.player1.get_color(), direction=90,
+        player1_tower_left = Chess_Piece_Tower(name=player1_tower_left_name, x=0, y=0, size=2, costume="1", color=self.player1.get_color(), direction=90,
                                   player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_tower_left_name] = player1_tower_left
         row1.append(player1_tower_left)
 
         player1_knight_left_name = self.player1.get_color() + "_knight_left"
-        player1_knight_left = Chess_Piece_Knight(name=player1_knight_left_name, x=2, y=1, size=2, costume="1",
+        player1_knight_left = Chess_Piece_Knight(name=player1_knight_left_name, x=1, y=0, size=2, costume="1",
                                                color=self.player1.get_color(), direction=90,
                                                player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_knight_left_name] = player1_knight_left
@@ -51,7 +50,7 @@ class Chess_Game():
 
 
         player1_bishop_left_name = self.player1.get_color() + "_bishop_left"
-        player1_bishop_left = Chess_Piece_Bishop(name=player1_bishop_left_name, x=3, y=1, size=2, costume="1",
+        player1_bishop_left = Chess_Piece_Bishop(name=player1_bishop_left_name, x=2, y=0, size=2, costume="1",
                                                color=self.player1.get_color(), direction=90,
                                                player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_bishop_left_name] = player1_bishop_left
@@ -59,7 +58,7 @@ class Chess_Game():
 
 
         player1_queen_name = self.player1.get_color() + "_queen"
-        player1_queen = Chess_Piece_Queen(name=player1_queen_name, x=4, y=1, size=2, costume="1",
+        player1_queen = Chess_Piece_Queen(name=player1_queen_name, x=3, y=0, size=2, costume="1",
                                                color=self.player1.get_color(), direction=90,
                                                player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_queen_name] = player1_queen
@@ -67,7 +66,7 @@ class Chess_Game():
 
 
         player1_king_name = self.player1.get_color() + "_king"
-        player1_king = Chess_Piece_King(name=player1_king_name, x=5, y=1, size=2, costume="1",
+        player1_king = Chess_Piece_King(name=player1_king_name, x=4, y=0, size=2, costume="1",
                                                color=self.player1.get_color(), direction=90,
                                                player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_king_name] = player1_king
@@ -75,7 +74,7 @@ class Chess_Game():
 
 
         player1_bishop_right_name = self.player1.get_color() + "_bishop_right"
-        player1_bishop_right = Chess_Piece_Bishop(name=player1_bishop_right_name, x=6, y=1, size=2, costume="1",
+        player1_bishop_right = Chess_Piece_Bishop(name=player1_bishop_right_name, x=5, y=0, size=2, costume="1",
                                                color=self.player1.get_color(), direction=90,
                                                player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_bishop_right_name] = player1_bishop_right
@@ -83,7 +82,7 @@ class Chess_Game():
 
 
         player1_knight_right_name = self.player1.get_color() + "_knight_right"
-        player1_knight_right = Chess_Piece_Knight(name=player1_knight_right_name, x=7, y=1, size=2, costume="1",
+        player1_knight_right = Chess_Piece_Knight(name=player1_knight_right_name, x=6, y=0, size=2, costume="1",
                                                color=self.player1.get_color(), direction=90,
                                                player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_knight_right_name] = player1_knight_right
@@ -92,7 +91,7 @@ class Chess_Game():
 
 
         player1_tower_right_name = self.player1.get_color() + "_tower_right"
-        player1_tower_right = Chess_Piece_Tower (name=player1_tower_right_name, x=8, y=1, size=2, costume="1",
+        player1_tower_right = Chess_Piece_Tower(name=player1_tower_right_name, x=7, y=0, size=2, costume="1",
                                                color=self.player1.get_color(), direction=90,
                                                player=self.player1.get_name(), status=True, selected_by_player=False)
         result[player1_tower_right_name] = player1_tower_right
@@ -100,7 +99,7 @@ class Chess_Game():
 
         for i in range(1,9):
             player1_pawn_name = self.player1.get_color() + "_pawn_" + str(i)
-            player1_pawn = Chess_Piece_Pawn(name=player1_pawn_name, x=i, y=2, size=2, costume="1",
+            player1_pawn = Chess_Piece_Pawn(name=player1_pawn_name, x=i-1, y=1, size=2, costume="1",
                                                     color=self.player1.get_color(), direction=90,
                                                     player=self.player1.get_name(), status=True,
                                                     selected_by_player=False)
@@ -110,7 +109,7 @@ class Chess_Game():
 
 
         player2_tower_left_name = self.player2.get_color() + "_tower_left"
-        player2_tower_left = Chess_Piece_Tower(name=player2_tower_left_name, x=1, y=8, size=2, costume="1",
+        player2_tower_left = Chess_Piece_Tower(name=player2_tower_left_name, x=0, y=7, size=2, costume="1",
                                                color=self.player2.get_color(), direction=90,
                                                player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_tower_left_name] = player2_tower_left
@@ -118,7 +117,7 @@ class Chess_Game():
         row8.append(player2_tower_left)
 
         player2_knight_left_name = self.player2.get_color() + "_knight_left"
-        player2_knight_left = Chess_Piece_Knight(name=player1_knight_left_name, x=2, y=8, size=2, costume="1",
+        player2_knight_left = Chess_Piece_Knight(name=player1_knight_left_name, x=1, y=7, size=2, costume="1",
                                                 color=self.player2.get_color(), direction=90,
                                                 player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_knight_left_name] = player2_knight_left
@@ -126,7 +125,7 @@ class Chess_Game():
         row8.append(player2_knight_left)
 
         player2_bishop_left_name = self.player2.get_color() + "_bishop_left"
-        player2_bishop_left = Chess_Piece_Bishop(name=player2_bishop_left_name, x=3, y=8, size=2, costume="1",
+        player2_bishop_left = Chess_Piece_Bishop(name=player2_bishop_left_name, x=2, y=7, size=2, costume="1",
                                                 color=self.player2.get_color(), direction=90,
                                                 player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_bishop_left_name] = player2_bishop_left
@@ -134,7 +133,7 @@ class Chess_Game():
         row8.append(player2_bishop_left)
 
         player2_queen_name = self.player2.get_color() + "_queen"
-        player2_queen = Chess_Piece_Queen(name=player2_queen_name, x=4, y=8, size=2, costume="1",
+        player2_queen = Chess_Piece_Queen(name=player2_queen_name, x=3, y=7, size=2, costume="1",
                                                  color=self.player2.get_color(), direction=90,
                                                  player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_queen_name] = player2_queen
@@ -142,7 +141,7 @@ class Chess_Game():
         row8.append(player2_queen)
 
         player2_king_name = self.player2.get_color() + "_king"
-        player2_king = Chess_Piece_King(name=player2_king_name, x=5, y=8, size=2, costume="1",
+        player2_king = Chess_Piece_King(name=player2_king_name, x=4, y=7, size=2, costume="1",
                                                color=self.player2.get_color(), direction=90,
                                                player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_king_name] = player2_king
@@ -150,7 +149,7 @@ class Chess_Game():
         row8.append(player2_king)
 
         player2_bishop_right_name = self.player2.get_color() + "_bishop_right"
-        player2_bishop_right = Chess_Piece_Bishop(name=player2_bishop_right_name, x=6, y=8, size=2, costume="1",
+        player2_bishop_right = Chess_Piece_Bishop(name=player2_bishop_right_name, x=5, y=7, size=2, costume="1",
                                         color=self.player2.get_color(), direction=90,
                                         player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_bishop_right_name] =player2_bishop_right
@@ -158,7 +157,7 @@ class Chess_Game():
         row8.append(player2_bishop_right)
 
         player2_knight_right_name = self.player2.get_color() + "_knight_right"
-        player2_knight_right = Chess_Piece_Knight(name=player2_knight_right_name, x=7, y=8, size=2, costume="1",
+        player2_knight_right = Chess_Piece_Knight(name=player2_knight_right_name, x=6, y=7, size=2, costume="1",
                                                 color=self.player2.get_color(), direction=90,
                                                 player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_knight_right_name] = player2_knight_right
@@ -166,7 +165,7 @@ class Chess_Game():
         row8.append(player2_knight_right)
 
         player2_tower_right_name = self.player2.get_color() + "_tower_right"
-        player2_tower_right = Chess_Piece_Tower(name=player2_tower_right_name, x=8, y=8, size=2, costume="1",
+        player2_tower_right = Chess_Piece_Tower(name=player2_tower_right_name, x=7, y=7, size=2, costume="1",
                                                   color=self.player2.get_color(), direction=90,
                                                   player=self.player2.get_name(), status=True, selected_by_player=False)
         result[player2_tower_right_name] = player2_tower_right
@@ -175,7 +174,7 @@ class Chess_Game():
 
         for i in range(1,9):
             player2_pawn_name = self.player2.get_color() + "_pawn_" + str(i)
-            player2_pawn = Chess_Piece_Tower(name=player2_pawn_name, x=i, y=7, size=2, costume="1",
+            player2_pawn = Chess_Piece_Pawn(name=player2_pawn_name, x=i-1, y=6, size=2, costume="1",
                                                     color=self.player2.get_color(), direction=90,
                                                     player=self.player2.get_name(), status=True,
                                                     selected_by_player=False)
@@ -196,4 +195,5 @@ class Chess_Game():
         return result
 
     def check_piece_for_position(self, x, y) -> Chess_Piece:
-        return self.board[y-1][x-1]
+        return self.board[y][x]
+

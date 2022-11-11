@@ -24,7 +24,7 @@ class Sprite():
 
 #Filter out Function for Chess Pieces.
 def myFuncForChessPiece(result):
-    return result[0] < 9 and result[0] > 0 and result[1] < 9 and result[1] > 0
+    return result[0] < 8 and result[0] > -1 and result[1] < 8 and result[1] > -1
 
 class Chess_Piece(Sprite):
     def __init__(self,name:str,x:int,y:int,size:int,costume:str,color:str,direction:int,player:str,status:bool,selected_by_player:bool):
