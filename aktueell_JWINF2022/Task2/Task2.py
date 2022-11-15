@@ -1,13 +1,8 @@
 def maxContainer(container1,container2):
-
     if container1 < container2:
-
         return container2
     else:
-
         return container1
-
-
 
 containerlist = []
 with open("container.txt",encoding="utf8") as file:
@@ -23,7 +18,6 @@ for i in containerlist:
         counterforgesamgtMaxContianer += 1
     if int(schwerereContianer) == int(max):
         counterforgesamgtMaxContianer += 1
-
 
 if counterforgesamgtMaxContianer > 1:
     print("Es konnte kein schwester Container bestimmt werden.")

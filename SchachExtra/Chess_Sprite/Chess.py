@@ -33,7 +33,7 @@ class Chess_Piece(Sprite):
         self.status = status
         self.selected_by_player = selected_by_player
 
-    def moveTo(self,x,y):
+    def moveTo(self,x,y,chess_board:list):
         if [x,y] in self.get_allowed_positions():
             print("Chess {} with current position ({},{}) is moved to ({},{})".format(self.name, self.x, self.y, x,y))
             self.x = x

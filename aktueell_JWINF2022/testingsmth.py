@@ -35,7 +35,5 @@ def isWortPaar(wort1:str,wort2:str) -> bool:
     isWortPaar = isEndeMitAnderenWort and endenGleich(wort1,wort2)
     return isWortPaar
 
-
-dictionary = {"car":"red","car2":"blue"}
-for i in range(0,len(dictionary)):
-    print(dictionary[i])
+for i in range(0,5):
+    print(i)
