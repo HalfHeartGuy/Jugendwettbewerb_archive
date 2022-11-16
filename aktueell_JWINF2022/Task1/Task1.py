@@ -9,38 +9,70 @@ def checkifReim(wort1,wort2):
     splitetdVokaleAusWort2 = []
     for oneitem in vokaleausWort2:
         splitetdVokaleAusWort2.append(oneitem.split(" "))
+
+
+
     if len(vokaleausWort1) == 1 and len(vokaleausWort2) == 1:
+        if splitetdVokaleAusWort1[0][0] != splitetdVokaleAusWort2[0][0]:
+            ifReim = False
+            return ifReim
+
+
         if splitetdVokaleAusWort1[0][0] == splitetdVokaleAusWort2[0][0]:
-
-
             indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[0][1]):len(wort2)])
-            indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort2[0][1]):len(wort1)])
-
+            indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort1[0][1]):len(wort1)])
             if indexfind1 == -1 or indexfind2 == -1 and len(wort2) - indexfind2 != len(wort1) - indexfind1:
                 ifReim = False
                 return ifReim
 
 
 
-            print(wort1.find(wort2[int(splitetdVokaleAusWort2[0][1]):len(wort2)]))
-
-       # if splitetdVokaleAusWort1[0][1] == splitetdVokaleAusWort2[0][1]:
-      #      print(wort1)
-      #      print(wort2)
-      #      print(wort2.find(wort1[int(splitetdVokaleAusWort1[0][1]):len(wort1)]))
 
 
 
 
+    elif len(vokaleausWort1) > 1 and len(vokaleausWort2) > 1:
+        if splitetdVokaleAusWort1[1][0] != splitetdVokaleAusWort2[1][0]:
+            ifReim = False
+            return ifReim
 
-   # elif len(vokaleausWort1) > 1 and len(vokaleausWort2) > 1:
-    #    if splitetdVokaleAusWort1[1][0] != splitetdVokaleAusWort2[1][0]:
-     #       ifReim = False
-      #      return ifReim
-  #      if splitetdVokaleAusWort1[1][1] == splitetdVokaleAusWort2[1][1]:
-   #         print(wort1)
-    #        print(wort2)
-     #       print(wort2.find(wort1[int(splitetdVokaleAusWort1[1][1]):len(wort1)]))
+        if splitetdVokaleAusWort1[1][0] == splitetdVokaleAusWort2[1][0]:
+
+
+            indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[1][1]):len(wort2)])
+            indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort1[1][1]):len(wort1)])
+
+
+            if indexfind1 == -1 or indexfind2 == -1 and len(wort2) - indexfind2 != len(wort1) - indexfind1:
+                ifReim = False
+                return ifReim
+    elif len(vokaleausWort1) > 1 and len(vokaleausWort2) == 1:
+        if splitetdVokaleAusWort1[1][0] != splitetdVokaleAusWort2[0][1]:
+            ifReim = False
+            return ifReim
+        if splitetdVokaleAusWort1[1][0] == splitetdVokaleAusWort2[0][1]:
+
+
+            indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[0][1]):len(wort2)])
+            indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort1[1][1]):len(wort1)])
+
+
+            if indexfind1 == -1 or indexfind2 == -1 and len(wort2) - indexfind2 != len(wort1) - indexfind1:
+                ifReim = False
+                return ifReim
+    elif len(vokaleausWort1) == 1 and len(vokaleausWort2) > 1:
+        if splitetdVokaleAusWort1[0][1] != splitetdVokaleAusWort2[1][0]:
+            ifReim = False
+            return ifReim
+
+        if splitetdVokaleAusWort1[0][1] == splitetdVokaleAusWort2[1][0]:
+            indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[1][1]):len(wort2)])
+            indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort1[0][1]):len(wort1)])
+            if indexfind1 == -1 or indexfind2 == -1 and len(wort2) - indexfind2 != len(wort1) - indexfind1:
+                ifReim = False
+                return ifReim
+
+
 #------------Regel 2---------------------
     if len(wort1) > len(wort2):
         shortestWord = wort2
@@ -56,11 +88,12 @@ def checkifReim(wort1,wort2):
         ifReim = False
         return ifReim
     #------------Regel3-------------------------
-    ifwortinwort = longestWord.find(shortestWord)
+    ifwortinwort = longestWord.find(shortestWord[0].lower() + shortestWord[1:])
     if len(longestWord) - len(shortestWord) == ifwortinwort:
         ifReim = False
         return ifReim
     if ifReim == True:
+
         return ifReim
 
 #vokale aus einen Wort holen
@@ -102,11 +135,10 @@ woerterListe = []
 with open("woerterListe1.txt",encoding="utf8") as file:
     for line in file:
         woerterListe.append(line.strip())
-print(woerterListe)
 for oneword in woerterListe:
     for anotherWord in woerterListe:
         if oneword == anotherWord:
             continue
         ifReim = checkifReim(oneword,anotherWord)
-    #    if ifReim == True:
-       #     print(oneword + " und " + anotherWord + " reimen sich.")
+        if ifReim == True:
+            print(oneword + " und " + anotherWord + " reimen sich.")

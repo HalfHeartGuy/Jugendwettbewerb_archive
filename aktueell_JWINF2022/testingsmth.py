@@ -35,5 +35,5 @@ def isWortPaar(wort1:str,wort2:str) -> bool:
     isWortPaar = isEndeMitAnderenWort and endenGleich(wort1,wort2)
     return isWortPaar
 
-for i in range(0,5):
-    print(i)
+list2d = [[1,2],[5,4],[2,3]]
+print(list2d[1][0])
