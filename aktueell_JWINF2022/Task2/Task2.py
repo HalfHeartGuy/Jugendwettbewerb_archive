@@ -10,17 +10,28 @@ with open("container.txt",encoding="utf8") as file:
         containerlist.append(line.strip().split(" "))
 
 max = 0
-counterforgesamgtMaxContianer = 0
-for i in containerlist:
-    schwerereContianer = maxContainer(i[0],i[1])
-    if int(schwerereContianer) > int(max):
-        max = schwerereContianer
-        counterforgesamgtMaxContianer += 1
-    if int(schwerereContianer) == int(max):
-        counterforgesamgtMaxContianer += 1
+counterformaxnumbers = 0
+for onelist in containerlist:
+    schwerereContainerList = []
+    schwerereContainerList.append(maxContainer(int(onelist[0]),int(onelist[1])))
+    for i in schwerereContainerList:
+        if i > max:
+            counterformaxnumbers = 0
 
-if counterforgesamgtMaxContianer > 1:
-    print("Es konnte kein schwester Container bestimmt werden.")
-if counterforgesamgtMaxContianer < 2:
-    containerlist.sort()
-    print(containerlist)
+            max = i
+
+        if i == max:
+            counterformaxnumbers += 1
+if counterformaxnumbers >= 2:
+    print("Es konnte kein bestimmter Container bestimmt werden.")
+elif counterformaxnumbers == 1:
+    counterSpalt = 0
+    counterLine = 0
+    for oneitem in containerlist:
+        counterLine += 1
+        counterSpalt = 0
+        for oneiteminOneitem in oneitem:
+            counterSpalt += 1
+            if int(oneiteminOneitem) == max:
+                print("Der schwerste Container ist bei x " + str(counterSpalt) + " und ist in der  " + str(counterLine) + ". Zeile.")
+

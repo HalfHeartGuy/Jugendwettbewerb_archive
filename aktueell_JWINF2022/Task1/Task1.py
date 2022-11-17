@@ -10,13 +10,10 @@ def checkifReim(wort1,wort2):
     for oneitem in vokaleausWort2:
         splitetdVokaleAusWort2.append(oneitem.split(" "))
 
-
-
     if len(vokaleausWort1) == 1 and len(vokaleausWort2) == 1:
         if splitetdVokaleAusWort1[0][0] != splitetdVokaleAusWort2[0][0]:
             ifReim = False
             return ifReim
-
 
         if splitetdVokaleAusWort1[0][0] == splitetdVokaleAusWort2[0][0]:
             indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[0][1]):len(wort2)])
@@ -25,24 +22,13 @@ def checkifReim(wort1,wort2):
                 ifReim = False
                 return ifReim
 
-
-
-
-
-
-
     elif len(vokaleausWort1) > 1 and len(vokaleausWort2) > 1:
         if splitetdVokaleAusWort1[1][0] != splitetdVokaleAusWort2[1][0]:
             ifReim = False
             return ifReim
-
         if splitetdVokaleAusWort1[1][0] == splitetdVokaleAusWort2[1][0]:
-
-
             indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[1][1]):len(wort2)])
             indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort1[1][1]):len(wort1)])
-
-
             if indexfind1 == -1 or indexfind2 == -1 and len(wort2) - indexfind2 != len(wort1) - indexfind1:
                 ifReim = False
                 return ifReim
@@ -51,12 +37,8 @@ def checkifReim(wort1,wort2):
             ifReim = False
             return ifReim
         if splitetdVokaleAusWort1[1][0] == splitetdVokaleAusWort2[0][1]:
-
-
             indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[0][1]):len(wort2)])
             indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort1[1][1]):len(wort1)])
-
-
             if indexfind1 == -1 or indexfind2 == -1 and len(wort2) - indexfind2 != len(wort1) - indexfind1:
                 ifReim = False
                 return ifReim
@@ -64,15 +46,12 @@ def checkifReim(wort1,wort2):
         if splitetdVokaleAusWort1[0][1] != splitetdVokaleAusWort2[1][0]:
             ifReim = False
             return ifReim
-
         if splitetdVokaleAusWort1[0][1] == splitetdVokaleAusWort2[1][0]:
             indexfind1 = wort1.find(wort2[int(splitetdVokaleAusWort2[1][1]):len(wort2)])
             indexfind2 = wort2.find(wort1[int(splitetdVokaleAusWort1[0][1]):len(wort1)])
             if indexfind1 == -1 or indexfind2 == -1 and len(wort2) - indexfind2 != len(wort1) - indexfind1:
                 ifReim = False
                 return ifReim
-
-
 #------------Regel 2---------------------
     if len(wort1) > len(wort2):
         shortestWord = wort2
@@ -93,14 +72,11 @@ def checkifReim(wort1,wort2):
         ifReim = False
         return ifReim
     if ifReim == True:
-
         return ifReim
-
 #vokale aus einen Wort holen
 def vokaelauseinenWort(wort):
     vokale = ["a","e","i","o","u","A","E","I","O","U","ä","ü","ö","Ä","Ü","Ö"]
     vokaleListeFuerWort = []
-
     for i in range(len(wort) - 1,-1,-1):
         for oneVokal in vokale:
             if wort[i] == oneVokal:
@@ -128,9 +104,7 @@ def vokaelauseinenWort(wort):
                             vokaleListeFuerWort.append(wort[i] + " " + str(i))
                     if wort.endswith(oneVokal) and wort[-2] != oneVokal:
                         vokaleListeFuerWort.append(wort[i] + " " + str(i))
-
     return vokaleListeFuerWort
-
 woerterListe = []
 with open("woerterListe1.txt",encoding="utf8") as file:
     for line in file:
