@@ -24,20 +24,37 @@ class Chess_Piece_Queen(Chess_Piece):
         result = filter(myFuncForChessPiece,result)
         return result
     def moveTo(self, target_x: int, target_y: int, chess_boar: list):
-        print("jetzt gilt eigene Regeln von Tower")
-
+        print("jetzt gilt eigene Regeln von Königin.")
+        counter = 0
         ## jetzige Position ist (self.x, self.y), target ist (target_x, target_y)
         zwischen_zellen_index = []
         if (target_y > self.y and self.x == target_x):
-
-            zwischen_zellen_index = [(self.x, y) for y in range(self.y + 1, target_y)]
-
+            zwischen_zellen_index = [(self.x,y) for y in range(self.y + 1, target_y)]
+            counter += 1
         elif (target_y < self.y and self.x == target_x):
             zwischen_zellen_index = [(self.x, y) for y in range(target_y + 1, self.y)]
+            counter += 1
+
         elif (self.y == target_y and self.x < target_x):
-            zwischen_zellen_index = [(x, target_y) for x in range(self.x, target_x)]
+            zwischen_zellen_index = [(x,target_y) for x in range(self.x,target_x)]
+            counter += 1
+
         elif (self.y == target_y and self.x > target_x):
             zwischen_zellen_index = [(x, target_y) for x in range(target_x, self.x)]
+            counter += 1
+
+        elif (target_y > self.y and self.x < target_x):
+            zwischen_zellen_index.append([(self.x + i,self.y + i) for i in range(1,target_y - self.y)])
+        elif (target_y < self.y and self.x > target_x):
+            zwischen_zellen_index.append([(self.x - i,self.y - i) for i in range(1,target_y - self.y)])
+        elif (target_y > self.y and self.x > target_x):
+            zwischen_zellen_index.append([(self.x - i,self.y + i) for i in range(1,target_y - self.y)])
+        elif (target_y < self.y and self.x < target_x):
+            zwischen_zellen_index.append([(self.x + i,self.y - i) for i in range(1,target_y - self.y)])
+
+        if counter >= 1:
+            zwischen_zellen_index.remove(zwischen_zellen_index[0])
+
 
         print(str(zwischen_zellen_index))
         super().moveTo(target_x, target_y, chess_boar)

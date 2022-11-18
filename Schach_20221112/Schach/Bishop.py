@@ -17,7 +17,7 @@ class Chess_Piece_Bishop(Chess_Piece):
         result = filter(myFuncForChessPiece,result)
         return result
     def moveTo(self,target_x:int,target_y:int,chess_boar:list):
-        print("jetzt gilt eigene Regeln von Tower")
+        print("jetzt gilt eigene Regeln von Läufer.")
 
         ## jetzige Position ist (self.x, self.y), target ist (target_x, target_y)
         zwischen_zellen_index = []
