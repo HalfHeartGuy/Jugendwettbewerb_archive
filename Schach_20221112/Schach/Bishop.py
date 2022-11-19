@@ -25,9 +25,12 @@ class Chess_Piece_Bishop(Chess_Piece):
         if (target_y > self.y and self.x < target_x):
             zwischen_zellen_index.append([(self.x + i,self.y + i) for i in range(1,target_y - self.y)])
         elif (target_y < self.y and self.x > target_x):
-            zwischen_zellen_index.append([(self.x - i,self.y - i) for i in range(1,target_y - self.y)])
+            zwischen_zellen_index.append([(self.x - i,self.y - i) for i in range(1,self.y - target_y)])
+
+
         elif (target_y > self.y and self.x > target_x):
             zwischen_zellen_index.append([(self.x - i,self.y + i) for i in range(1,target_y - self.y)])
+
         elif (target_y < self.y and self.x < target_x):
             zwischen_zellen_index.append([(self.x + i,self.y - i) for i in range(1,target_y - self.y)])
 
