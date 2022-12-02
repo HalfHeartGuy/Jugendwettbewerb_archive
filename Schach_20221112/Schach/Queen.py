@@ -1,5 +1,7 @@
-
+from Bishop import berechne_between_positions_bishop
 from Chess import  Chess_Piece, myFuncForChessPiece
+from Tower import calc_between_position_tower
+
 class Chess_Piece_Queen(Chess_Piece):
     def __init__(self,name:str,x:int,y:int,size:int,costume:str,color:str,direction:int,player:str,status:bool,selected_by_player:bool):
         super().__init__(name,x,y,size,costume,color,direction,player,status,selected_by_player)
@@ -28,32 +30,13 @@ class Chess_Piece_Queen(Chess_Piece):
         counter = 0
         ## jetzige Position ist (self.x, self.y), target ist (target_x, target_y)
         zwischen_zellen_index = []
-        if (target_y > self.y and self.x == target_x):
-            zwischen_zellen_index = [(self.x,y) for y in range(self.y + 1, target_y)]
-            counter += 1
-        elif (target_y < self.y and self.x == target_x):
-            zwischen_zellen_index = [(self.x, y) for y in range(target_y + 1, self.y)]
-            counter += 1
+        if (abs(target_x - self.x) == abs(target_y - self.y)) and abs(target_x - self.x) > 0:
+            zwischen_zellen_index = berechne_between_positions_bishop(self.x,self.y,target_x,target_y)#wenn Queen wie ein Bishop läuft.
+        elif self.x == target_x or self.y == target_y:
+            zwischen_zellen_index = calc_between_position_tower(self.x,self.y,target_x,target_y)#Wenn Queen wie tower läuft
 
-        elif (self.y == target_y and self.x < target_x):
-            zwischen_zellen_index = [(x,target_y) for x in range(self.x,target_x)]
-            counter += 1
 
-        elif (self.y == target_y and self.x > target_x):
-            zwischen_zellen_index = [(x, target_y) for x in range(target_x, self.x)]
-            counter += 1
 
-        elif (target_y > self.y and self.x < target_x):
-            zwischen_zellen_index.append([(self.x + i,self.y + i) for i in range(1,target_y - self.y)])
-        elif (target_y < self.y and self.x > target_x):
-            zwischen_zellen_index.append([(self.x - i,self.y - i) for i in range(1,self.y - target_y)])
-        elif (target_y > self.y and self.x > target_x):
-            zwischen_zellen_index.append([(self.x - i,self.y + i) for i in range(1,target_y - self.y)])
-        elif (target_y < self.y and self.x < target_x):
-            zwischen_zellen_index.append([(self.x + i,self.y - i) for i in range(1,target_y - self.y)])
-
-        if counter >= 1:
-            zwischen_zellen_index.remove(zwischen_zellen_index[0])
 
 
         print(str(zwischen_zellen_index))

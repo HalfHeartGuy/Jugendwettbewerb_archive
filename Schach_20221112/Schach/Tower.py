@@ -21,20 +21,23 @@ class Chess_Piece_Tower(Chess_Piece):
     def moveTo(self,target_x:int,target_y:int,chess_boar:list):
         print("jetzt gilt eigene Regeln von Tower")
 
-        ## jetzige Position ist (self.x, self.y), target ist (target_x, target_y)
-        zwischen_zellen_index = []
-        if (target_y > self.y and self.x == target_x):
-            zwischen_zellen_index = [(self.x,y) for y in range(self.y + 1, target_y)]
-        elif (target_y < self.y and self.x == target_x):
-            zwischen_zellen_index = [(self.x, y) for y in range(target_y + 1, self.y)]
-        elif (self.y == target_y and self.x < target_x):
-            zwischen_zellen_index = [(x,target_y) for x in range(self.x,target_x)]
-        elif (self.y == target_y and self.x > target_x):
-            zwischen_zellen_index = [(x, target_y) for x in range(target_x, self.x)]
+        zwischen_zellen_index = self.calc_between_position_tower(target_x, target_y)
 
         print(str(zwischen_zellen_index))
         super().moveTo(target_x,target_y,chess_boar)
 
+def calc_between_position_tower(start_x,start_y, target_x, target_y):
+    ## jetzige Position ist (self.x, self.y), target ist (target_x, target_y)
+    zwischen_zellen_index = []
+    if (target_y > start_y and start_x == target_x):
+        zwischen_zellen_index = [(start_x, y) for y in range(start_y + 1, target_y)]
+    elif (target_y < start_y and start_x == target_x):
+        zwischen_zellen_index = [(start_x, y) for y in range(target_y + 1, start_y)]
+    elif (start_y == target_y and start_x < target_x):
+        zwischen_zellen_index = [(x, target_y) for x in range(start_x + 1, target_x)]
+    elif (start_y == target_y and start_x > target_x):
+        zwischen_zellen_index = [(x, target_y) for x in range(target_x + 1, start_x)]
+    return zwischen_zellen_index
 
 ## von (0,0) zu (0,4) bewegen, welche Zellen sind "Zwischenzellen"?  [(0,1),(0,2),(0,3)]
 ## von (x,y1) zu (x, y2) bewgen, welche Zellen sind "Zwischenzellen"? [(x, y1 + 1), (x, y1 + 2) ,..., (x, y2 - 1)], y2 > y1

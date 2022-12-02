@@ -19,28 +19,27 @@ class Chess_Piece_Bishop(Chess_Piece):
     def moveTo(self,target_x:int,target_y:int,chess_boar:list):
         print("jetzt gilt eigene Regeln von Läufer.")
 
-        ## jetzige Position ist (self.x, self.y), target ist (target_x, target_y)
-        zwischen_zellen_index = []
-
-        if (target_y > self.y and self.x < target_x):
-            zwischen_zellen_index.append([(self.x + i,self.y + i) for i in range(1,target_y - self.y)])
-        elif (target_y < self.y and self.x > target_x):
-            zwischen_zellen_index.append([(self.x - i,self.y - i) for i in range(1,self.y - target_y)])
-
-
-        elif (target_y > self.y and self.x > target_x):
-            zwischen_zellen_index.append([(self.x - i,self.y + i) for i in range(1,target_y - self.y)])
-
-        elif (target_y < self.y and self.x < target_x):
-            zwischen_zellen_index.append([(self.x + i,self.y - i) for i in range(1,target_y - self.y)])
-
-
-
-
-
+        zwischen_zellen_index = self.berechne_between_positions_bishop(self.x,self.y,target_x, target_y)
 
         print(str(zwischen_zellen_index))
         super().moveTo(target_x, target_y, chess_boar)
+
+def berechne_between_positions_bishop(start_x,start_y, target_x, target_y):
+    ## jetzige Position ist (self.x, self.y), target ist (target_x, target_y)
+    zwischen_zellen_index = []
+    if (target_y > start_y and start_x < target_x):
+
+        zwischen_zellen_index.append([(start_x + i, start_y + i) for i in range(1, target_y - start_y)])
+    elif (target_y < start_y and start_x > target_x):
+        zwischen_zellen_index.append([(start_x - i, start_y - i) for i in range(1, start_y - target_y)])
+
+
+    elif (target_y > start_y and start_x > target_x):
+        zwischen_zellen_index.append([(start_x - i, start_y + i) for i in range(1, target_y - start_y)])
+
+    elif (target_y < start_y and start_x < target_x):
+        zwischen_zellen_index.append([(start_x + i, start_y - i) for i in range(1, start_y - target_y)])
+    return zwischen_zellen_index
 
 
 
