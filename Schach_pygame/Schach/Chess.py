@@ -9,20 +9,34 @@ black = (0, 0, 0)
 grey = (128, 128, 128)
 red = (255, 0, 0)
 
-def draw_chess_board(start_x,start_y,cellwidth,DISPLAYSURF):
+def draw_chess_board(start_x, start_y, cellwidth, screen):
+
+    cell_color = white
+
+
+
+    for row in range(0,8):
+
+        # eine Reihe zeichnen
+        for i in range(0,8):
+            cell_i_x = start_x + i * cellwidth
+            cell_i_y = start_y + row * cellwidth
+
+            pygame.draw.rect(screen,cell_color,[cell_i_x,cell_i_y,cellwidth,cellwidth])
+            cell_color = switchCellColor(cell_color)
+        cell_color = switchCellColor(cell_color)
+
+
+
+def switchCellColor(current_cell_color):
+    if current_cell_color == black:
+        return white
+    elif current_cell_color == white:
+        return black
 
 
 
 
-    color = black
-    for y in range(9,1,-1):
-        if color == white:
-            color = black
-        else:
-            color = white
-        for x in range(6,14):
-            if color == white:
-                color = black
-            else:
-                color = white
-            pygame.draw.rect(DISPLAYSURF,color,[x * cellwidth,y * cellwidth,cellwidth,cellwidth])
+
+
+
