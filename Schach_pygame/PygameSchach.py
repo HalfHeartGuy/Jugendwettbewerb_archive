@@ -38,10 +38,11 @@ FPS.tick(30)
 #Class für Chess_Sprite
 
 
-class Tower(pygame.sprite.Sprite):
+class Figure_Chess_Visulisation(pygame.sprite.Sprite):
     def __init__(self,x,y,image):
         super().__init__()
         self.image = pygame.image.load(image)
+
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
 
@@ -52,7 +53,10 @@ class Tower(pygame.sprite.Sprite):
 
 
 Chess.draw_chess_board(chess_board_start_x,chess_board_start_y,cell_width,DISPLAYSURF)
-chess_sprite_white_tower = Tower(chess_board_start_x + 1/2 * cell_width,chess_board_start_y + 7 * cell_width + 1/2 * cell_width,"Schach/image_tower.jpg")
+chess_sprite_white_tower = Figure_Chess_Visulisation(chess_board_start_x + 1/2 * cell_width,chess_board_start_y + 7 * cell_width + 1/2 * cell_width,"images/image_tower.png")
+chess_sprite_white_tower2 = Figure_Chess_Visulisation(chess_board_start_x + 7 * cell_width + 1/2 * cell_width,chess_board_start_y + 7 * cell_width + 1/2 * cell_width,"images/image_tower.png")
+chess_sprite_white_knight1 = Figure_Chess_Visulisation(chess_board_start_x + 6 * cell_width + 1/2 * cell_width,chess_board_start_y + 7 * cell_width + 1/2 * cell_width,"images/image_knight.png")
+chess_sprite_white_knight2 = Figure_Chess_Visulisation(chess_board_start_x + 1 * cell_width + 1/2 * cell_width,chess_board_start_y + 7 * cell_width + 1/2 * cell_width,"images/image_knight.png")
 
 
 
@@ -62,4 +66,7 @@ while True:
             pygame.quit()
             sys.exit()
     chess_sprite_white_tower.draw(DISPLAYSURF)
+    chess_sprite_white_tower2.draw(DISPLAYSURF)
+    chess_sprite_white_knight1.draw(DISPLAYSURF)
+    chess_sprite_white_knight2.draw(DISPLAYSURF)
     pygame.display.update()
