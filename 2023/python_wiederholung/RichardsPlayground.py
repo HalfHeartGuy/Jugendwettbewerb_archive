@@ -70,3 +70,16 @@ Jugendmusizieren1 = Jugendmusizieren("Musik",2023,"Wendlingen","Geige")
 Jugendmusizieren1.change_location("Köngen")
 Jugendmusizieren1.use_instrument("Bratsche")
 print(Jugendmusizieren1)
+
+
+import datetime
+
+
+
+x = datetime.datetime.now()
+print(x.minute)
+
+
+print(min(2,5,11))
+
+
