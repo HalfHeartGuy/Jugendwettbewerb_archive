@@ -1,8 +1,8 @@
 import _18022023
 from _18022023 import *
-import MusischuleModule
-from MusischuleModule import *
+import MusikSchuleModule
+from MusikSchuleModule import *
 
 
 
-MusischuleModule.getStudentsForINstrument()
+MusikSchuleModule.registerOneStudentForInstrument("Max ","Violin")

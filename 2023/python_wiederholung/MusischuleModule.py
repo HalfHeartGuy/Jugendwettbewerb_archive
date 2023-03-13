@@ -26,6 +26,12 @@ def updateInstrumentTeacher(teacher:str,instrument:str):
 
     teachers[instrument] = teacher
 
+def building_the_building_bigger(teacher_capacity,instrument_capacity,valuefortheBiggerBuilding):
+    teacher_capacity = teacher_capacity + valuefortheBiggerBuilding
+    instrument_capacity = instrument_capacity + valuefortheBiggerBuilding
+    return teacher_capacity,instrument_capacity
+
+
 def istInstrumentAvailable(instrument:str):
     if instrument in list_instrument:
 
