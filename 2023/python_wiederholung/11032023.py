@@ -60,19 +60,46 @@ def task6(given_list):
         if oneelement % 5 == 0:
             print(oneelement)
 
-task6([10, 20, 33, 46, 55])
+#task6([10, 20, 33, 46, 55])
 
-def task7()
+def task7(given_string:str):
+    x = given_string.count("Emma")
+    print("Emma appeared " + str(x) + " times.")
 
+#task7("Emma is good developer. Emma is a writer.")
 
+def task8(counter):
+    if counter == 1:
+        print(counter)
+    else:
+        for i in range(1,counter + 1):
+            counter_string = ""
 
+            for j in range(0,i):
+                counter_string = str(counter_string) + " " + str(i)
+            print(counter_string)
 
+#task8(5)
 
+def task9(original_number):
+    original_number = str(original_number)
+    if str(original_number[0]) == str(original_number[-1]):
+        print("original number " + str(original_number))
+        print("Yes. given number is palindrome number")
+    else:
+        print("original number " + str(original_number))
+        print("No. given number is not palindrome number")
 
+#task9(125)
 
-
-
-
-
-
+def task10(list1:list,list2:list):
+    result_list = []
+    for num in list1:
+        if num % 2 != 0:
+            result_list.append(num)
+    for num2 in list2:
+        if num2 % 2 == 0:
+            result_list.append(num2)
+    return result_list
+print(task10([10, 20, 25, 30, 35],[40, 45, 60, 75, 90]))
 
