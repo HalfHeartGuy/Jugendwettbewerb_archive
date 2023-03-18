@@ -1,11 +1,11 @@
 def task1(firstnumber,secondnumber):
     if firstnumber * secondnumber <= 1000:
-        print(firstnumber * secondnumber)
+        print("The result is: " + str(firstnumber * secondnumber))
     else:
-        print(firstnumber + secondnumber)
+        print("The result is: " + str(firstnumber + secondnumber))
 
 
-
+#task1(20,30)
 
 
 def task2(wiederholungen):
@@ -22,12 +22,13 @@ def task2(wiederholungen):
 def task3():
     usersword = input("A word:")
     result = ""
+    print("original string is:" + usersword)
+    print("Printing only even index chars")
     for i in range(0,len(usersword),2):
-        result = result + usersword[i]
-    return result
+        print(usersword[i])
 
-#print(task3())
 
+#task3()
 def task4(word:str,number:int):
     if number <= len(word):
         result = word[number:]
@@ -36,7 +37,7 @@ def task4(word:str,number:int):
 
 
     return result
-#print(task4("pynative",3))
+#print(task4("pynative",4))
 
 def task5(numbers_x,numbers_y):
     if numbers_x[0] == numbers_x[-1]:
@@ -55,7 +56,8 @@ def task5(numbers_x,numbers_y):
 #task5([10, 20, 30, 40, 10],[75, 65, 35, 75, 30])
 
 def task6(given_list):
-    print("Divisible by 5:")
+    print("given list is:" + str(given_list))
+    print("Divisible by 5")
     for oneelement in given_list:
         if oneelement % 5 == 0:
             print(oneelement)
@@ -66,7 +68,7 @@ def task7(given_string:str):
     x = given_string.count("Emma")
     print("Emma appeared " + str(x) + " times.")
 
-#task7("Emma is good developer. Emma is a writer.")
+#task7("Emma is good developer. Emma is a writer.Emma.Emma")
 
 def task8(counter):
     if counter == 1:
@@ -90,7 +92,7 @@ def task9(original_number):
         print("original number " + str(original_number))
         print("No. given number is not palindrome number")
 
-#task9(125)
+#task9(121)
 
 def task10(list1:list,list2:list):
     result_list = []
