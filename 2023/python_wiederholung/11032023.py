@@ -174,6 +174,13 @@ def task14(wiederholungen):
 task14(6)
 
 
+def task15(base,exp):
+    result = base
+    for i in range(0,exp - 1):
+        result = result * base
+    return result
+print(task15(5,4))
+
 
 
 
