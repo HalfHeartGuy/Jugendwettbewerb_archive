@@ -71,21 +71,20 @@ def task7(given_string:str):
 #task7("Emma is good developer. Emma is a writer.Emma.Emma")
 
 def task8(counter):
-    if counter == 1:
-        print(counter)
-    else:
-        for i in range(1,counter + 1):
-            counter_string = ""
 
-            for j in range(0,i):
-                counter_string = str(counter_string) + " " + str(i)
-            print(counter_string)
 
-#task8(5)
+    for i in range(1,counter + 1):
+        counter_string = ""
+
+        for j in range(0,i):
+            counter_string = str(counter_string) + " " + str(i)
+        print(counter_string)
+
+#task8(10)
 
 def task9(original_number):
     original_number = str(original_number)
-    if str(original_number[0]) == str(original_number[-1]):
+    if str(original_number) == str(original_number[::-1]):
         print("original number " + str(original_number))
         print("Yes. given number is palindrome number")
     else:
@@ -103,5 +102,84 @@ def task10(list1:list,list2:list):
         if num2 % 2 == 0:
             result_list.append(num2)
     return result_list
-print(task10([10, 20, 25, 30, 35],[40, 45, 60, 75, 90]))
+#print(task10([10, 20, 25, 30, 35],[40, 45, 60, 75, 90]))
+
+
+def task10_2(list1,list2):
+    result = []
+    list1_odd = [x for x in list1 if x % 2 == 0]
+    list2_even = [x for x in list2 if x % 2 != 0]
+
+    result.extend(list1_odd)
+    result.extend(list2_even)
+
+    return result
+
+list1 = [10, 20, 25, 30, 35]
+list2 = [40, 45, 60, 75, 90]
+
+#print(task10_2(list1,list2))
+
+def task11(number):
+    number = str(number)
+    number = str(number[::-1])
+    result = ""
+    for i in range(0,len(number)):
+
+        result = result + " " + str(number[i])
+    result.strip()
+
+
+
+#print(task11(5541))
+
+def task12(income):
+    tax = 0
+    if income <= 10000:
+        tax = 0
+        return tax
+    elif income <= 20000 and income > 10000:
+        tax = income - 10000
+        tax = tax * 0.1
+        return tax
+    else:
+        result_tax = 0
+        tax = income - 10000
+        result_tax = 10000 * 0.1
+        tax = tax - 10000
+        result_tax = result_tax + tax * 0.2
+        return result_tax
+#print(task12(8000))
+
+def task13(number):
+    for i in range(1,number + 1):
+        result = ""
+
+        result = result + str(i) + "  "
+        for j in range(2,11):
+            result = result + str(j * i) + " "
+        print(result)
+
+
+
+
+#task13(11)
+
+def task14(wiederholungen):
+    for i in range(wiederholungen,0,-1):
+        result = ""
+        for j in range(0,i):
+            result = result + "*" + " "
+        print(result)
+task14(6)
+
+
+
+
+
+
+
+
+
+
 
