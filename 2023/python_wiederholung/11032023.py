@@ -171,7 +171,7 @@ def task14(wiederholungen):
         for j in range(0,i):
             result = result + "*" + " "
         print(result)
-task14(6)
+#task14(6)
 
 
 def task15(base,exp):
@@ -179,11 +179,27 @@ def task15(base,exp):
     for i in range(0,exp - 1):
         result = result * base
     return result
-print(task15(5,4))
+#print(task15(5,4))
 
 
 
+def task16(sentence:str):
 
+    sentece2 = sentence.split(" ")
+    new_list = []
+    for i in sentece2:
+        result = ""
+        for j in range(len(i) - 1,-1,-1):
+            result = result + str(i[j])
+        new_list.append(result)
+    new_list = str(new_list)
+    new_list = new_list.replace("[","")
+    new_list = new_list.replace("]","")
+    new_list = new_list.replace(",","")
+    new_list = new_list.replace("'","")
+
+    return new_list
+print(task16("My Name is Jessa"))
 
 
 
