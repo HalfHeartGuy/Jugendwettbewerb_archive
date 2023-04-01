@@ -179,7 +179,7 @@ def task15(base,exp):
     for i in range(0,exp - 1):
         result = result * base
     return result
-#print(task15(5,4))
+#print(task15(2,10))
 
 
 
@@ -199,7 +199,81 @@ def task16(sentence:str):
     new_list = new_list.replace("'","")
 
     return new_list
-print(task16("My Name is Jessa"))
+#print(task16("Ich habe heute einen python Kurs"))
+
+def task17():
+    with open("sample.txt","r") as sample:
+        return sample.read().replace("\n"," ")
+
+
+#print(task17())
+
+def task18(number_list:list):
+    for i in range(len(number_list) - 1, -1, -1):
+        if number_list[i] > 50:
+            del number_list[i]
+    return number_list
+
+#print(task18([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]))
+
+def task19(dictionary:dict):
+    ascii_dict = {'A': 65, 'B': 66, 'C': 67, 'D': 68}
+    new_dict = {v: key for key, v in ascii_dict.items()}
+    return new_dict
+#print(task19({'A': 65, 'B': 66, 'C': 67, 'D': 68}))
+
+
+
+
+
+
+
+#task20([10, 20, 60, 30, 20, 40, 30, 60, 70, 80])
+
+
+
+
+
+#task21
+# Dictionary
+d1 = {'A': 65, 'B': 66, 'C': 67, 'D': 68, 'E': 69, 'F': 70}
+# Filter dict using following keys
+l1 = ['A', 'C', 'F']
+new_dict = {key: d1[key] for key in l1}
+#print(new_dict)
+
+
+
+def task22(number):
+
+    for i in range(1, number + 1):
+        print((str(i) + " ") * ((number + 1) - i))
+
+#task22(4)
+
+def outer_function(x:str,y:str):
+
+    def inner_function():
+        inner_result = x + y
+        return inner_result
+    result = inner_function()
+    result = result + "Developers"
+    return result
+
+#print(outer_function("H","Kelly"))
+
+def task24(list1):
+    list1[1][2][2][1] = 3500
+    return list1
+#print(task24([5, [10, 15, [20, 25, [30, 35], 40], 45], 50]))
+
+def task25(dictionary1:dict):
+    return dictionary1["company"]["employee"]["payable"]["increment"]
+
+print(task25({"company": {"employee": {"name": "Jess","payable": {"salary": 9000,"increment": 12}}}}))
+
+
+
 
 
 
