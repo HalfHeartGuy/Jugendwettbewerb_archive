@@ -43,4 +43,63 @@ def task5(given_list:list):
         else:
             if i % 5 == 0:
                 print(i)
-task5([12, 75, 150, 180, 145, 525, 50])
+#task5([12, 75, 150, 180, 145, 525, 50])
+
+
+
+def task6(number:str):
+    number = str(number)
+    counter = 0
+    while counter < len(number):
+
+        counter += 1
+    return counter
+#print(task6("5789"))
+
+def task7():
+    for i in range(5, 0, -1):
+        for j in range(i, 0, -1):
+            print(j, end=' ')
+        print()
+
+
+#task7()
+
+
+
+def task8(input_list:list):
+    for i in range(len(input_list) - 1,-1,-1):
+        print(input_list[i])
+#task8([10, 20, 30, 40, 50])
+
+
+def task9():
+    for i in range(-10,0):
+        print(i)
+#task9()
+
+
+def task10():
+    for i in range(5):
+        print(i)
+    else:
+        print("Done!")
+#task10()
+
+start = 25
+end = 50
+def task11(start,end):
+    for i in range(start,end):
+        statement = True
+
+        for j in range(2,i - 1):
+
+            if i / j == round(i / j):
+                statement = False
+                continue
+        if statement == True:
+            print(i)
+
+
+task11(25,50)
+
