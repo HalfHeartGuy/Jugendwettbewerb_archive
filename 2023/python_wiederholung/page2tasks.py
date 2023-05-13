@@ -497,6 +497,7 @@ def task4_15(s1):
         else:
             continue
     res = res.replace("  "," ")
+    print("task15")
     print(res)
 #task4_15("/*Jon is @developer & musician")
 
@@ -505,6 +506,7 @@ def task4_16(s1):
     for onething in s1:
         if onething.isdigit():
             res = res + str(onething)
+    print("task16")
     print(res)
 #task4_16("I am 25 years and 10 months old")
 
@@ -521,6 +523,7 @@ def task4_17(s1):
                 if onething2.isalpha():
                     alpha = True
             if digit and alpha:
+                print("task 17")
                 print(zwischenschritt.strip())
             zwischenschritt = " "
         else:
@@ -528,21 +531,211 @@ def task4_17(s1):
 
 
 
-task4_17("Emma25 is Data scientist50 and AI Expert")
+#task4_17("Emma25 is Data scientist50 and AI Expert")
+
+def task4_18(s1):
+    res = " "
+    for onething in s1:
+        if onething.isdigit():
+            res = res + onething
+        elif onething.isalpha():
+            res = res + onething
+        elif onething == " ":
+            res = res + onething
+        else:
+            res = res + "#"
+    print("task18")
+    print(res.strip())
+
+#task4_18("/*Jon is @developer & musician!!")
+
+
+def task5_1(l1,l2):
+    print("task 1")
+    l1_1 = []
+    l2_2 = []
+    print("Element at odd-index positions from list one")
+
+    for i in range(1,len(l1) - 1,2):
+
+        l1_1.append(l1[i])
+    print(l1_1)
+    print("Element at even-index positions from list two")
+
+    for j in range(0,len(l2) - 1,2):
+        l2_2.append(l2[j])
+    print(l2_2)
+    print("Printing Final third list")
+    print(l1_1 + l2_2)
+#task5_1([3, 6, 9, 12, 15, 18, 21],[4, 8, 12, 16, 20, 24, 28])
+
+
+def task5_2(l1:list):
+    print("task 2")
+    onepiece = l1.pop(4)
+
+    print("List After removing element at index 4 " + str(l1))
+    l1.insert(2,onepiece)
+    print("List after Adding element at index 2 " + str(l1))
+    l1.append(onepiece)
+    print("List after Adding element at last " + str(l1))
+
+
+#task5_2([34, 54, 67, 89, 11, 43, 94])
+
+
+def task5_3(l1:list):
+    chunk_size = len(l1) // 3
+    chunk1 = l1[:chunk_size]
+    chunk2 = l1[chunk_size:chunk_size * 2]
+    chunk3 = l1[chunk_size * 2:]
+    print("Chunk 1 " + str(chunk1))
+    print("After reversing it " + str(chunk1[::-1]))
+    print("Chunk 2 " + str(chunk2))
+    print("After reversing it " + str(chunk2[::-1]))
+    print("Chunk 3 " + str(chunk3))
+    print("After reversing it " + str(chunk3[::-1]))
+
+
+
+#task5_3([11, 45, 8, 23, 14, 12, 78, 45, 89])
+
+def task5_4(l1:list):
+    result_dictionary = {}
+    for onenumber in l1:
+        if onenumber in result_dictionary:
+            result_dictionary[onenumber] += 1
+        else:
+            result_dictionary[onenumber] = 1
+    print(result_dictionary)
+#task5_4( [11, 45, 8, 11, 23, 45, 23, 45, 89])
+
+
+def task5_5(l1:list,l2:list):
+    result_tuple = zip(l1,l2)
+    print(set(result_tuple))
+#task5_5([2, 3, 4, 5, 6, 7, 8],[4, 9, 16, 25, 36, 49, 64])
+
+
+def task5_6(s1:set,s2:set):
+    s3 = s1.intersection(s2)
+    print("Intersection is " + str(s3))
+    for onenumber in s3:
+        if onenumber in s1:
+            s1.remove(onenumber)
+    print("First Set after removing common element " + str(s1))
+#task5_6({23, 42, 65, 57, 78, 83, 29},{57, 83, 29, 67, 73, 43, 48})
+
+def task5_7(s1:set,s2:set):
+    checker = s1.issubset(s2)
+    print("First set is subset of second set - " + str(s1.issubset(s2)))
+    print("Second set is subset of First set - " + str(s2.issubset(s1)))
+
+    print("First set is Super set of second set - " + str(s1.issuperset(s2)))
+    print("Second set is Super set of First set - " + str(s2.issuperset(s1)))
+
+    if s1.issubset(s2):
+        s1.clear()
+    else:
+        s2.clear()
+    print("First set " + str(s1))
+    print("Second Set " + str(s2))
 
 
 
 
 
+#task5_7({27, 43, 34},{34, 93, 22, 27, 43, 53, 48})
+
+def task5_8(roll_number:list,sample_dict:dict):
+    for onenumber in roll_number:
+        if onenumber not in sample_dict.values():
+            roll_number.remove(onenumber)
+    print("After removing unwanted elements from list" + str(roll_number))
+#task5_8([47, 64, 69, 37, 76, 83, 95, 97],{'Jhon':47, 'Emma':69, 'Kelly':76, 'Jason':97})
+
+def task5_9(d1:dict):
+    l1 = d1.values()
+    l1 = set(l1)
+    l1 = list(l1)
+    print(l1)
+#task5_9({'jan': 47, 'feb': 52, 'march': 47, 'April': 44, 'May': 52, 'June': 53, 'july': 54, 'Aug': 44, 'Sept': 54})
 
 
+def task5_10(l1):
+    l1 = set(l1)
+    print(list(l1))
+    t1 = l1
+    print("tuple " + str(t1))
+    print("min: " + str(min(t1)))
+    print("max: " + str(max(t1)))
+#task5_10([87, 45, 41, 65, 94, 41, 99, 94])
 
 
+def task6_1(l1:list):
+    print(list(reversed(l1)))
+#task6_1([100, 200, 300, 400, 500])
+
+def task6_2(l1,l2):
+    l3 = []
+    if len(l1) > len(l2):
+        longerList = l1
+        shorterList = l2
+    else:
+        longerList = l2
+        shorterList = l1
+    for i in range(0,len(shorterList)):
+        l3.append(l1[i] + l2[i])
+    if len(longerList) != len(shorterList):
+        l3.append(longerList[len(shorterList):])
+    print(l3)
+#task6_2(["M", "na", "i", "Ke"], ["y", "me", "s", "lly"])
+
+def task6_3(l1):
+    l2 = []
+    for i in range(len(l1)):
+        l2.append(l1[i] * l1[i])
+    print(l2)
+task6_3([1, 2, 3, 4, 5, 6, 7])
 
 
+def task6_4(l1,l2):
+    l3 = []
+    for i in l1:
+        for j in l2:
+            l3.append(i + j)
+    print(l3)
+#task6_4(["Hello ", "take "],["Dear", "Sir"])
+
+def task6_5(l1:list,l2:list):
+    l2 = reversed(l2)
 
 
+    t1 = zip(l1,l2)
+    for oneitem in t1:
+        oneitem = str(oneitem)
+        oneitem = oneitem.replace("(","")
+        print(oneitem.replace(")",""))
 
+#task6_5([10, 20, 30, 40],[100, 200, 300, 400])
 
+def task6_6(l1:list):
+    l2 = []
+    for oneitem in l1:
+        if oneitem:
+            l2.append(oneitem)
+    l2 = filter(None,l2)
+    print(list(l2))
 
+#task6_6(["Mike", "", "Emma", "Kelly", "", "Brad"])
 
+def task6_7(l1:list):
+    l1[2][2].append(7000)
+
+    print(l1)
+#task6_7([10, 20, [300, 400, [5000, 6000], 500], 30, 40])
+
+def task6_8(l1:list,l2):
+    l1[2][1][2].extend(l2)
+    print(l1)
+task6_8(["a", "b", ["c", ["d", "e", ["f", "g"], "k"], "l"], "m", "n"],["h", "i", "j"])
