@@ -4,7 +4,7 @@ sudoku = [
     [0, 0, 0, 5, 0, 0, 0, 1, 0],
     [0, 5, 0, 0, 7, 0, 0, 2, 0],
     [6, 0, 0, 8, 0, 5, 0, 0, 3],
-    [0, 1, 0, 0, 3, 0, 0, 9, 0],
+    [2, 1, 0, 0, 3, 0, 0, 9, 0],
     [0, 9, 0, 0, 0, 6, 0, 0, 0],
     [7, 0, 0, 4, 0, 0, 0, 0, 0],
     [2, 0, 0, 6, 0, 0, 9, 0, 0]
@@ -24,7 +24,7 @@ def isDuplicateAvailable(numbers: list):
 
 
 
-def isColumnvalid(mysudoku: list):
+def isRowvalid(mysudoku: list):
     for onelist in mysudoku:
         valid_2 = isDuplicateAvailable(onelist)
 
@@ -34,5 +34,17 @@ def isColumnvalid(mysudoku: list):
     else:
         return True
 
+def isColumnValid(mysudoku:list):
+    for i in range(0,9):
+        rowList = []
 
-print(isColumnvalid(sudoku))
+        for j in range(0,9):
+            rowList.append(mysudoku[j][i])
+
+        valid = isDuplicateAvailable(rowList)
+        if valid == False:
+            return False
+    return True
+
+
+
