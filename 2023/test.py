@@ -1,13 +1,13 @@
 sudoku = [
     [0, 0, 4, 0, 0, 3, 0, 0, 7],
-    [9, 0, 0, 0, 2, 0, 0, 0, 0],
+    [9, 0, 5, 0, 2, 0, 0, 0, 0],
     [0, 0, 0, 5, 0, 0, 0, 1, 0],
-    [0, 5, 0, 0, 7, 0, 0, 2, 0],
-    [6, 0, 0, 8, 0, 5, 0, 0, 3],
+    [3, 5, 0, 0, 7, 0, 0, 2, 0],
+    [4, 0, 0, 8, 0, 5, 0, 0, 3],
     [0, 1, 0, 0, 3, 0, 0, 9, 0],
     [0, 9, 0, 0, 0, 0, 0, 0, 0],
     [7, 0, 0, 4, 0, 0, 0, 0, 0],
-    [2, 0, 0, 6, 0, 0, 9, 0, 0]
+    [2, 0, 5, 6, 0, 0, 9, 0, 0]
 ]
 valid = True
 
@@ -37,6 +37,8 @@ def isColumnValid(mysudoku: list):
             return False
     return True
 
+print("Column ist:" , isColumnValid(sudoku))
+
 
 def isBoxValid(mysudoku: list):
     for start_row in range(0, 9, 3):
@@ -49,6 +51,16 @@ def isBoxValid(mysudoku: list):
             if valid == False:
                 return False
     return True
+"""
+def is3x3BoxValid(_3x3Box:list) -> bool:
+    box_values = []
+    for row in range(0,3):
+        for col in range(0,3):
+            box_values.append(_3x3Box[row][col])
+
+    return isDuplicateAvailable(box_values)
+"""
+
 
 
 def isSudokuValid(mysudoku: list):
