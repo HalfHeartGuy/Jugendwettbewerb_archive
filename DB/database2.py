@@ -22,19 +22,19 @@ def findStudentsFromSchool(schoolname:str) -> list:
 
 
 
-findStudentsFromSchool("PMHG")
+#findStudentsFromSchool("PMHG")
 
-def createanewSchool(idschool,name,address,country,city):
-    sql_query = "INSERT INTO `schema_pythonlernen`.`school` (`idschool`, `name`, `address`, `country`, `city`) VALUES (%s, %s, %s, %s, %s)"
-    query_parameters = (idschool,name,address,country,city,)
+def createanewSchool(name,address,country,city):
+    sql_query = "INSERT INTO `schema_pythonlernen`.`schule` (`name`, `address`, `country`, `city`) VALUES (%s, %s, %s, %s)"
+    query_parameters = (name,address,country,city,)
     mycursor.execute(sql_query,query_parameters)
 
     mydb.commit()
 
-#createanewSchool("12","UMKRS","Wagnerstraße 4","DE","70567 Stuttgart")
+createanewSchool("UMKRS","Wagnerstraße 4","DE","70567 Stuttgart")
 
 def letOldStudentsToUniversity(age:int, country:str):
-    sql_query = "UPDATE student SET school = '12' WHERE age > %s AND player_country = %s"
+    sql_query = "UPDATE student SET school = '11' WHERE age > %s AND player_country = %s"
     query_parameters = (age,country,)
     mycursor.execute(sql_query,query_parameters)
     mydb.commit()

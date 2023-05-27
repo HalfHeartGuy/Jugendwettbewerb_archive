@@ -1,23 +1,33 @@
+
+import random
+
 sudoku = [
-    [0, 0, 4, 0, 0, 3, 0, 0, 7],
-    [9, 0, 5, 0, 2, 0, 0, 0, 0],
-    [0, 0, 0, 5, 0, 0, 0, 1, 0],
-    [3, 5, 0, 0, 7, 0, 0, 2, 0],
-    [4, 0, 0, 8, 0, 5, 0, 0, 3],
-    [0, 1, 0, 0, 3, 0, 0, 9, 0],
-    [0, 9, 0, 0, 0, 0, 0, 0, 0],
-    [7, 0, 0, 4, 0, 0, 0, 0, 0],
-    [2, 0, 5, 6, 0, 0, 9, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
+
+
 valid = True
 
 
 def isDuplicateAvailable(numbers: list):
     zeros = numbers.count(0)
-    if len(set(numbers)) != (len(numbers) - zeros) + 1:
+    print(len(set(numbers)))
+    print(len(numbers) - zeros)
+    if zeros == 9 or len(set(numbers)) > len(numbers) - zeros:
+        return True
+    if len(set(numbers)) != (len(numbers) - zeros):
         valid = False
         return valid
-
+    else:
+        return True
 
 def isRowValid(mysudoku: list):
     for onelist in mysudoku:
@@ -26,7 +36,7 @@ def isRowValid(mysudoku: list):
             return valid_2
     return True
 
-
+"""
 def isColumnValid(mysudoku: list):
     for i in range(0, 9):
         rowList = []
@@ -51,7 +61,7 @@ def isBoxValid(mysudoku: list):
             if valid == False:
                 return False
     return True
-"""
+
 def is3x3BoxValid(_3x3Box:list) -> bool:
     box_values = []
     for row in range(0,3):
@@ -59,7 +69,7 @@ def is3x3BoxValid(_3x3Box:list) -> bool:
             box_values.append(_3x3Box[row][col])
 
     return isDuplicateAvailable(box_values)
-"""
+
 
 
 
@@ -76,7 +86,5 @@ def isSudokuValid(mysudoku: list):
     return True
 
 
-if isSudokuValid(sudoku):
-    print("Das Sudoku-Feld ist gültig.")
-else:
-    print("Das Sudoku-Feld ist ungültig.")
+"""
+print(isRowValid([[5,4,0,1,7,2,8,3,9],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]))
