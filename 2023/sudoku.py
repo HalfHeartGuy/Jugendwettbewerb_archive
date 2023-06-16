@@ -12,6 +12,8 @@ sudoku = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
+
+diffilculty = input("Schwierigkeitsgrad auswählen (leicht/mittel/schwer)")
 def isDuplicateInRow(row, number):
     return number in row
 
@@ -67,3 +69,36 @@ def sudokuGenerator():
 
 
 sudokuGenerator()
+
+totalEmptyCells = 0
+if diffilculty == "leicht":
+    totalEmptyCells = 44
+elif diffilculty == "mittel":
+    totalEmptyCells = 50
+else:
+    totalEmptyCells = 52
+
+
+
+def createEmptyCells(totalEmptyCells):
+    emptyCells = []
+    for i in range(0,9):
+        if diffilculty == "schwer":
+            emptyCells.append(random.randint(5,7))
+        else:
+            emptyCells.append(random.randint(3,7))
+    while sum(emptyCells) != totalEmptyCells:
+        if sum(emptyCells) > totalEmptyCells:
+            max_number = emptyCells.index(max(emptyCells))
+            emptyCells[max_number] -= 1
+        else:
+            if sum(emptyCells) < totalEmptyCells:
+                min_number = emptyCells.index(min(emptyCells))
+                emptyCells[min_number] += 1
+    return emptyCells
+print("empty cells list:" + str(createEmptyCells(totalEmptyCells)))
+
+
+
+
+
