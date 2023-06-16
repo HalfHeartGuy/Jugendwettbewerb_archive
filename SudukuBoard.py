@@ -15,7 +15,14 @@ screen = pygame.display.set_mode((500, 600))
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Arial", 20)
 
+def drawInputTextfield(active:bool):
+    input_text_font = pygame.font.Font(None, 32)
+    input_text = ""
 
+    input_field = pygame.Rect(200,200,300,30)
+    activ = False
+
+    return input_field
 
 def drawCircle(screen: Surface):
     color_grey = (200, 200, 200)
@@ -60,7 +67,7 @@ class Button():
         mycursor.execute(sql,values)
 
         mydb.commit()
-
+        print("User {} was created.".format(values))
         print(mycursor.rowcount)
 
 
