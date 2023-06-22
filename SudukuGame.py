@@ -46,6 +46,8 @@ while True:
                 input_txt = input_txt[:-1]
             input_txt += event.unicode
 
+
+
     button_new_user.show()
     clock.tick(30)
     pygame.display.update()

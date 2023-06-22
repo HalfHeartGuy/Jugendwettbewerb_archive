@@ -5,7 +5,7 @@ mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="Nether69",
-  database = "sudoku"
+  database="sudoku"
 )
 mycursor = mydb.cursor()
 import pygame
@@ -15,13 +15,14 @@ screen = pygame.display.set_mode((500, 600))
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Arial", 20)
 
-def drawInputTextfield(active:bool):
+def drawInputTextfield(active: bool):
     input_text = ""
 
-    input_field = pygame.Rect(200,200,300,30)
+    input_field = pygame.Rect(200, 200, 300, 30)
     active = False
 
     return input_field
+
 
 def drawCircle(screen: Surface):
     color_grey = (200, 200, 200)
@@ -33,7 +34,7 @@ def drawCircle(screen: Surface):
 
 
 class Button():
-    def __init__(self, text, pos, font, bg="black", feedback = ""):
+    def __init__(self, text, pos, font, bg="black", feedback=""):
         self.text = text
         self.x, self.y = pos
         self.font = pygame.font.SysFont("Arial", font)
@@ -48,34 +49,25 @@ class Button():
         self.surface.blit(self.text, (0, 0))
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
 
-    def click(self, event,username:str):
+    def click(self, username: str):
         mouse_x, mouse_y = pygame.mouse.get_pos()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if pygame.mouse.get_pressed()[0]:
-
-
-                self.change_text(self.feedback, bg="red")
-                self.createANewUserInMySQLTable(username,random.randint(6,99),str(username) + ("@gmail.com"),str(random.randint(100,99999)) + "!",random.randint(11111111,99999999),str(random.randint(100,999)) + "." + str(random.randint(10,99)) + str(random.randint(100,999)) + "." + str(random.randint(10,99)),"DE")
-
+        if self.rect.collidepoint(mouse_x, mouse_y):
+            print("Hello World")
+            self.change_text(self.feedback, bg="red")
+            self.createANewUserInMySQLTable("Max", random.randint(6, 99), "Max.Mustermann@gmail.com",
+                                            str(random.randint(100, 99999)) + "!", random.randint(11111111, 99999999),
+                                            str(random.randint(100, 999)) + "." + str(random.randint(10, 99)) + str(
+                                                random.randint(100, 999)) + "." + str(random.randint(10, 99)), "DE")
 
         print(username)
+
     def show(self):
         screen.blit(self.surface, (self.x, self.y))
 
-    def createANewUserInMySQLTable(self,name,age,email,password,phone_number,IP,country):
-
+    def createANewUserInMySQLTable(self, name, age, email, password, phone_number, IP, country):
         sql = "INSERT INTO user (Name, age,email, password, phone_number, IP, Land) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        values = (name,age,email,password,phone_number,IP,country)
-        mycursor.execute(sql,values)
-
+        values = (name, age, email, password, phone_number, IP, country)
+        mycursor.execute(sql, values)
         mydb.commit()
         print("User {} was created.".format(values))
         print(mycursor.rowcount)
-
-
-
-
-
-
-
-
