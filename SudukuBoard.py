@@ -48,17 +48,16 @@ class Button():
         self.surface.blit(self.text, (0, 0))
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
 
-    def click(self, event,username:str):
+    def click(self, event,username:str = "Max Mustermann",age = random.randint(6,99),email = "Max.Mustermann@gmail.com",password = str(random.randint(100,99999)) + "!",phone_number = random.randint(11111111,99999999),IP = str(random.randint(100,999)) + "." + str(random.randint(10,99)) + str(random.randint(100,999)) + "." + str(random.randint(10,99)),Land = "DE"):
         mouse_x, mouse_y = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pressed()[0]:
+                if self.rect.collidepoint(mouse_x,mouse_y):
+
+                    self.change_text(self.feedback, bg="red")
+                    self.createANewUserInMySQLTable(username,age,email,password,phone_number,IP,"DE")
 
 
-                self.change_text(self.feedback, bg="red")
-                self.createANewUserInMySQLTable(username,random.randint(6,99),str(username) + ("@gmail.com"),str(random.randint(100,99999)) + "!",random.randint(11111111,99999999),str(random.randint(100,999)) + "." + str(random.randint(10,99)) + str(random.randint(100,999)) + "." + str(random.randint(10,99)),"DE")
-
-
-        print(username)
     def show(self):
         screen.blit(self.surface, (self.x, self.y))
 

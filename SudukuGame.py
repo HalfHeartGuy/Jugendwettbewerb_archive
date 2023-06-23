@@ -22,6 +22,7 @@ color_active = pygame.Color("lightskyblue3")
 input_field_rect = drawInputTextfield(active)
 sdkB.drawInputTextfield(active)
 input_txt = ""
+input_list = []
 input_text_font = pygame.font.Font(None, 32)
 
 #here the end of code for input box
@@ -31,7 +32,28 @@ while True:
             pygame.quit()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            button_new_user.click(event, input_txt)
+            if len(input_list) == 0:
+
+                button_new_user.click(event)
+            elif len(input_list) == 1:
+                button_new_user.click(event,input_list[0])
+            elif len(input_list) == 2:
+                button_new_user.click(event,input_list[0],input_list[1])
+            elif len(input_list) == 3:
+                button_new_user.click(event,input_list[0],input_list[1],input_list[2])
+            elif len(input_list) == 4:
+                button_new_user.click(event,input_list[0],input_list[1],input_list[2],input_list[3])
+            elif len(input_list) == 5:
+                button_new_user.click(event,input_list[0],input_list[1],input_list[2],input_list[3],input_list[4])
+
+
+            elif len(input_list) == 6:
+                button_new_user.click(event,input_list[0],input_list[1],input_list[2],input_list[3],input_list[4],input_list[5])
+
+            elif len(input_list) == 7:
+                button_new_user.click(event,input_list[0],input_list[1],input_list[2],input_list[3],input_list[4],input_list[5],input_list[6])
+
+
 
 
             if input_field_rect.collidepoint(event.pos):
@@ -45,6 +67,11 @@ while True:
             if event.key == pygame.K_BACKSPACE:
                 input_txt = input_txt[:-1]
             input_txt += event.unicode
+        print(input_list)
+        if input_txt.find(",") != 0:
+            input_list = input_txt.split(",")
+
+
 
 
 
