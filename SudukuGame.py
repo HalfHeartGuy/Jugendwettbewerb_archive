@@ -67,7 +67,6 @@ while True:
             if event.key == pygame.K_BACKSPACE:
                 input_txt = input_txt[:-1]
             input_txt += event.unicode
-        print(input_list)
         if input_txt.find(",") != 0:
             input_list = input_txt.split(",")
 
