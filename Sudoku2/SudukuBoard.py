@@ -49,7 +49,7 @@ class Button():
         self.surface.blit(self.text, (0, 0))
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
 
-    def click(self, event, username:str,age,email,password,phone_number,IP):
+    def click(self, event, username:str,age,email,password,phone_number,IP,land):
         mouse_x, mouse_y = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pressed()[0]:
@@ -57,14 +57,29 @@ class Button():
                     self.change_text(self.feedback, bg="red")
                     print("Username ", username)
 
-                    self.createANewUserInMySQLTable(username,age,email,password,phone_number,IP)
+                    self.createANewUserInMySQLTable(username,str(age),email,password,phone_number,IP,land)
 
 
 
     def show(self):
         screen.blit(self.surface, (self.x, self.y))
 
-    def createANewUserInMySQLTable(self,name="Max",age = random.randint(6,99),email = "Max.Mustermann@gmail.com",password = str(random.randint(100,99999)) + "!",phone_number = random.randint(11111111,99999999),IP = str(random.randint(100,999)) + "." + str(random.randint(10,99)) + "." + str(random.randint(100,999)) + "." + str(random.randint(10,99)),country = "DE"):
+    def createANewUserInMySQLTable(self,name="Max",age = str(random.randint(6,99)),email = "Max.Mustermann@gmail.com",password = str(random.randint(100,99999)) + "!",phone_number = random.randint(11111111,99999999),IP = str(random.randint(100,999)) + "." + str(random.randint(10,99)) + "." + str(random.randint(100,999)) + "." + str(random.randint(10,99)),country = "DE"):
+        if name == "":
+            name = "Max"
+        if age == "":
+            age = str(random.randint(6,99))
+        if email == "":
+            email = "Max.Mustermann@gmail.com"
+        if password == "":
+            password = str(random.randint(100,99999)) + "!"
+        if phone_number == "":
+            phone_number = random.randint(11111111,99999999)
+        if IP == "":
+            IP = str(random.randint(100, 999)) + "." + str(random.randint(10, 99)) + "." + str(
+                random.randint(100, 999)) + "." + str(random.randint(10, 99))
+        if country == "":
+            country = "DE"
 
         sql = "INSERT INTO user (Name, age,email, password, phone_number, IP, Land) VALUES (%s, %s, %s, %s, %s, %s, %s)"
         values = (name,age,email,password,phone_number,IP,country)
