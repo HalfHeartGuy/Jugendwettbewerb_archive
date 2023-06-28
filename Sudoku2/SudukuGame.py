@@ -37,6 +37,10 @@ input_password = ""
 input_phonenumber_rect = sdkB.drawInputTextfield(active,200,400,150,30)
 input_phonenumber = ""
 
+#input field:IP
+input_IP_rect = sdkB.drawInputTextfield(active,200,450,150,30)
+input_IP = ""
+
 input_text_font = pygame.font.Font(None, 32)
 #### here the end of code for input box
 
@@ -47,7 +51,7 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-        button_new_user.click(event, input_username, input_age,input_email,input_password,input_phonenumber)
+        button_new_user.click(event, input_username, input_age,input_email,input_password,input_phonenumber,input_IP)
 
 
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -66,6 +70,10 @@ while True:
             elif input_phonenumber_rect.collidepoint(event.pos):
                 active = True
                 selected_input_field = "input_phonenumber_rect"
+            elif input_IP_rect.collidepoint(event.pos):
+                active = True
+                selected_input_field = "input_IP_rect"
+
             else:
                 active = False
 
@@ -102,6 +110,12 @@ while True:
                 elif event.key == pygame.K_DELETE:
                     input_phonenumber = ""
                 input_phonenumber += event.unicode
+            elif selected_input_field == "input_IP_rect":
+                if event.key == pygame.K_BACKSPACE:
+                    input_IP = input_IP[:-1]
+                elif event.key == pygame.K_DELETE:
+                    input_IP = ""
+                input_IP += event.unicode
 
 
 
@@ -156,6 +170,14 @@ while True:
     screen.blit(text_surface, (input_phonenumber_rect.x + 5, input_phonenumber_rect.y + 5))
     # Inputfield width would be updated
     input_phonenumber_rect.w = max(100, text_surface.get_width())
+
+    #Zeichen von IP
+    pygame.draw.rect(screen, color_input_field, input_IP_rect)
+    # here the code for draw of input text
+    text_surface = input_text_font.render(input_IP, True, (255, 255, 255))
+    screen.blit(text_surface, (input_IP_rect.x + 5, input_IP_rect.y + 5))
+    # Inputfield width would be updated
+    input_IP_rect.w = max(100, text_surface.get_width())
 
 
 
