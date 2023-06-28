@@ -49,7 +49,7 @@ class Button():
         self.surface.blit(self.text, (0, 0))
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
 
-    def click(self, event, username:str,age,email,password):
+    def click(self, event, username:str,age,email,password,phone_number):
         mouse_x, mouse_y = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pressed()[0]:
@@ -57,7 +57,7 @@ class Button():
                     self.change_text(self.feedback, bg="red")
                     print("Username ", username)
 
-                    self.createANewUserInMySQLTable(username,age,email,password)
+                    self.createANewUserInMySQLTable(username,age,email,password,phone_number)
 
 
 
