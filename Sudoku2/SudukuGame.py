@@ -24,9 +24,15 @@ input_username_rect = sdkB.drawInputTextfield(active, 200, 200, 150, 30)
 input_username = ""
 
 ####  inputfiled: age #######################
-input_age_rect = sdkB.drawInputTextfield(active, 200, 300, 150, 30)
+input_age_rect = sdkB.drawInputTextfield(active, 200, 250, 150, 30)
 input_age = ""
+# inputfeld: email
+input_email_rect = sdkB.drawInputTextfield(active,200,300,150,30)
+input_email = ""
 
+#inputfeld:passwort
+input_password_rect = sdkB.drawInputTextfield(active,200,350,150,30)
+input_password = ""
 
 
 input_text_font = pygame.font.Font(None, 32)
@@ -39,7 +45,7 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-        button_new_user.click(event, input_username, input_age)
+        button_new_user.click(event, input_username, input_age,input_email,input_password)
 
 
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -49,6 +55,12 @@ while True:
             elif input_age_rect.collidepoint(event.pos):
                 active = True
                 selected_input_field = "input_age_rect"
+            elif input_email_rect.collidepoint(event.pos):
+                active = True
+                selected_input_field = "input_email_rect"
+            elif input_password_rect.collidepoint(event.pos):
+                active = True
+                selected_input_field = "input_password_rect"
             else:
                 active = False
 
@@ -67,6 +79,20 @@ while True:
                 elif event.key == pygame.K_DELETE:
                     input_age = ""
                 input_age += event.unicode
+            elif selected_input_field == "input_email_rect":
+                if event.key == pygame.K_BACKSPACE:
+                    input_email = input_email[:-1]
+                elif event.key == pygame.K_DELETE:
+                    input_email = ""
+                input_email += event.unicode
+            elif selected_input_field == "input_password_rect":
+                if event.key == pygame.K_BACKSPACE:
+                    input_password = input_password[:-1]
+                elif event.key == pygame.K_DELETE:
+                    input_password = ""
+                input_password += event.unicode
+
+
 
     button_new_user.show()
     clock.tick(30)
@@ -88,13 +114,28 @@ while True:
     # Inputfield width would be updated
     input_username_rect.w = max(100, text_surface.get_width())
 
-    ##### Zeichen von Passwordeingabe
+    ##### Zeichen von Age
     pygame.draw.rect(screen, color_input_field, input_age_rect)
     # here the code for draw of input text
     text_surface = input_text_font.render(input_age, True, (255, 255, 255))
     screen.blit(text_surface, (input_age_rect.x + 5, input_age_rect.y + 5))
     # Inputfield width would be updated
     input_age_rect.w = max(100, text_surface.get_width())
+
+    #Zeichnen von email
+    pygame.draw.rect(screen, color_input_field, input_email_rect)
+    # here the code for draw of input text
+    text_surface = input_text_font.render(input_email, True, (255, 255, 255))
+    screen.blit(text_surface, (input_email_rect.x + 5, input_email_rect.y + 5))
+    # Inputfield width would be updated
+    input_email_rect.w = max(100, text_surface.get_width())
+    #Zeichen von Passwort
+    pygame.draw.rect(screen, color_input_field, input_password_rect)
+    # here the code for draw of input text
+    text_surface = input_text_font.render(input_password, True, (255, 255, 255))
+    screen.blit(text_surface, (input_password_rect.x + 5, input_password_rect.y + 5))
+    # Inputfield width would be updated
+    input_password_rect.w = max(100, text_surface.get_width())
 
 
 
