@@ -23,9 +23,9 @@ color_active = pygame.Color('lightskyblue3')
 input_username_rect = sdkB.drawInputTextfield(active, 200, 200, 150, 30)
 input_username = ""
 
-####  inputfiled: password #######################
-input_password_rect = sdkB.drawInputTextfield(active, 200, 300, 150, 30)
-input_password = ""
+####  inputfiled: age #######################
+input_age_rect = sdkB.drawInputTextfield(active, 200, 300, 150, 30)
+input_age = ""
 
 
 
@@ -39,16 +39,16 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-        button_new_user.click(event, input_username)
+        button_new_user.click(event, input_username, input_age)
 
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if input_username_rect.collidepoint(event.pos):
                 active = True
                 selected_input_field = "input_username_rect"
-            elif input_password_rect.collidepoint(event.pos):
+            elif input_age_rect.collidepoint(event.pos):
                 active = True
-                selected_input_field = "input_password_rect"
+                selected_input_field = "input_age_rect"
             else:
                 active = False
 
@@ -61,12 +61,12 @@ while True:
                     input_username = ""
                 input_username += event.unicode
 
-            elif selected_input_field == "input_password_rect":
+            elif selected_input_field == "input_age_rect":
                 if event.key == pygame.K_BACKSPACE:
-                    input_password = input_password[:-1]
+                    input_age = input_age[:-1]
                 elif event.key == pygame.K_DELETE:
-                    input_password = ""
-                input_password += event.unicode
+                    input_age = ""
+                input_age += event.unicode
 
     button_new_user.show()
     clock.tick(30)
@@ -89,12 +89,12 @@ while True:
     input_username_rect.w = max(100, text_surface.get_width())
 
     ##### Zeichen von Passwordeingabe
-    pygame.draw.rect(screen, color_input_field, input_password_rect)
+    pygame.draw.rect(screen, color_input_field, input_age_rect)
     # here the code for draw of input text
-    text_surface = input_text_font.render(input_password, True, (255, 255, 255))
-    screen.blit(text_surface, (input_password_rect.x + 5, input_password_rect.y + 5))
+    text_surface = input_text_font.render(input_age, True, (255, 255, 255))
+    screen.blit(text_surface, (input_age_rect.x + 5, input_age_rect.y + 5))
     # Inputfield width would be updated
-    input_password_rect.w = max(100, text_surface.get_width())
+    input_age_rect.w = max(100, text_surface.get_width())
 
 
 

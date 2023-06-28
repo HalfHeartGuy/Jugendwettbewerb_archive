@@ -30,6 +30,5 @@ def isRowValid(mySuoku:list) -> list:
 def createARandomNumber(availableNumbesinSameRow:list,availableNumbersInSameColumn:list, avaialbleNumbersInSameBox):
     availableNUmbers = availableNumbesinSameRow + availableNumbersInSameColumn + avaialbleNumbersInSameBox
     listOfPossibleNumbers = [oneNumber for oneNumber in range(1,10) if oneNumber not in availableNUmbers]
-
     return random.choice(listOfPossibleNumbers)
 
