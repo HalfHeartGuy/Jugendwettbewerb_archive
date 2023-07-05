@@ -1,6 +1,7 @@
 import mysql.connector
 import math
 import random
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -41,6 +42,17 @@ class Button():
         self.feedback = feedback
         self.change_text(text, bg)  # Aufruf der change_text-Methode im Konstruktor
 
+    def emailundPasswortEingabe(password, email):
+        sql = "select email,password from sudoku.user where email = (email) and password = (password) VALUES (%s,%s)"
+
+        try:
+            values = (email, password)
+            mycursor.execute(sql, values)
+        except mysql.connector.errors.ProgrammingError:
+            print("wrong username or password")
+
+
+
     def change_text(self, text, bg="black"):
         self.text = self.font.render(text, 1, pygame.Color("White"))
         self.size = self.text.get_size()
@@ -50,6 +62,7 @@ class Button():
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
 
     def click(self, event, username:str,age,email,password,phone_number,IP,land):
+
         mouse_x, mouse_y = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pressed()[0]:
@@ -58,6 +71,26 @@ class Button():
                     print("Username ", username)
 
                     self.createANewUserInMySQLTable(username,str(age),email,password,phone_number,IP,land)
+    def click_2(self,event, email,password):
+        mycursor = mydb.cursor()
+
+        mycursor.execute("SELECT * FROM user")
+
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+
+        myresult = mycursor.fetchall()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.rect.collidepoint(mouse_x,mouse_y):
+                for oneuser in myresult:
+                    if oneuser[3] == email and oneuser[4] == password:
+
+                        screen.fill((0,0,0))
+                    else:
+                        self.feedback = "Wrong Password or Email"
+                        self.change_text(self.feedback,bg = "red")
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+
+
 
 
 
@@ -87,7 +120,6 @@ class Button():
 
         mydb.commit()
         print("User {} was created.".format(values))
-        print(mycursor.rowcount)
 
 
 
