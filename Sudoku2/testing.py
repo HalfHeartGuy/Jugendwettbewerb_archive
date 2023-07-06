@@ -1,56 +1,47 @@
 import pygame
+import sys
 
-# Initialize Pygame
 pygame.init()
 
-# Set the window dimensions
-width = 400
-height = 200
+# Fenstergröße
+WIDTH = 400
+HEIGHT = 300
 
-# Create the window
-window = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Text Box")
-
-# Define colors
+# Farben
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-# Define the text and font
-text = "Hello, world!"
-font = pygame.font.SysFont(None, 40)
+# Erstellen des Fensters
+window = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Timer")
 
-# Render the text
-text_surface = font.render(text, True, BLACK)
+# Schriftart initialisieren
+font = pygame.font.Font(None, 48)
 
-# Calculate the dimensions of the box
-box_width = text_surface.get_width() + 20
-box_height = text_surface.get_height() + 20
+# Timer-Werte
+timer_value = 0  # 60 Sekunden
+timer_event = pygame.USEREVENT + 1
+pygame.time.set_timer(timer_event, 1000)  # Timer-Ereignis alle 1000ms (1 Sekunde) auslösen
 
-# Calculate the position of the box
-box_x = (width - box_width) // 2
-box_y = (height - box_height) // 2
-
-# Main game loop
-running = True
-while running:
-    # Handle events
+while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            pygame.quit()
+            sys.exit()
+        elif event.type == timer_event:
+            timer_value += 1
+            if timer_value == 0:
+                pygame.time.set_timer(timer_event, 0)  # Timer-Ereignis stoppen, wenn der Countdown abgelaufen ist
 
-    # Clear the window
-    window.fill(WHITE)
+    # Hintergrund löschen
+    window.fill(BLACK)
 
-    # Draw the box
-    pygame.draw.rect(window, BLACK, (box_x, box_y, box_width, box_height))
+    # Timer-Text rendern
+    timer_text = font   .render(str(timer_value), True, WHITE)
+    timer_rect = timer_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
-    # Draw the text
-    text_x = box_x + (box_width - text_surface.get_width()) // 2
-    text_y = box_y + (box_height - text_surface.get_height()) // 2
-    window.blit(text_surface, (text_x, text_y))
+    # Timer-Text zeichnen
+    window.blit(timer_text, timer_rect)
 
-    # Update the display
+    # Bildschirm aktualisieren
     pygame.display.flip()
-
-# Quit Pygame
-pygame.quit()

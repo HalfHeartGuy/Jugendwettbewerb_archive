@@ -2,7 +2,7 @@ import pygame
 import SudukuBoard as sdkB
 from pygame import Surface
 from SudukuBoard import *
-
+import time
 pygame.init()
 screen = pygame.display.set_mode([800,600])
 keystate = pygame.key.get_pressed()
@@ -15,7 +15,7 @@ mydb = mysql.connector.connect(
 )
 
 
-
+button_drawing = True
 
 clock = pygame.time.Clock()
 
@@ -46,6 +46,14 @@ input_text_font = pygame.font.Font(None, 32)
 selected_input_field = ""
 
 
+#timer
+timer_rect = sdkB.drawInputTextfield(active,400,100,150,30)
+timer_value = 0
+timer_event = pygame.USEREVENT + 1
+pygame.time.set_timer(timer_event, 1000)
+
+
+WHITE = (0,0,0)
 
 pygame.display.set_caption("Sudoku")
 def emailundPasswortEingabe(password,email):
@@ -63,6 +71,8 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
 
+        elif event.type == timer_event and button_drawing == False:
+            timer_value += 1
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if input_email_rect.collidepoint(event.pos):
@@ -77,9 +87,14 @@ while True:
 
 
 
+
             else:
                 active = False
-        input_start_rect.click_2(event, input_email, input_password)
+        rueckgabeFeld = input_start_rect.click_2(event, input_email, input_password)
+        if rueckgabeFeld == False:
+
+            button_drawing = False
+
 
         if event.type == pygame.KEYDOWN:
             if selected_input_field == "input_email_rect":
@@ -102,49 +117,52 @@ while True:
                     input_age = ""
                 input_difficulty += event.unicode
 
-    input_start_rect.show()
+
+
 
 
 
     clock.tick(30)
     pygame.display.update()
 
+    if button_drawing == True:
+        input_start_rect.show()
 
-  #  here the code for draw of inputfield
-    if active:
-        color_input_field = color_active
+        #  here the code for draw of inputfield
+        if active:
+            color_input_field = color_active
+        else:
+            color_input_field = color_passive
+
+        # Zeichnen des Eingabesfeldes email"
+        pygame.draw.rect(screen, color_input_field, input_email_rect)
+        # here the code for draw of input text
+        text_surface = input_text_font.render(input_email, True, (255, 255, 255))
+        screen.blit(text_surface, (input_email_rect.x + 5, input_email_rect.y + 5))
+        # Inputfield width would be updated
+        input_email_rect.w = max(100, text_surface.get_width())
+
+        ##### Zeichen von password
+        pygame.draw.rect(screen, color_input_field, input_password_rect)
+        # here the code for draw of input text
+        text_surface = input_text_font.render(input_password, True, (255, 255, 255))
+        screen.blit(text_surface, (input_password_rect.x + 5, input_password_rect.y + 5))
+        # Inputfield width would be updated
+        input_password_rect.w = max(100, text_surface.get_width())
+
+
+        #Zeichen von difficulty
+        pygame.draw.rect(screen, color_input_field, input_difficulty_rect)
+        # here the code for draw of input text
+        text_surface = input_text_font.render(input_difficulty, True, (255, 255, 255))
+        screen.blit(text_surface, (input_difficulty_rect.x + 5, input_difficulty_rect.y + 5))
+        # Inputfield width would be updated
+        input_difficulty_rect.w = max(100, text_surface.get_width())
     else:
-        color_input_field = color_passive
-
-    # Zeichnen des Eingabesfeldes email"
-    pygame.draw.rect(screen, color_input_field, input_email_rect)
-    # here the code for draw of input text
-    text_surface = input_text_font.render(input_email, True, (255, 255, 255))
-    screen.blit(text_surface, (input_email_rect.x + 5, input_email_rect.y + 5))
-    # Inputfield width would be updated
-    input_email_rect.w = max(100, text_surface.get_width())
-
-    ##### Zeichen von password
-    pygame.draw.rect(screen, color_input_field, input_password_rect)
-    # here the code for draw of input text
-    text_surface = input_text_font.render(input_password, True, (255, 255, 255))
-    screen.blit(text_surface, (input_password_rect.x + 5, input_password_rect.y + 5))
-    # Inputfield width would be updated
-    input_password_rect.w = max(100, text_surface.get_width())
-
-
-    #Zeichen von difficulty
-    pygame.draw.rect(screen, color_input_field, input_difficulty_rect)
-    # here the code for draw of input text
-    text_surface = input_text_font.render(input_difficulty, True, (255, 255, 255))
-    screen.blit(text_surface, (input_difficulty_rect.x + 5, input_difficulty_rect.y + 5))
-    # Inputfield width would be updated
-    input_difficulty_rect.w = max(100, text_surface.get_width())
-
-
-
-
-
+        timer_rect = pygame.Rect(400, 100, 150, 30)
+        pygame.draw.rect(screen, (255, 255, 255), timer_rect)
+        timer_text = input_text_font.render(str(timer_value), True, (0, 0, 0))
+        screen.blit(timer_text, (timer_rect.x + 5, timer_rect.y + 5))
 
 pygame.quit()
 
