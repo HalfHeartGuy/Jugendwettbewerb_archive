@@ -1,8 +1,8 @@
 import pygame
+import mysql.connector
 import SudukuBoard as sdkB
-from pygame import Surface
 from SudukuBoard import *
-import time
+
 pygame.init()
 screen = pygame.display.set_mode([800,600])
 keystate = pygame.key.get_pressed()
@@ -20,6 +20,9 @@ button_drawing = True
 clock = pygame.time.Clock()
 
 #### here  the code for input box
+
+
+
 color_input_field = None
 active = False
 color_passive = pygame.Color('chartreuse4')
@@ -35,6 +38,13 @@ input_password = ""
 #inputfield:difficulty
 input_difficulty_rect = sdkB.drawInputTextfield(active,200,300,150,30)
 input_difficulty = ""
+
+#inputfields sudoku 9x9
+input_numbers_rect = sdkB.draw9x9SudokuBox(active,50,50,40,40)
+print(input_numbers_rect)
+
+
+
 #button start
 input_start_rect = sdkB.Button("Click here", (100,100), font=30, bg="navy", feedback="You just clicked me")
 
@@ -159,12 +169,16 @@ while True:
         # Inputfield width would be updated
         input_difficulty_rect.w = max(100, text_surface.get_width())
     else:
-        timer_rect = pygame.Rect(400, 100, 150, 30)
+        timer_rect = pygame.Rect(600, 100, 150, 30)
         pygame.draw.rect(screen, (255, 255, 255), timer_rect)
         timer_text = input_text_font.render(str(timer_value), True, (0, 0, 0))
         screen.blit(timer_text, (timer_rect.x + 5, timer_rect.y + 5))
 
-pygame.quit()
+        #Hier fängt draw sudoku an
+        for oneinputfield in input_numbers_rect:
+            pygame.draw.rect(screen,color_input_field,oneinputfield)
 
+
+pygame.quit()
 
 
