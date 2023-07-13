@@ -1,6 +1,12 @@
 import mysql.connector
 import math
 import random
+import sudoku_2
+from sudoku_2 import *
+
+
+
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -21,35 +27,9 @@ game_start = False
 
 def draw9x9SudokuBox(active:bool, start_x:int, start_y:int, width:int, heigth:int):
     inputs_fields_rects = []
-    for i in range(0,3):
-        for j in range(0,3):
+    for i in range(0,9):
+        for j in range(0,9):
             inputs_fields_rects.append(drawInputTextfield(active,start_x + j * 50,start_y + i * 50,width,heigth))
-    for i in range(0,3):
-        for j in range(3,6):
-            inputs_fields_rects.append(drawInputTextfield(active,(start_x + j * 50) + 10,start_y + i * 50,width,heigth))
-    for i in range(0,3):
-        for j in range(6,9):
-            inputs_fields_rects.append(drawInputTextfield(active,(start_x + j * 50) + 20,start_y + i * 50,width,heigth))
-    for i in range(3,6):
-        for j in range(0,3):
-            inputs_fields_rects.append(drawInputTextfield(active,start_x + j * 50,(start_y + i * 50) + 10,width,heigth))
-    for i in range(3,6):
-        for j in range(3,6):
-            inputs_fields_rects.append(drawInputTextfield(active,(start_x + j * 50) + 10,(start_y + i * 50) + 10,width,heigth))
-    for i in range(3,6):
-        for j in range(6,9):
-            inputs_fields_rects.append(drawInputTextfield(active,(start_x + j * 50) + 20,(start_y + i * 50) + 10,width,heigth))
-    for i in range(6,9):
-        for j in range(0,3):
-            inputs_fields_rects.append(drawInputTextfield(active,start_x + j * 50,(start_y + i * 50) + 20,width,heigth))
-    for i in range(6,9):
-        for j in range(3,6):
-            inputs_fields_rects.append(drawInputTextfield(active,(start_x + j * 50) + 10,(start_y + i * 50) + 20,width,heigth))
-    for i in range(6,9):
-        for j in range(6,9):
-            inputs_fields_rects.append(drawInputTextfield(active,(start_x + j * 50) + 20,(start_y + i * 50) + 20,width,heigth))
-
-
 
     return inputs_fields_rects
 

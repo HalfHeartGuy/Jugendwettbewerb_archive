@@ -99,9 +99,9 @@ def emtpyCells(difiilcuty):
     return createEmptyCells(totalEmptyCells,difiilcuty)
 
 
-def zerosInSudoku():
+def zerosInSudoku(difficulty="leicht"):
 
-    emtpyCellsCount = emtpyCells("leicht")
+    emtpyCellsCount = emtpyCells(difficulty)
 
     for i in range(0,9):
         emptyCells = random.sample([0,1,2,3,4,5,6,7,8], emtpyCellsCount[i])
@@ -110,8 +110,9 @@ def zerosInSudoku():
     print("-----------------------------------")
     for row in sudoku:
         print(row)
+    return sudoku
 
 
 
-zerosInSudoku()
+
 

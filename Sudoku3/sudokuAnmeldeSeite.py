@@ -1,8 +1,11 @@
 import pygame
 import mysql.connector
+import sudoku_2
+from sudoku_2 import *
 import SudukuBoard as sdkB
 from SudukuBoard import *
-
+import math
+from math import *
 pygame.init()
 screen = pygame.display.set_mode([800,600])
 keystate = pygame.key.get_pressed()
@@ -42,6 +45,7 @@ input_difficulty = ""
 #inputfields sudoku 9x9
 input_numbers_rect = sdkB.draw9x9SudokuBox(active,50,50,40,40)
 print(input_numbers_rect)
+input_numbers = zerosInSudoku()
 
 
 
@@ -66,6 +70,9 @@ pygame.time.set_timer(timer_event, 1000)
 BLACK = (0, 0, 0)
 
 pygame.display.set_caption("Sudoku")
+
+
+
 def emailundPasswortEingabe(password,email):
 
 
@@ -169,14 +176,31 @@ while True:
         # Inputfield width would be updated
         input_difficulty_rect.w = max(100, text_surface.get_width())
     else:
+
         timer_rect = pygame.Rect(600, 100, 150, 30)
         pygame.draw.rect(screen, (255, 255, 255), timer_rect)
         timer_text = input_text_font.render(str(timer_value), True, (0, 0, 0))
         screen.blit(timer_text, (timer_rect.x + 5, timer_rect.y + 5))
 
         #Hier fängt draw sudoku an
-        for oneinputfield in input_numbers_rect:
-            pygame.draw.rect(screen,color_input_field,oneinputfield)
+        for i in range(0, 81):
+            if i == 0:
+                x = 0
+                y = 0
+            if i < 9:
+                x = 0
+                y = i
+            else:
+                x = i // 9
+                y = i % 9
+
+
+            pygame.draw.rect(screen,color_input_field,input_numbers_rect[i])
+            text_surface = input_text_font.render(str(input_numbers[x][y]),True,(255,0,0))
+            screen.blit(text_surface, (input_numbers_rect[i]))
+            input_numbers_rect[i].w = max(1, text_surface.get_width())
+
+
 
 
 pygame.quit()

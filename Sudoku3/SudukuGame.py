@@ -1,5 +1,8 @@
-from Sudoku2 import SudukuBoard as sdkB
-from Sudoku2.SudukuBoard import *
+from Sudoku3 import SudukuBoard as sdkB
+from Sudoku3.SudukuBoard import *
+import sudoku_2
+from sudoku_2 import *
+
 
 pygame.init()
 screen = pygame.display.set_mode([800,600])
