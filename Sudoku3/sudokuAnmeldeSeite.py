@@ -196,9 +196,11 @@ while True:
 
 
             pygame.draw.rect(screen,color_input_field,input_numbers_rect[i])
-            text_surface = input_text_font.render(str(input_numbers[x][y]),True,(255,0,0))
-            screen.blit(text_surface, (input_numbers_rect[i]))
-            input_numbers_rect[i].w = max(1, text_surface.get_width())
+            if input_numbers[x][y] != 0:
+                text_surface = input_text_font.render(str(input_numbers[x][y]),True,(255,0,0))
+
+                screen.blit(text_surface, (input_numbers_rect[i]))
+                input_numbers_rect[i].w = max(1, text_surface.get_width())
 
 
 
