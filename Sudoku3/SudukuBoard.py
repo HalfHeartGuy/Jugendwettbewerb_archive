@@ -15,7 +15,7 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 import pygame
-from pygame import Surface
+from pygame import Surface,Rect
 pygame.init()
 screen = pygame.display.set_mode((500, 600))
 clock = pygame.time.Clock()
@@ -23,6 +23,13 @@ font = pygame.font.SysFont("Arial", 20)
 
 
 game_start = False
+
+def getselectedinputfields(eventpos,listofinputsfields:list[Rect]) -> int:
+    result = -1
+    for pos in range(len(listofinputsfields)):
+        if listofinputsfields[pos].collidepoint(eventpos):
+            return pos
+    return -1
 
 
 def draw9x9SudokuBox(active:bool, start_x:int, start_y:int, width:int, heigth:int):

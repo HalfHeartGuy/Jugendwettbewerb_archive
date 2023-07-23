@@ -92,6 +92,8 @@ while True:
             timer_value += 1
 
         if event.type == pygame.MOUSEBUTTONDOWN:
+
+
             if input_email_rect.collidepoint(event.pos):
                 active = True
                 selected_input_field = "input_email_rect"
@@ -201,6 +203,9 @@ while True:
 
                 screen.blit(text_surface, (input_numbers_rect[i]))
                 input_numbers_rect[i].w = max(1, text_surface.get_width())
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = sdkB.getselectedinputfields(event.pos,input_numbers_rect)
+                print(pos)
 
 
 
