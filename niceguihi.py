@@ -1,34 +1,38 @@
+
 from nicegui import ui
 
-# Eine Liste, in der die Eingaben gespeichert werden
-name_eingaben_liste = []
+# Separate Listen für Namen und E-Mail-Adressen
+name_list = []
+email_list = []
+
 # Funktion, die aufgerufen wird, wenn der Button gedrückt wird
 def hinzufuegen():
     eingabe_name = eingabe_feld_name.value
     eingabe_email = eingabe_feld_Email.value
 
-    name_eingaben_liste.append(eingabe_name + " ,")
-    name_eingaben_liste.append(eingabe_email + " ;")
-    print(name_eingaben_liste)
+    # Überprüfung, ob der Name oder die E-Mail bereits existiert
+    if eingabe_name in name_list or eingabe_email in email_list:
+        ui.notify("Der Benutzername oder die E-Mail existiert bereits.", level='error')
+    else:
+        # Hinzufügen des neuen Namens und der E-Mail zur Liste
+        name_list.append(eingabe_name)
+        email_list.append(eingabe_email)
 
+        # Anzeigen der aktualisierten Listen
+        liste_label_name.text = "Namen: " + ", ".join(name_list)
+        liste_label_email.text = "E-Mails: " + ", ".join(email_list)
 
+    # Eingabefelder leeren
+    eingabe_feld_name.value = ''
+    eingabe_feld_Email.value = ''
 
-    liste_label_name.text = f"Name Eingaben: {', '.join(name_eingaben_liste)}"
+eingabe_feld_name = ui.input('Name Eingabe')
+eingabe_feld_Email = ui.input('E-Mail Eingabe')
 
-    eingabe_feld_name.value = ''  # Eingabefeld leeren
-    eingabe_feld_Email.value = ""
+button_name = ui.button('Benutzer hinzufügen', on_click=hinzufuegen)
 
-
-eingabe_feld_name = ui.input('Username Eingabe')
-eingabe_feld_Email = ui.input("User Email Eingabe")
-
-button_name = ui.button('User Hinzufügen', on_click=hinzufuegen)
-
-
-liste_label_name = ui.label('User Eingaben:')
-
-
-
+liste_label_name = ui.label('Namen:')
+liste_label_email = ui.label('E-Mails:')
 
 # Server starten
 ui.run()
