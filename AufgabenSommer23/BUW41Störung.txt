@@ -1,0 +1,13 @@
+Für diese Aufgave wird Python Version 3.9 benutzt und ein Package namens Python RegEx
+
+Funktionen:
+
+1.textSearcher
+
+Die Datei muss .txt sein.
+Eingabe:Geschichte_dateiName,Satz
+
+Ausgabe:Liste von möglichen Sätzen
+
+
+

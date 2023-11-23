@@ -1,0 +1,32 @@
+!!!!Ein grünes Feld wird durch eine 0 ersetzt.!!!
+
+
+1. Terminplaner:
+    Eingabe:2 dimensionelle Liste
+    Ausgabe: Bester Termin(Spalte) - Interger und wie viele Einträge verändert werden müssen.
+
+    Eine for-Schleife geht jede Spalte durch, die so lange läuft ,bis die Schleife das Ende der Tabelle erreicht hat.
+    Dann gibt es noch einen counter, die zählt welcher Tag es ist(oder welcher Durchgang von der Schleife)
+
+    Bei jeder for-Schleife, die bei der Tabelle die Spalten durchgehen, wird auch eine for-Schleife, die immer bis
+    die letzte Zeile von der Tabelle läuft,benutzt.
+
+    Dann wird die Funkion otherbetterday benutzt.
+
+
+2. otherbetterday:
+    Eingabe:Spalte,Zeile,(Tag,Name,termintabelle)
+    Ausgabe:Bool(True oder False)
+
+   Ein counter in der Funktion Terminplaner zäht, wie viele Kinder einen besseren Termin an einem anderem Tag haben.
+   Der Wert vom counter wird dann in eine Liste namens days geschrieben.
+   Termintabele wird verwendet, weil vielleicht mehrere Tabellen im Code stehen könnten.
+
+  ! Aber diese Liste steht im Terminplaner.
+
+3. messageGenerator:
+    Eingabe:keine
+    Ausgabe:keine
+
+    Diese Funktion generiert eine Nachricht, die sagt welcher Tag(e) am besten sind und wie viele Termine verändert werden müssen
+

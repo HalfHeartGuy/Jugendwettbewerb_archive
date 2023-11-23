@@ -1,0 +1,68 @@
+
+                                  ---
+\    /\    /  |---|         |    |     |   |  |-----  |    |
+ \  /  \  /   |   |  |--   -|-   ---   |   |  |       |---|
+  \/    \/    |___|  |      |__  ___|  |___|  |_____  |   |
+
+Die unterschiedlichen 3 Schwierigkeitsstufen:
+1. In der einfachsten Schwierigkeitsstufe sind die Wörter meistens verbunden oder sehr nah aneinander.Diese
+stechen hervor und nur die Wörter,die sehr hervorstechen , werden rückwärtsgeschrieben.
+Doch es gibit keine rückwärtsgeschriebene Diagonale Wörter.
+
+
+2.In der 2.Schwierigkeitsstufe sind die Wörter dann nicht mehr ehr nah aneinander oder sind auch meistens nicht verbunden.
+Wörter die rückwärts geschrieben wurden sind auch nicht mehr sehr offentsichtlich.
+Doch es gibit keine rückwärtsgeschriebene Diagonale Wörter.
+
+3.In der 3.Schwierigkeitsstufe sind die Wörter möglichst weit auseinander.
+Die Wörter sollten gut versteckt sein und es gibt alle mögliche Kombinationen.
+
+!!!Die Wörter dürfen nicht länger als die längste Seite vom Rechteck sein.!!!
+
+
+Methoden:
+
+1.generateemptyField
+Eingabe:
+rechteckHoehe,rechteckBreite
+Ausgabe:Eine 2 dimensionelle Liste mit leeren Strings
+
+
+
+2.checkWordsifFit
+Eingabe:
+Wort und Rechteckgröße
+Ausgabe:
+True or False(bool)
+
+Diese Funktion überprüft, ob ein Wort in das Feld passt.
+Es gibt noch einen Counter, der zählt, ob es noch Platz für ein Wort gibt.
+Dann zählt das Programm noch die Anzahl der unterschiedliche Buchstaben und wenn diese nicht mehr als die Anzahl der Felder sind, dann gibt das Programm auch Fakse zurück.
+Bsp. Das Feld ist 3x4 groß, aber es gibt 4 Wörter die 4 Buchstaben lang sind, in diesem Fall wird das Protgramm False
+zurückgeben.
+
+3.wordRandomizer
+
+
+Eingabe:
+wordliste,difficulty/Schwierigkeitsgrad,
+Ausgabe:
+wordPosition,wortReihenfolge
+
+Diese Funktion schreibt ein Wort in das leere Feld, diese Funktion überprüft auch, ob das Wort überhauptdorthin geschrieben werden kann.
+Es übernimmt auch die Schwierigkeitsstufen.
+
+Es wird mit dem längsten Wort begonnen.
+
+4.wortraetselGenerator
+Eingabe:Schwierigkeitsstufe,rechteckHoehe,rechteckBreite,Wortliste
+Ausgabe:2 dimensionelle Liste als Worträtsel
+
+Diese Funktion benutzt einfach nur die ersten 3 Funktionen und gibt dann das Worträtsel aus.
+
+
+
+
+
+
+
