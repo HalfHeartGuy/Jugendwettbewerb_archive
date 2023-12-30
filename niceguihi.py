@@ -1,5 +1,8 @@
 
 from nicegui import ui
+from nicegui import *
+ui.query('body').classes('bg-gradient-to-t from-blue-200 to-blue-100')
+ui.markdown("**minecraft registration**")
 
 # Separate Listen für Namen und E-Mail-Adressen
 name_list = []

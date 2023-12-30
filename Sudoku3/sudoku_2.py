@@ -65,7 +65,7 @@ def sudokuGenerator():
     if solveSudoku():
         for row in sudoku:
             print(row)
-
+    return sudoku
 
 sudokuGenerator()
 
