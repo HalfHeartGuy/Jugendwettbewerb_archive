@@ -78,8 +78,7 @@ def get_image_terrain(img):
 diciontary = {}
 for i in range(1,16):
     diciontary[pathlist[i]] = get_image_terrain(imagelist[i])
-for oneelement in diciontary:
-    print(oneelement, diciontary[oneelement])
+
 
 
 
