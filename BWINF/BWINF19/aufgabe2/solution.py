@@ -18,6 +18,9 @@ def display_pictures(pics_path: list):
         for j in range(2):
             ax[i, j].axis('off')
 
+    plt.subplots_adjust(wspace=0, hspace=0)
+    
+
     plt.show()
 
 #display_pictures([Image.open(os.path.join(current_folder, 'pic10.png')), Image.open(os.path.join(current_folder, 'pic3.png')), Image.open(os.path.join(current_folder, 'pic6.png')), Image.open(os.path.join(current_folder, 'pic12.png'))])
@@ -51,31 +54,42 @@ def search_bit_string(bit_str: str) -> list[str]:
     for key, value in all_pics.items():
         if is2bit_string_similar(bit_str, value) == True: # value is similar to the bit_str
             result.append(key.split("\\")[-1])
+            all_pics.pop(key)
+            break
+
     return result
 
 
 
 # homework 3: complete following using search_bit_string
-def complete_bit_string(bit_str_list: list) -> list:
     # sample pics is list of 2 bit-strings, e.g ["1001",,, "1011"]
     # sample pics is list of 4 bit-strings, e.g ["pic10.png", "pic3.png", "pic6.png", "pic12.png"]
+def complete_bit_string(bit_str_list: list,randompictures) -> list:
+
+        
     first_bit_string = bit_str_list[0]
     
    
     fourth_bit_string = bit_str_list[1]
-
-    second_bit_string = first_bit_string[1] + "?" + first_bit_string[3] + fourth_bit_string[1]
-    second_bit_string = search_bit_string(second_bit_string)[0]
-
-
+    if first_bit_string[3] == fourth_bit_string[0]: 
+        second_bit_string = first_bit_string[1] + "?" + first_bit_string[3] + fourth_bit_string[1]
+        second_bit_string = search_bit_string(second_bit_string)[0]
 
 
-    third_bit_string = first_bit_string[2] + first_bit_string[3] + "?" + fourth_bit_string[2]
-    third_bit_string = search_bit_string(third_bit_string)[0]
 
-    first_bit_string = search_bit_string(first_bit_string)[0]
-    fourth_bit_string = search_bit_string(fourth_bit_string)[0]
-    return [first_bit_string, second_bit_string, third_bit_string, fourth_bit_string]
+
+        third_bit_string = first_bit_string[2] + first_bit_string[3] + "?" + fourth_bit_string[2]
+        third_bit_string = search_bit_string(third_bit_string)[0]
+
+
+        first_bit_string = randompictures[0]
+        fourth_bit_string = randompictures[1]
+        return [first_bit_string, second_bit_string, third_bit_string, fourth_bit_string]
+    
+    elif first_bit_string[3]!= fourth_bit_string[0]:
+
+        print(f"No solution found, because the bit strings {first_bit_string[3]} and {fourth_bit_string[0]} are not the same.")
+        return bit_str_list
 
 # homework 4: choose 2 random pictures from all_pics, use function complete_bit_string to get complete list of 4 pictures
 # and display them using function "display_pictures".
@@ -85,6 +99,28 @@ import random
 from random import sample
 
 random_pics = random.sample(list(all_pics.keys()), 2)
-bit_str_list = [all_pics[pic] for pic in random_pics]
-complete_list = complete_bit_string(bit_str_list)
-display_pictures([Image.open(os.path.join(current_folder, pic)) for pic in complete_list])
+
+
+random_pics_filename = [pic.split("\\")[-1] for pic in random_pics]
+
+#random_pics = [current_folder + "\pic4.png",current_folder + "\pic6.png"]
+bit_str_list = []
+deleted_str_list = []
+for pic in random_pics:
+    bit_str_list.append(all_pics[pic])
+
+
+for key, value in all_pics.items():
+    if key in random_pics[0]:
+        deleted_str_list.append(all_pics.pop(key))
+        break
+
+for key, value in all_pics.items():
+    if key in random_pics[1]:
+        deleted_str_list.append(all_pics.pop(key))
+        break
+
+complete_list = complete_bit_string(bit_str_list,random_pics_filename)
+
+if len(complete_list) == 4:
+    display_pictures([Image.open(os.path.join(current_folder, pic)) for pic in complete_list])
