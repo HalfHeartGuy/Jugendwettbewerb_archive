@@ -8,6 +8,7 @@ import random
 current_folder = os.path.dirname(os.path.abspath(__file__))
 
 def display_pictures(pics_path: list):
+    print("Solution found for {},{},{} and {}".format(pics_path[0], pics_path[1], pics_path[2], pics_path[3]))
     fig, ax = plt.subplots(2, 2)
     ax[0, 0].imshow(pics_path[0])
     ax[0, 1].imshow(pics_path[1])
