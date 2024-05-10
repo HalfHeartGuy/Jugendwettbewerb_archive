@@ -37,8 +37,6 @@ class Leiterspiel:
         if if_sprung:
             self.cur_pos = new_pos
 
-        if self.cur_pos in self.verwendete_felder:
-            raise Exception(f"Das Feld {self.cur_pos} wurde bereits betreten")
         self.verwendete_felder.append(self.cur_pos)
 
 

@@ -5,7 +5,6 @@ list_2 = ["Wald", "Wald", "Wiese", "Häuser", "Wüste", "Wald", "See", "Wald", "
 
 
 
-
 #write a  function that is going to check, weather the known elements in list_1 are in the correct order in list_2
 def __check_order(list_1:list[str],list_2:list[str])->bool:
     # Schritt 1: Überprüfen, ob die beiden Listen gleich sind.
@@ -36,10 +35,12 @@ def vervollstaendige_landkarte(list_mit_luecken:list[str],list_vervollstaendigen
     # Schritt 1: Überorüfen, ob die beiden Listen gleich sind.
     # Schritt 2: Wenn die Listen nicht gleich sind, dann schieben wir das erste Wort aus der zweiten Liste ans Ende der zweiten Liste
     # Schritt 3: Wiederhole Schritt 1 und Schritt 2, bis die Listen gleich sind.
+    counter = 0
 
     while not __check_order(list_mit_luecken, list_vervollstaendigen):
+        counter += 1
         list_vervollstaendigen = __shift_element(list_vervollstaendigen)
-
+    print(counter)
     return list_vervollstaendigen
 
 print(vervollstaendige_landkarte(list_1, list_2))

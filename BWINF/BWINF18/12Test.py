@@ -1,6 +1,3 @@
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n-1)
-print(factorial(5)) #120
+test_list = ["?", "Wald", "?", "?", "?", "?", "Wald", "See", "?", "Wiese", "?", "?", "?"]
+test_list.append("Wald")
+print("test_list: ", test_list)
