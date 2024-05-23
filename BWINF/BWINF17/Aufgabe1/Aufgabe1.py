@@ -1,5 +1,8 @@
-numbers_list = [4,11,168,170,202,211,229,233,254,260,272,306,307,900]
+numbers_list = [6,11,168,170,202,211,229,233,254,260,272,306,307]
 numbers_list2 = [2,7,169,210,203,209,229,175,235]
+
+
+
 
 anzahl_figuren = numbers_list[0]
 anzahl_buecher = numbers_list[1]
@@ -11,8 +14,7 @@ buecher_hohen = numbers_list[2:]
 #Laura hat ein langes Regalbrett an ihrer Wand. Sie
 #möchte es hübscher einräumen. Außer ihren Büchern
 #sollen auf dem Regal auch vier Deko-Figuren stehen.
-#Sie überlegt sich, dass sie das Regal mit den
-#Figuren in fünf Abschnitte unterteilen kann. Diese
+#Diese
 #Abschnitte möchte sie mit ihren Büchern füllen.
 #Wie breit die Abschnitte sind, ist ihr egal. Sie
 #möchte aber, dass die Bücher im selben Abschnitt
@@ -69,7 +71,7 @@ def _divide_books_into_sections(buecher_hohen:list[int])->list[list[int]]:
 
 #Schreibe ein Funktion, falls die Anzahl der Abschnitte gleich 5 ist, dann wird True zurückgegeben, sonst False
 def _check_sections(sections:list[list[int]])->bool:
-    if len(sections) == 5:
+    if len(sections) == anzahl_figuren + 1:
         return True
     return False
 #Schreibe eine Funktion, die die jedem Abschnitt mit deren Buch zurückgibt, falls true, aber falls false, dann wird Sortierung nicht möglich zurückgegeben
