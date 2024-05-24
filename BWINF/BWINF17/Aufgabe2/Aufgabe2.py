@@ -66,13 +66,14 @@ def calc_forest_felder(forest_length,forest_width):
     wald_felder = []
     for i in range(forest_length):
         for j in range(forest_width):
-            wald_felder.append([i,j])
+            wald_felder.append([j,i])
     return wald_felder
 
     
 
 #Der Vogel braucht 1 Minute um ein Feld zu überfliegen und der Vogel soll hin und her fliegen.Er kehrt beim Randfeld um.
 def vogel_routen_Berechner(start_vogel_pos, richtung, start_zeit,forest_length,forest_width):
+    print(forest_length)
     vogel_route = []
     start_x = start_vogel_pos[0]
     start_y = start_vogel_pos[1]
@@ -164,6 +165,17 @@ def calc_forest_sicherheit(wald_felder, vogel_routen,start_zeit):
         for j in range(0,len(vogel1)):
             if vogel1[j][str(start_zeit + j)] == wald_felder[i]:
                 sicherheitsfelder[i] = 1
+    #Berechen ab hier die Felder, die absolut unsicher sind und zeige die in der sicherheitsfelderliste mit 0 an.Definition von absolut unsicheren Feldern:
+    #Wenn ein Feld innerhalb 30 Minuten von 2 Vögeln überflogen wird, dann ist das Feld absolut unsicher.
+    """
+    for i in range(0,len(wald_felder)):
+        counter = 0
+        for j in range(0,len(vogel1)):
+            if vogel1[j][str(start_zeit + j)] == wald_felder[i]:
+                counter += 1
+        if counter >= 2:
+            sicherheitsfelder[i] = 0
+        """
     return sicherheitsfelder    
 print(calc_forest_sicherheit(calc_forest_felder(15,3), [vogel1],20))
 
