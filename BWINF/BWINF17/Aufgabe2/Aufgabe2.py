@@ -61,7 +61,7 @@ def calc_Randfelder(forest_length,forest_width):
     randfelder.append((forest_length-1,forest_width-1))
     return randfelder
 
-
+#i,j sind vertauscht, weil man normaleweise auch x,y Koordinaten benutzt.
 def calc_forest_felder(forest_length,forest_width):
     wald_felder = []
     for i in range(forest_length):
@@ -72,84 +72,7 @@ def calc_forest_felder(forest_length,forest_width):
     
 
 #Der Vogel braucht 1 Minute um ein Feld zu überfliegen und der Vogel soll hin und her fliegen.Er kehrt beim Randfeld um.
-def vogel_routen_Berechner(start_vogel_pos, richtung, start_zeit,forest_length,forest_width):
-    print(forest_length)
-    vogel_route = []
-    start_x = start_vogel_pos[0]
-    start_y = start_vogel_pos[1]
-    counter = 0
-    counter2 = 0
-    up_down = 0
-    if richtung == "sn":
-        while counter + start_zeit < 720:
-            while up_down == 0:
-                vogel_route.append({str(start_zeit+counter):[start_x, start_y+counter2]})
-                counter += 1
-                counter2 += 1
-                if counter2 == forest_length-1:
-                    up_down = 1
-            while up_down == 1:
-                vogel_route.append({str(start_zeit+counter):[start_x, start_y+counter2]})
-                counter += 1
-                counter2 -= 1
-                if counter2 == 0:
-                    up_down = 0
-        vogel_route.append({str(720):[start_x, start_y]})   
-        return vogel_route
-  
-    elif richtung == "we":
-        while counter + start_zeit < 720:
-            while up_down == 0:
-                vogel_route.append({str(start_zeit+counter):[start_x+counter2, start_y]})
-                counter += 1
-                counter2 += 1
-                if counter2 == forest_width-1:
-                    up_down = 1
-            while up_down == 1:
-                vogel_route.append({str(start_zeit+counter):[start_x+counter2, start_y]})
-                counter += 1
-                counter2 -= 1
-                if counter2 == 0:
-                    up_down = 0
-        vogel_route.append({str(720):[start_x, start_y]})
-        return vogel_route
-    
-    elif richtung == "ns":
-        while counter + start_zeit < 720:
-            while up_down == 1:
-                vogel_route.append({str(start_zeit+counter):[start_x+counter2, start_y]})
-                counter += 1
-                counter2 -= 1
-                if counter2 == 0:
-                    up_down = 0
 
-            while up_down == 0:
-                vogel_route.append({str(start_zeit+counter):[start_x+counter2, start_y]})
-                counter += 1
-                counter2 += 1
-                if counter2 == forest_width-1:
-                    up_down = 1
-        vogel_route.append({str(720):[start_x, start_y]})
-        return vogel_route
-    elif richtung == "ew":
-        while counter + start_zeit < 720:
-            while up_down == 1:
-                vogel_route.append({str(start_zeit+counter):[start_x, start_y+counter2]})
-                counter += 1
-                counter2 -= 1
-                if counter2 == 0:
-                    up_down = 0
-
-            while up_down == 0:
-                vogel_route.append({str(start_zeit+counter):[start_x, start_y+counter2]})
-                counter += 1
-                counter2 += 1
-                if counter2 == forest_length-1:
-                    up_down = 1
-        vogel_route.append({str(720):[start_x, start_y]})
-        return vogel_route
-
-vogel1 = vogel_routen_Berechner((1,0), "sn", 20, 15, 3)
 #for oneelement in vogel1:
  #   print(oneelement)
 #Diese Funktion berechnet die Sicherheitsstufe für jedes Feld im Wald.
@@ -167,7 +90,7 @@ def calc_forest_sicherheit(wald_felder, vogel_routen,start_zeit):
                 sicherheitsfelder[i] = 1
     #Berechen ab hier die Felder, die absolut unsicher sind und zeige die in der sicherheitsfelderliste mit 0 an.Definition von absolut unsicheren Feldern:
     #Wenn ein Feld innerhalb 30 Minuten von 2 Vögeln überflogen wird, dann ist das Feld absolut unsicher.
-    """
+    
     for i in range(0,len(wald_felder)):
         counter = 0
         for j in range(0,len(vogel1)):
@@ -175,8 +98,8 @@ def calc_forest_sicherheit(wald_felder, vogel_routen,start_zeit):
                 counter += 1
         if counter >= 2:
             sicherheitsfelder[i] = 0
-        """
+        
     return sicherheitsfelder    
-print(calc_forest_sicherheit(calc_forest_felder(15,3), [vogel1],20))
+print(calc_forest_sicherheit(calc_forest_felder(15,3), [vogel1,vogel2],20))
 
 
