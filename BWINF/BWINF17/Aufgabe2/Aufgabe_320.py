@@ -145,7 +145,7 @@ def vogel_routen_Berechner(start_vogel_pos, richtung, start_zeit,forest_length,f
 
 vogel1 = vogel_routen_Berechner((1,14), "sn", 20,15,3)
 vogel2 = vogel_routen_Berechner((1,0), "we", 20,15,3)
-
+print(vogel1)
 
 #Berechnung wie lange ein Feld wieder von einem Vogel überflogen wird. Dabei den größten Zeitabstand nehmen. Es muss auch noch der Zeitabstand von Sonnenaufgang bis zu den ersten Vogelflug von dem feld berechnet werden.
 #Ausgabe ist eine Zahl, die die Zeit in Minuten angibt den Zeitraum wann ein Feld wieder überflogen wird und alle Vögeln müssen berücksichtigt werden und die Anzahl der Vögeln sind beliebig.
@@ -175,7 +175,8 @@ def calc_feld_sicherheit(vogel_routen,feld):
         return max_time2
     else:
         return max_time
-print(calc_feld_sicherheit(vogel_routen, (1,10)))
+#print(calc_feld_sicherheit(vogel_routen, (1,10)))
+"""
 leereFelder = []
 for i in calc_forest_felder(15,3):
     if calc_feld_sicherheit(vogel_routen, i) < 30:
@@ -185,3 +186,4 @@ for i in calc_forest_felder(15,3):
     else:
         leereFelder.append(2)
 print(leereFelder)
+"""

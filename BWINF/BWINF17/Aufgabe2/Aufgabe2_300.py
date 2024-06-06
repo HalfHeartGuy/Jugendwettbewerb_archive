@@ -80,24 +80,4 @@ def vogel_routen_Berechner(start_vogel_pos, richtung, start_zeit,forest_length,f
 
 
 vogel2 = vogel_routen_Berechner((1,0), "we", 20, 15, 3)
-#Schritt 2: Berechne wie viele Minuten ein Vogel wieder braucht um bei einem Feld wieder vorbei zu fliegen. Ein Vogel braucht 1 Minute um ein Feld zu überfliegen.
-#Eingaben Beispiel: # Eingaben: Feld (2,1), wald_breite = 3, wald_hoehe = 15, Routinplan = [{"21":(2,1)}, {"22":(2,2)}, {"23":(2,3)}, ...,{"35":(2,14)}, {"36": (2,13)},.., {"49":(2,1)}]
-#Ausgabe: 28
-def calc_vogel_rueckkehr_zeit(feld,wald_breite, wald_hoehe, start_zeit):
-    vogel1 = vogel_routen_Berechner((1,14), "sn", start_zeit, wald_hoehe, wald_breite)
-    routinenplan = vogel1
-
-    routinenplaene = []
-    routinenplan.append(vogel1)
-    
-    
-    counter = 0
-    for i in range(0,len(routinenplan)):
-        for j in range(0,len(routinenplan[i])):
-            if routinenplan[i][j][str(start_zeit + j)] == feld:
-                
-
-print(calc_vogel_rueckkehr_zeit((1,2), 3, 15, 20))
-#print(calc_vogel_rueckkehr_zeit((1,2), 3, 20, 20))
-#print(calc_vogel_rueckkehr_zeit((1,2), 3, 15, 50))
-#print(calc_vogel_rueckkehr_zeit((2,1), 3, 15, 20))
+print(vogel2)
