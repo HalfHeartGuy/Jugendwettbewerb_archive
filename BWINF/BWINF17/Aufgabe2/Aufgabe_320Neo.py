@@ -240,7 +240,7 @@ def vogel_routen_Berechner(start_vogel_pos, richtung, start_zeit,forest_length,f
 
 
 
-startPos = [1,0]
+startPos = [0,0]
 richtung = "we"
 startZeit = 20
 forest_length = 15
