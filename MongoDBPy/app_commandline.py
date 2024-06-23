@@ -49,6 +49,7 @@ print(result)
 
 
 def add_new_commandlines(new_commandlines:list):
+    col_commandlines.delete_many({commandlines})
     for one_commandline in new_commandlines:
         col_commandlines.insert_one(one_commandline)
 ##x = col_exercise.insert_one(mydict)
