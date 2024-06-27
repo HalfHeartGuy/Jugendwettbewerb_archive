@@ -1,5 +1,4 @@
-dictionary = {}
-car = "car"
-print(type(car))
-dictionary[car] = "hi"
-print(dictionary)
+import re
+
+text = "This is a test"
+print(re.search("^This",text))
