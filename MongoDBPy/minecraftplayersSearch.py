@@ -44,4 +44,9 @@ def search_players_by_firstname(firstname):
         print(player)
     return players
 #Write a code so that I can read what is the output of the functions above.
-print(search_players_by_age_school_lastname(15, "USA", "J"))
+#Task 3.1
+print(search_players_by_age_school_lastname(20, "China", "Zh"))
+#Task 3.2
+print(search_players_by_os("playstation"))
+#Task 3.3
+print(search_players_by_firstname("Phil"))
