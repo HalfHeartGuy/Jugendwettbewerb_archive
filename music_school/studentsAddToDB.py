@@ -14,15 +14,15 @@ x = collection_teachers.delete_many({})
 x = collection_courses.delete_many({})
 
 students = [
-    {"name": "John", "age": 10, "instrument": "drums"},
-    {"name": "Jane", "age": 11, "instrument": "piano"},
-    {"name": "Bob", "age": 12, "instrument": "drums"},
-    {"name": "Alice", "age": 13, "instrument": "violin"},
-    {"name": "Charlie", "age": 14, "instrument": "piano"},
-    {"name": "David", "age": 15, "instrument": "piano"},
-    {"name": "Eve", "age": 16, "instrument": "violin"},
-    {"name": "Frank", "age": 17, "instrument": "drums"},
-    {"name": "Grace", "age": 18, "instrument": "piano"},
+    {"name": "John", "age": 10},
+    {"name": "Jane", "age": 11, "instrument": "drums"},
+    {"name": "Bob", "age": 9, "instrument": "violin"},
+    {"name": "Alice", "age": 13, "instrument": "piano"},
+    {"name": "Charlie", "age": 14, "instrument": "drums"},
+    {"name": "David", "age": 15, "instrument": "drums"},
+    {"name": "Eve", "age": 16, "instrument": "piano"},
+    {"name": "Frank", "age": 17, "instrument": "violin"},
+    {"name": "Grace", "age": 18, "instrument": "drums"},
     {"name": "Heidi", "age": 19, "instrument": "piano"}
 ]
 
@@ -36,18 +36,18 @@ schools = [
 collection_school.insert_many(schools)
 
 teachers = [
-    {"name": "Stock", "age": 30, "instrument": "violin", "school": "CCCS"},
-    {"name": "Riebon", "age" : 40, "instrument": "drums", "school": "CCCS"},
-    {"name": "Guo", "age" : 35, "instrument": "piano", "school": "CCCS"}
+    {"name": "Stock", "age": 30, "instrument": "piano", "school": "CCCS"},
+    {"name": "Riebon", "age" : 40, "instrument": "violin", "school": "CCCS"},
+    {"name": "Guo", "age" : 35, "instrument": "drums", "school": "CCCS"}
 ]
 
 collection_teachers.insert_many(teachers)
-
+time = 2025
 
 courses = [
-    {"instrument" : "violin" , "name" : "CCCViolin" , "teacer" : "Stock" , "students" : ["Alice", "Eve"]},
-    {"instrument" : "drums" , "name" : "CCCDrums" , "teacer" : "Riebon" , "students" : ["John", "Bob", "Frank"]},
-    {"instrument" : "piano" , "name" : "CCCPiano" , "teacer" : "Guo" , "students" : ["Jane", "Charlie", "David", "Grace", "Heidi"]}
+    {"instrument" : "piano" , "name" : "CCCPiano" , "teacher" : "Stock" , "students" : ["Alice", "Eve", "Heidi"],"time":time},
+    {"instrument" : "violin" , "name" : "CCCViolin" , "teacher" : "Riebon" , "students" : ["John", "Bob", "Frank"],"time":time},
+    {"instrument" : "drums" , "name" : "CCCDrums" , "teacher" : "Guo" , "students" : ["Jane", "Charlie", "David", "Grace"],"time":time}
 ]
 
 collection_courses.insert_many(courses)
