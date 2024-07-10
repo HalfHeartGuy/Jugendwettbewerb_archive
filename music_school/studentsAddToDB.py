@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-
+import datetime
 client = MongoClient('mongodb://localhost:27017/')
 
 db = client['music_school']
@@ -36,18 +36,19 @@ schools = [
 collection_school.insert_many(schools)
 
 teachers = [
-    {"name": "Stock", "age": 30, "instrument": "piano", "school": "CCCS"},
-    {"name": "Riebon", "age" : 40, "instrument": "violin", "school": "CCCS"},
-    {"name": "Guo", "age" : 35, "instrument": "drums", "school": "CCCS"}
+    {"name": "F.Stock", "age": 30, "instrument": "piano", "school": "CCCS"},
+    {"name": "F.Riebon", "age" : 40, "instrument": "violin", "school": "CCCS"},
+    {"name": "H.Guo", "age" : 35, "instrument": "drums", "school": "CCCS"}
 ]
 
 collection_teachers.insert_many(teachers)
-time = 2025
+course_day = datetime.datetime(year=2025, hour=7, minute=30, day=1,month=1,second=1)
+
 
 courses = [
-    {"instrument" : "piano" , "name" : "CCCPiano" , "teacher" : "Stock" , "students" : ["Alice", "Eve", "Heidi"],"time":time},
-    {"instrument" : "violin" , "name" : "CCCViolin" , "teacher" : "Riebon" , "students" : ["John", "Bob", "Frank"],"time":time},
-    {"instrument" : "drums" , "name" : "CCCDrums" , "teacher" : "Guo" , "students" : ["Jane", "Charlie", "David", "Grace"],"time":time}
+    {"instrument" : "piano" , "name" : "CCCPiano" , "teacher" : "F.Stock" , "students" : ["Alice", "Eve", "Heidi"],"time":"monday " + str(course_day.strftime('%H:%M,%Y'))},
+    {"instrument" : "violin" , "name" : "CCCViolin" , "teacher" : "F.Riebon" , "students" : ["John", "Bob", "Frank"],"time":"thursday " + str(course_day.strftime('%H:%M,%Y'))},
+    {"instrument" : "drums" , "name" : "CCCDrums" , "teacher" : "H.Guo" , "students" : ["Jane", "Charlie", "David", "Grace"],"time":"monday " + str(course_day.strftime('%H:%M,%Y'))}
 ]
 
 collection_courses.insert_many(courses)

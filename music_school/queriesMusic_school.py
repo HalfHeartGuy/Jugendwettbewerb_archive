@@ -47,8 +47,9 @@ def countstudentsfromateacher(teacher,instrument):
 #Note: Before an instrument there is always CCC
 def updateCourseTransfertoDifferentTeacher(toTransferteacher2,time,course):
     collection_courses = db["courses"]
-    query = {"name":course,"time":time}
-    collection_courses.update_one(query, {"$set": {"teacher": toTransferteacher2}})
+    if time == 2025:
+        query = {"name":course}
+        collection_courses.update_one(query, {"$set": {"teacher": toTransferteacher2}})
 #----------------------------------------------
 #Task 4
 def searchForStudentsWithNoInstruments():
