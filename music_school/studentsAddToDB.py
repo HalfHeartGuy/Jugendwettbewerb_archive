@@ -14,16 +14,16 @@ x = collection_teachers.delete_many({})
 x = collection_courses.delete_many({})
 
 students = [
-    {"name": "John", "age": 10},
-    {"name": "Jane", "age": 11, "instrument": "drums"},
-    {"name": "Bob", "age": 9, "instrument": "violin"},
-    {"name": "Alice", "age": 13, "instrument": "piano"},
-    {"name": "Charlie", "age": 14, "instrument": "drums"},
-    {"name": "David", "age": 15, "instrument": "drums"},
-    {"name": "Eve", "age": 16, "instrument": "piano"},
-    {"name": "Frank", "age": 17, "instrument": "violin"},
-    {"name": "Grace", "age": 18, "instrument": "drums"},
-    {"name": "Heidi", "age": 19, "instrument": "piano"}
+    {"name": "John", "age": 10, "location": "Stuttgart"},
+    {"name": "Jane", "age": 11, "instrument": "drums", "location": "Berlin"},
+    {"name": "Bob", "age": 9, "instrument": "violin", "location": "Munich"},
+    {"name": "Alice", "age": 13, "instrument": "piano", "location": "Hamburg"},
+    {"name": "Charlie", "age": 14, "instrument": "drums", "location": "Frankfurt"},
+    {"name": "David", "age": 15, "instrument": "drums", "location": "Cologne"},
+    {"name": "Eve", "age": 16, "instrument": "piano", "location": "Dusseldorf"},
+    {"name": "Frank", "age": 17, "instrument": "violin", "location": "Dortmund"},
+    {"name": "Grace", "age": 18, "instrument": "drums", "location": "Essen"},
+    {"name": "Heidi", "age": 19, "instrument": "piano", "location": "Leipzig"}
 ]
 
 collection_student.insert_many(students)
@@ -46,9 +46,9 @@ course_day = datetime.datetime(year=2025, hour=7, minute=30, day=1,month=1,secon
 
 
 courses = [
-    {"instrument" : "piano" , "name" : "CCCPiano" , "teacher" : "F.Stock" , "students" : ["Alice", "Eve", "Heidi"],"time":"monday " + str(course_day.strftime('%H:%M,%Y'))},
-    {"instrument" : "violin" , "name" : "CCCViolin" , "teacher" : "F.Riebon" , "students" : ["John", "Bob", "Frank"],"time":"thursday " + str(course_day.strftime('%H:%M,%Y'))},
-    {"instrument" : "drums" , "name" : "CCCDrums" , "teacher" : "H.Guo" , "students" : ["Jane", "Charlie", "David", "Grace"],"time":"monday " + str(course_day.strftime('%H:%M,%Y'))}
+    {"instrument" : "piano" , "name" : "piano for advanced" , "teacher" : "F.Stock" , "students" : ["Alice", "Eve", "Heidi"],"time":"monday " + str(course_day.strftime('%H:%M,%Y'))},
+    {"instrument" : "violin" , "name" : "Violin for beginners" , "teacher" : "F.Riebon" , "students" : ["John", "Bob", "Frank"],"time":"thursday " + str(course_day.strftime('%H:%M,%Y'))},
+    {"instrument" : "drums" , "name" : "drums for advanced" , "teacher" : "H.Guo" , "students" : ["Jane", "Charlie", "David", "Grace"],"time":"monday " + str(course_day.strftime('%H:%M,%Y'))}
 ]
 
 collection_courses.insert_many(courses)

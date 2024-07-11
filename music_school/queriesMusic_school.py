@@ -60,7 +60,7 @@ def searchForStudentsWithNoInstruments():
         print(student)
 #----------------------------------------------
 searchNameandAgeandteacher("violin",10,"Riebon")    
-print(countstudentsfromateacher("Stock","piano"))
-updateCourseTransfertoDifferentTeacher("Guo",2025,"CCCViolin")
+print(countstudentsfromateacher("F.Stock","piano"))
+updateCourseTransfertoDifferentTeacher("Guo",2025,"Violin for beginners")
 searchForStudentsWithNoInstruments()
 

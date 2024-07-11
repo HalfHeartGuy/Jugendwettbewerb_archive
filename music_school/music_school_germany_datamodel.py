@@ -37,17 +37,25 @@ mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
 db_music_school = mongo_client["music_school"]
 
 class Student:
-   def __init__(self, name, age, instrument):
+    def __init__(self, name, age, instrument,location):
         self.name = name
         self.age = age
         self.instrument = instrument
+        self.location = location
 
-   def store_in_mongoDB(self):
+    def store_in_mongoDB(self):
       col_students = db_music_school["students"]
       col_students.insert_one(self.__dict__)
 
-   def __str__(self):
-      return f"Student(name:{self.name}, age:{self.age}, instrument:{self.instrument})"
+    def update_in_mongoDB(self):
+        col_students = db_music_school["students"]
+        col_students.update_one({"name":self.name}, {"$set": {"age": self.age, "instrument": self.instrument, "location": self.location}})
+
+    def delete_in_mongoDB(self):
+        col_students = db_music_school["students"]
+        col_students.delete_one({"name":self.name})
+    def __str__(self):
+        return f"Student(name:{self.name}, age:{self.age}, instrument:{self.instrument}, location:{self.location})"
 
 def find_students(query:dict) -> list[Student]:
     col_students = db_music_school["students"]
@@ -57,7 +65,7 @@ def find_students(query:dict) -> list[Student]:
     for student in students:
         if "instrument" not in student:
             student["instrument"] = None
-        result.append(Student(student["name"], student["age"], student["instrument"]))   
+        result.append(Student(student["name"], student["age"], student["instrument"], student["location"]))   
     return result
 
 print("student result 1")
@@ -78,6 +86,10 @@ class School:
     def store_in_mongoDB(self):
         col_schools = db_music_school["schools"]
         col_schools.insert_one(self.__dict__)
+
+    def update_in_mongoDB(self):
+        col_schools = db_music_school["schools"]
+        col_schools.update_one({"name":self.location}, {"$set": {"location": self.name, "capacity": self.capacity}})
 
     def __str__(self):
         return f"School(name:{self.name}, location:{self.location}, capacity:{self.capacity})"
@@ -112,6 +124,10 @@ class Course:
         col_courses = db_music_school["courses"]
         col_courses.insert_one(self.__dict__)
 
+    def update_in_mongoDB(self):
+        col_courses = db_music_school["courses"]
+        col_courses.update_one({"name":self.name}, {"$set": {"instrument": self.instrument, "time": self.time, "teacher": self.teacher, "students": self.students}})
+
     def __str__(self):
         return f"Course(instrument:{self.instrument}, name:{self.name}, time:{self.time}, teacher:{self.teacher}, students:{self.students})"
 def find_courses(query:dict) -> list[Course]:
@@ -136,24 +152,32 @@ for course in course_result3:
     print(course)
 
 class Teacher:
-    def __init__(self, instruments, name, age, school):
-        self.instruments = instruments
+    def __init__(self, name, age, instrument, school):
         self.name = name
         self.age = age
+        self.instrument = instrument
+
         self.school = school
 
     def store_in_mongoDB(self):
         col_teachers = db_music_school["teachers"]
+        print("!teacher!")
+        print(self.__dict__)
         col_teachers.insert_one(self.__dict__)
 
+    def update_in_mongoDB(self):
+        col_teachers = db_music_school["teachers"]
+        col_teachers.update_one({"name":self.name}, {"$set": {"age": self.age, "instrument": self.instrument, "school": self.school}})
+
     def __str__(self):
-        return f"Teacher(instruments:{self.instruments}, name:{self.name}, age:{self.age}, school:{self.school})"
+        return f"Teacher(name:{self.name}, age:{self.age}, instrument:{self.instrument},school:{self.school})"
 
 def find_teachers(query:dict) -> list[Teacher]:
     col_teachers = db_music_school["teachers"]
     teachers = col_teachers.find(query)
     result = []  
     for teacher in teachers:
+        print(teacher)
         result.append(Teacher(teacher["instrument"], teacher["name"], teacher["age"], teacher["school"]))   
     return result
 
