@@ -3,7 +3,6 @@
 import pymongo 
 import json
 import re
-
 with open('D:\Workspace\Projects\Jugendwettbewerb_archive\MongoDBPy\commandlines.json', 'r') as f:
     commandlines = json.load(f)
 
@@ -69,6 +68,7 @@ def searchCommandlineByRegexBeginning(regex: str) -> list:
 # Example usage
 regex_input = "file"
 matching_commands = searchCommandlineByRegex(regex_input)
+
 for command in matching_commands:
     print(f"Command: {command['cmd']}\nDescription: {command['description']}\nExample: {command['example']}")
     print("---------------------------------------------------")
@@ -92,5 +92,9 @@ print("-------------------------------------------------------------------------
 
 
 
+myquery = {"description": "delete folder"}
+newvalues = {"$set": {"description": "delete folder and its content"}}
+col_commandlines.update_many(myquery, newvalues)
 
-
+find_query = all_commandline.find({"description": {"$regex": ".+folder."}})
+print(find_query)
